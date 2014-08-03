@@ -7,6 +7,8 @@ describe "Static pages" do
   describe "Home page" do
     before { visit root_path }
 
-    it { should have_content('Welcome') }
+    it { should have_content('Welcome to SMMobe!') }
+    it { should have_title("SMMobe - Smart Mobile Messages") }
+    it { should_not have_title('| Home') }
   end
 end
