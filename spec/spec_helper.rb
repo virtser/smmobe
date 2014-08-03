@@ -41,5 +41,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   # Adding the Capybara DSL
+  config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 end

@@ -25,18 +25,6 @@ ActiveRecord::Schema.define(version: 20140802151728) do
     t.datetime "updated_at"
   end
 
-  create_table "customers", force: true do |t|
-    t.integer  "organization_id"
-    t.string   "name"
-    t.string   "phone"
-    t.string   "city"
-    t.string   "custom1"
-    t.string   "custom2"
-    t.string   "custom3"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "message_types", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -55,15 +43,6 @@ ActiveRecord::Schema.define(version: 20140802151728) do
     t.string   "name"
     t.string   "phone"
     t.string   "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "templates", force: true do |t|
-    t.string   "name"
-    t.string   "text"
-    t.string   "image"
-    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
