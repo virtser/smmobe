@@ -42,6 +42,7 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.2.0'
+  gem 'factory_girl_rails', '4.2.0'
 end
 
 # Required for Heroku
