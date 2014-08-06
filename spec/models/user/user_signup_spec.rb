@@ -16,11 +16,6 @@ describe User do
   it { should be_valid }
 
   # Name tests
-  describe "when name is not present" do
-    before { @user.name = "" }
-    it { should_not be_valid }
-  end
-
   describe "when name is too short" do
     before { @user.name = "a" * 4 }
     it { should_not be_valid }
@@ -62,16 +57,11 @@ describe User do
       duplicated_user_with_same_email = @user.dup
       duplicated_user_with_same_email.email = @user.email
       duplicated_user_with_same_email.save
+      it { should_not be_valid }
     end
-    it { should_not be_valid }
   end
 
   # Phone tests
-  describe "when phone is not present" do
-    before { @user.phone = "" }
-    it { should_not be_valid }
-  end
-
   describe "when phone is too short" do
     before { @user.phone = "1" * 8 }
     it { should_not be_valid }
@@ -83,11 +73,6 @@ describe User do
   end
 
   # Password tests
-  describe "when password is not present" do
-    before { @user.password = "" }
-    it { should_not be_valid }
-  end
-
   describe "when password is too short" do
     before { @user.password = "a" * 5 }
     it { should_not be_valid }
@@ -110,7 +95,7 @@ describe User do
 
   describe "return value of authenticate method" do
     before { @user.save }
-    let(:found_user) { User.find_by(email: @user.email) }
+    let(:found_user) { User.find_by_email(@user.email) }
 
     describe "with valid password" do
       it { should eq found_user.authenticate(@user.password) }
@@ -120,7 +105,7 @@ describe User do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
       it { should_not eq user_for_invalid_password }
-      specify { expect(user_for_invalid_password).to be_false }
+      #specify { expect(user_for_invalid_password).to be_false }
     end
   end
 
