@@ -11,6 +11,7 @@ describe User do
   it { should respond_to(:phone) }
   it { should respond_to(:password) }
   it { should respond_to(:password_digest) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
 
   it { should be_valid }
@@ -109,6 +110,7 @@ describe User do
     end
   end
 
+  # User creation test
   describe "signup" do
 
     before { visit signup_path }
@@ -134,4 +136,13 @@ describe User do
       end
     end
   end
+
+  # Token creation test
+  describe "remember token" do
+    before { @user.save }
+    it { expect(@user.remember_token).not_to be_blank }
+  end
+
+
+
 end
