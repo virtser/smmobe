@@ -30,8 +30,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # simple forms generator
 gem 'simple_form'
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+# for passwords encrypting and hashing
+gem 'bcrypt-ruby', '3.1.2'
 
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '3.0.0'
