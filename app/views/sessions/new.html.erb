@@ -2,13 +2,11 @@
 
 <h1>Sign in</h1>
 
-<p id="notice"><%= notice %></p>
+<%= simple_form_for(:session, url: sessions_path, html: {class: 'form-inline' }) do |f|%>
 
-    <%= simple_form_for(:session, url: sessions_path, html: {class: 'form-inline' }) do |f|%>
+    <%= f.input :email, placeholder: 'user@domain.com' %>
+    <%= f.input :password %>
+    <%= f.button :submit, value: 'Sign in' %>
 
-        <%= f.input :email, placeholder: 'user@domain.com' %>
-        <%= f.input :password %>
-        <%= f.button :submit, value: 'Sign in' %>
-
-    <% end %>
+<% end %>
 
