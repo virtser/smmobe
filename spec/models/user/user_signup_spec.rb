@@ -59,8 +59,9 @@ describe User do
 
   describe "when email address is already taken" do
     before do
-      @duplicated_user_with_same_email = @user.dup
-      @duplicated_user_with_same_email.save
+      duplicated_user_with_same_email = @user.dup
+      duplicated_user_with_same_email.email = @user.email
+      duplicated_user_with_same_email.save
     end
     it { should_not be_valid }
   end
@@ -120,6 +121,32 @@ describe User do
 
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
+    end
+  end
+
+  describe "signup" do
+
+    before { visit signup_path }
+
+    let(:submit) { "Create User" }
+
+    describe "with invalid information" do
+      it "should not create a user" do
+        expect { click_button submit }.not_to change(User, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "Name",         with: @user.name
+        fill_in "Email",        with: @user.email + 'a' # just to make it unique again
+        fill_in "Phone",        with: @user.phone
+        fill_in "Password",     with: @user.password
+      end
+
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
     end
   end
 end
