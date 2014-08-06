@@ -16,9 +16,11 @@ if MessageType.find_by(name: 'Scheduling').nil?
 end
 
 # One user record for tests duplicate user email validation
+=begin
 if User.find_by(name: 'Example User').nil?
   User.create(name: "Example User", email: "user@example.com", phone: "054-4472571", password: "123456")
 end
+=end
 
 
 
