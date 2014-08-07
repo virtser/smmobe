@@ -15,6 +15,23 @@ if CampaignType.find_by(name: 'Scheduling').nil?
   CampaignType.create(name: 'Scheduling')
 end
 
+# Default campaign statuses
+if CampaignStatus.find_by(name: 'Pending').nil?
+  CampaignStatus.create(name: 'Pending')
+end
+
+if CampaignStatus.find_by(name: 'Running').nil?
+  CampaignStatus.create(name: 'Running')
+end
+
+if CampaignStatus.find_by(name: 'Finished').nil?
+  CampaignStatus.create(name: 'Finished')
+end
+
+if CampaignStatus.find_by(name: 'Stopped').nil?
+  CampaignStatus.create(name: 'Stopped')
+end
+
 # One user record for tests duplicate user email validation
 # if User.find_by_email('tester@example.com').nil?
 #  User.create(name: "Test User", email: "tester@example.com",

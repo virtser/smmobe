@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Campaign</h1>
+
 <p>
   <strong>Title:</strong>
   <%= @campaign.title %>
@@ -11,6 +13,11 @@
 </p>
 
 <p>
-  <strong>Campaign type:</strong>
+  <strong>Type:</strong>
   <%= @campaign.campaign_type.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @campaign.campaign_status.name %>
 </p>
