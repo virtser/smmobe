@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    flash[:error] = nil
   end
 
   def create
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
         sign_in user
         redirect_to user
       else
-        #flash[:error] = 'Invalid email/password combination' # Not quite right!
+        flash[:error] = 'Invalid email/password combination' # Not quite right!
         render :new
       end
     end

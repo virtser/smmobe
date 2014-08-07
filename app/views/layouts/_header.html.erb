@@ -8,6 +8,7 @@
           <% if signed_in? %>
               <li><%= link_to "Campaigns", campaigns_path %></li>
               <li><%= link_to "Stats", '#' %></li>
+              <li><%= link_to "Settings", '#' %></li>
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           <% else %>

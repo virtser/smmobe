@@ -1,33 +1,6 @@
-<%= form_for(@campaign) do |f| %>
-  <% if @campaign.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
-
-      <ul>
-      <% @campaign.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :template_id %><br>
-    <%= f.number_field :template_id %>
-  </div>
-  <div class="field">
-    <%= f.label :organization_id %><br>
-    <%= f.number_field :organization_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(@campaign, html: {class: 'form-inline' }) do |f|%>
+    <%= f.input :title %>
+    <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
+    <%= f.association :campaign_type, :include_blank => false %>
+    <%= f.button :submit %>
 <% end %>

@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Default message types
-if MessageType.find_by(name: 'Survey').nil?
-  MessageType.create(name: 'Survey')
+# Default campaign types
+if CampaignType.find_by(name: 'Survey').nil?
+  CampaignType.create(name: 'Survey')
 end
 
-if MessageType.find_by(name: 'Scheduling').nil?
-  MessageType.create(name: 'Scheduling')
+if CampaignType.find_by(name: 'Scheduling').nil?
+  CampaignType.create(name: 'Scheduling')
 end
 
 # One user record for tests duplicate user email validation

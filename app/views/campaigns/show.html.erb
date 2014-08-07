@@ -11,14 +11,6 @@
 </p>
 
 <p>
-  <strong>Template:</strong>
-  <%= @campaign.template_id %>
+  <strong>Campaign type:</strong>
+  <%= @campaign.campaign_type.name %>
 </p>
-
-<p>
-  <strong>Organization:</strong>
-  <%= @campaign.organization_id %>
-</p>
-
-<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
-<%= link_to 'Back', campaigns_path %>

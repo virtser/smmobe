@@ -1,10 +1,7 @@
-
-    <%= simple_form_for(@user, html: {class: 'form-inline' }) do |f|%>
-
-        <%= f.input :name %>
-        <%= f.input :email, placeholder: 'user@domain.com' %>
-        <%= f.input :phone, placeholder: '+1 (123) 456-6655'%>
-        <%= f.input :password %>
-        <%= f.button :submit %>
-
-    <% end %>
+<%= simple_form_for(@user, html: {class: 'form-inline' }) do |f|%>
+    <%= f.input :name %>
+    <%= f.input :email, placeholder: 'user@domain.com' %>
+    <%= f.input :phone, placeholder: '+1 (123) 456-6655'%>
+    <%= f.input :password %>
+    <%= f.button :submit %>
+<% end %>

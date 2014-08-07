@@ -57,6 +57,15 @@ h2 {
   color: $grayLight;
 }
 
+h3 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -126,4 +135,8 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+#error {
+  color:red;
 }
