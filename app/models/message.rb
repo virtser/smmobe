@@ -1,3 +1,5 @@
 class Message < ActiveRecord::Base
-  belongs_to :campaign
+  #has_many :campaign
+
+  validates :text, presence: true, length: 10..200
 end

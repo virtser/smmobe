@@ -1,29 +1,5 @@
-<%= form_for(@message) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
-
-      <ul>
-      <% @message.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_field :text %>
-  </div>
-  <div class="field">
-    <%= f.label :messagetype_id %><br>
-    <%= f.number_field :messagetype_id %>
-  </div>
-  <div class="field">
-    <%= f.label :campaign_id %><br>
-    <%= f.number_field :campaign_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(@message, html: {class: 'form-inline' }) do |f|%>
+    <%= f.input :text, label: "Message content", as: :text, :input_html => { :cols => 5, :rows => 5} %>
+    <%= f.input :campaign_id, :as => :hidden %>
+    <%= f.button :submit, value: "Next      →" %>
 <% end %>

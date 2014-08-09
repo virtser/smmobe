@@ -15,6 +15,11 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+
+    # In case that passed campaign_id param from campaigns controller in flash var
+    if !flash[:campaign_id].nil?
+      @message.campaign_id = flash[:campaign_id]
+    end
   end
 
   # GET /messages/1/edit
@@ -31,7 +36,12 @@ class MessagesController < ApplicationController
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
-        format.html { render :new }
+        format.html {
+          render :new
+          #redirect_to new_message_path(@message, campaign_id: params[:campaign_id])
+          #redirect_to() :controller => 'messages', :action => 'new', :campaign_id => @campaign.id
+          #redirect_to action: "new", text: @message.text, campaign_id: params[:message][:campaign_id], error: @message.errors[:text][0].to_s
+        }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +79,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:text, :messagetype_id, :campaign_id)
+      params.require(:message).permit(:text, :campaign_id)
     end
 end

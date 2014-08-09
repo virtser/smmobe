@@ -2,5 +2,5 @@
     <%= f.input :title %>
     <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
     <%= f.association :campaign_type, :include_blank => false %>
-    <%= f.button :submit %>
+    <%= f.button :submit, value: "Next      →" %>
 <% end %>
