@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :campaigns
+
   before_create { self.remember_token = User.digest(User.new_remember_token) }
   before_save { self.email = email.downcase } # lowercase email address before save
 

@@ -1,5 +1,12 @@
-<h1>New customer</h1>
+<h1>Add customers</h1>
+
+<%= render 'campaigns/steps', :locals => {:step1 => "passed",
+                                          :step2 => "passed",
+                                          :step3 => "selected"} %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', customers_path %>
+<% if !@campaign_customers.nil? %>
+    <h2>Customers list:</h2>
+    <%= render 'customers' %>
+<% end %>

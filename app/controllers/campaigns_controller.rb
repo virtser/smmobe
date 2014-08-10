@@ -4,7 +4,8 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.all
+    # @campaigns = Campaign.all.order!(created_at: :desc)
+    @campaigns = Campaign.where(user_id: current_user[:id]).order!(created_at: :desc)  # .order!(created_at: :desc)
   end
 
   # GET /campaigns/1
@@ -25,6 +26,7 @@ class CampaignsController < ApplicationController
   # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
+    @campaign.user_id = current_user[:id]
 
     respond_to do |format|
       if @campaign.save
@@ -68,6 +70,7 @@ class CampaignsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_campaign
       @campaign = Campaign.find(params[:id])
+      @campaign.user_id = current_user[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

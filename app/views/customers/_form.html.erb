@@ -1,13 +1,8 @@
-<%= simple_form_for(@customer) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :phone %>
-    <%= f.input :name %>
-    <%= f.input :campaign_id %>
-  </div>
-
-  <div class="form-actions">
+<%= simple_form_for(@customer, html: {class: 'form-inline' }) do |f|%>
+    <%= f.input_field :name, placeholder: 'Name' %>
+    <%= f.error :name, id: 'error' %>
+    <%= f.input_field :phone, placeholder: 'Phone: +1 (123) 456-6655'%>
+    <%= f.error :phone, id: 'error' %>
+    <%= f.input_field :campaign_id, :as => :hidden %>
     <%= f.button :submit %>
-  </div>
 <% end %>

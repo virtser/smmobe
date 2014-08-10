@@ -33,7 +33,10 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html {
+          flash[:campaign_id] = @message.campaign_id
+          redirect_to :controller => 'customers', :action => 'new'
+        }
         format.json { render :show, status: :created, location: @message }
       else
         format.html {

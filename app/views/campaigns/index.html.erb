@@ -15,7 +15,7 @@
   <tbody>
     <% @campaigns.each do |campaign| %>
       <tr>
-        <td><%= link_to campaign.title, campaign %></td>
+        <td><strong><%= link_to campaign.title, campaign %></strong></td>
         <td><%= campaign.description %></td>
         <td><%= campaign.campaign_type.name %></td>
         <td><%= campaign.campaign_status.name %></td>

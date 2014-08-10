@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20140810095119_add_user_id_to_campaigns.rb

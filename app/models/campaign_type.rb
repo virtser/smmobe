@@ -1,3 +1,3 @@
 class CampaignType < ActiveRecord::Base
-  has_many :campaigns
+  has_one :campaign
 end
