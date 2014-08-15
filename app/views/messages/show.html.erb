@@ -1,13 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @message.text %>
-</p>
+<% @messages = [ @message ] %>
 
-<p>
-  <strong>Campaign:</strong>
-  <%= @message.campaign_id %>
-</p>
-
-<%= link_to 'Edit', edit_message_path(@message) %>
+<%= render 'table' %>

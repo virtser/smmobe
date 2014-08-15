@@ -6,7 +6,11 @@
 
 <%= render 'form' %>
 
-<% if !@campaign_customers.nil? %>
+<% if !@campaign_customers.nil? && @campaign_customers.count > 0 %>
     <h2>Customers list:</h2>
     <%= render 'customers' %>
+
+    <input class="btn" name="commit" type="submit" value="Next"
+           onclick="location.href='/review/<%= flash[:campaign_id] %>'"/>
 <% end %>
+

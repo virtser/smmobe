@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @campaigns.each do |campaign| %>
+      <tr>
+        <td><strong><%= link_to campaign.title, campaign %></strong></td>
+        <td><%= campaign.description %></td>
+        <td><%= campaign.campaign_type.name %></td>
+        <td><%= campaign.campaign_status.name %></td>
+        <td><%= campaign.created_at.to_date %></td>
+        <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

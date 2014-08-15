@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Text</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.text %></td>
+        <td><%= link_to 'Edit', edit_message_path(message) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

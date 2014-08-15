@@ -1,0 +1,19 @@
+<h1>Campaign Review</h1>
+
+<%= render 'campaigns/steps', :locals => {:step1 => "passed",
+                                          :step2 => "passed",
+                                          :step3 => "selected"} %>
+
+<% if @campaigns.count > 0 %>
+    <h2>Campaign</h2>
+    <%= render 'campaigns/table' %>
+
+    <h2>Message</h2>
+    <%= render 'messages/table' %>
+
+    <h2>Customers</h2>
+    <%= render 'customers/customers' %>
+
+    <input class="btn" name="commit" type="submit" value="Send"
+           onclick="location.href='/send/<%= params[:id] %>'"/>
+<% end %>

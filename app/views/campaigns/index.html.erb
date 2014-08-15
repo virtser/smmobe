@@ -1,28 +1,3 @@
 <h1>All Campaigns</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Type</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @campaigns.each do |campaign| %>
-      <tr>
-        <td><strong><%= link_to campaign.title, campaign %></strong></td>
-        <td><%= campaign.description %></td>
-        <td><%= campaign.campaign_type.name %></td>
-        <td><%= campaign.campaign_status.name %></td>
-        <td><%= campaign.created_at.to_date %></td>
-        <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
-        <td><%= link_to 'Delete', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'table' %>
