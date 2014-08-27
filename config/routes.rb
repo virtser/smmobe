@@ -15,8 +15,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:show]
   match '/reviews/:id',    to: 'reviews#show',        via: 'get'
 
-  resources :send, only: [:show, :create]
-  match '/send/:id',    to: 'send#new',        via: 'post'
+  resources :send, only: [:show]
   match '/send/:id',    to: 'send#show',        via: 'get'
 
   resources :campaigns
