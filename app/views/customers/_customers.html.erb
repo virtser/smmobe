@@ -13,8 +13,10 @@
       <tr>
         <td><%= customer.name %></td>
         <td><%= customer.phone %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if !current_page?(:controller => 'customers', :action => 'new') %>
+            <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+            <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

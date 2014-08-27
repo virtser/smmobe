@@ -18,7 +18,11 @@
         <td><%= campaign.campaign_type.name %></td>
         <td><%= campaign.campaign_status.name %></td>
         <td><%= campaign.created_at.to_date %></td>
-        <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+        <% if current_page?(:controller => 'campaigns', :action => 'index') %>
+            <td><%= link_to 'Edit', review_path(campaign) %></td>
+        <% else %>
+            <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  match '/review/:id',    to: 'review#show',        via: 'get'
+  resources :reviews, only: [:show]
+  match '/reviews/:id',    to: 'reviews#show',        via: 'get'
+
   match '/send/:id',    to: 'send#new',        via: 'post'
 
   resources :campaigns

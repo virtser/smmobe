@@ -13,6 +13,7 @@
 
     <h2>Customers</h2>
     <%= render 'customers/customers' %>
+    <%= render 'customers/form' %>
 
     <input class="btn" name="commit" type="submit" value="Send"
            onclick="location.href='/send/<%= params[:id] %>'"/>

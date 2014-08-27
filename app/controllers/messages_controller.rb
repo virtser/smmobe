@@ -55,7 +55,10 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.html {
+          #redirect_to @message, notice: 'Message was successfully updated.'
+          redirect_to :controller => 'reviews', :action => 'show', :id => @message.campaign_id
+        }
         format.json { render :show, status: :ok, location: @message }
       else
         format.html { render :edit }
