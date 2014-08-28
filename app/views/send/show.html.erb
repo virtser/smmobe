@@ -1,2 +1,14 @@
-<h1>Sending...</h1>
+<h1>Sending</h1>
 
+<p>Message text:
+  <% @messages.each do |message| %>
+      <%= message.text %>
+  <% end %>
+
+</p>
+
+<p>Sending to number of customers: <%= @campaign_customers.count %><p>
+
+<h2>Progress</h2>
+
+<p>1.2.3.4.5.6.....</p>
