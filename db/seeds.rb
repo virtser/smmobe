@@ -7,6 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Default campaign types
+
+if CampaignType.find_by(name: 'Promotion').nil?
+  CampaignType.create(name: 'Promotion')
+end
+
+if CampaignType.find_by(name: 'Event').nil?
+  CampaignType.create(name: 'Event')
+end
+
 if CampaignType.find_by(name: 'Survey').nil?
   CampaignType.create(name: 'Survey')
 end
@@ -14,6 +23,7 @@ end
 if CampaignType.find_by(name: 'Scheduling').nil?
   CampaignType.create(name: 'Scheduling')
 end
+
 
 # Default campaign statuses
 if CampaignStatus.find_by(name: 'Pending').nil?

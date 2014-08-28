@@ -1,6 +1,6 @@
 <%= simple_form_for(@campaign, html: {class: 'form-inline' }) do |f|%>
     <%= f.input :title %>
     <%= f.input :description, as: :text, :input_html => { :cols => 5, :rows => 10 } %>
-    <%= f.association :campaign_type, :include_blank => false %>
+    <%= f.association :campaign_type, :include_blank => false  %>
     <%= f.button :submit, value: "Next      →" %>
 <% end %>

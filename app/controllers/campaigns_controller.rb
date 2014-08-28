@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.where(user_id: current_user[:id]).order!(created_at: :desc)
+    @campaigns = Campaign.where(user_id: current_user[:id]).order!('campaign_status_id', created_at: :desc)
   end
 
   # GET /campaigns/1
