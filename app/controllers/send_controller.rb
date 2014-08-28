@@ -21,7 +21,7 @@ class SendController < ApplicationController
       @messages = Message.where(campaign_id: @campaign_id)
       @campaign_customers = Customer.where(campaign_id: @campaign_id)
 
-      send_smm(@messages, @campaign_customers, 0)
+      send_smm(@messages, @campaign_customers, params[:test])
 
       # Update campaign status to "Finished"
       update_campaign_status(@campaign_id, "Finished")
@@ -53,7 +53,7 @@ class SendController < ApplicationController
     def dispatch_smm(to_phone_number, message_text, test)
 
       # put your own credentials here
-      if test
+      if test == 'true'
         from_phone_number = TEST_PHONE_NUMBER
         account_sid = TEST_ACCOUNT_SID
         auth_token = TEST_AUTH_TOKEN
