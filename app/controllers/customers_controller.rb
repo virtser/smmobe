@@ -59,8 +59,8 @@ class CustomersController < ApplicationController
       if @customer.update(customer_params)
         format.html  {
           flash[:campaign_id] = @customer.campaign_id
-          #redirect_to :controller => 'customers', :action => 'new'
-          redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
+          redirect_to :controller => 'customers', :action => 'new'
+          #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
         }
         format.json { render :show, status: :ok, location: @customer }
       else
@@ -77,8 +77,8 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html  {
         flash[:campaign_id] = @customer.campaign_id
-        #redirect_to :controller => 'customers', :action => 'new'
-        redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
+        redirect_to :controller => 'customers', :action => 'new'
+        #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
       }
       format.json { head :no_content }
     end

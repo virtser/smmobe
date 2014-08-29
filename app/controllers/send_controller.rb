@@ -21,7 +21,7 @@ class SendController < ApplicationController
       @messages = Message.where(campaign_id: @campaign_id)
       @campaign_customers = Customer.where(campaign_id: @campaign_id)
 
-      send_smm(@messages, @campaign_customers, params[:test])
+      @progress = send_smm(@messages, @campaign_customers, params[:test])
 
       # Update campaign status to "Finished"
       update_campaign_status(@campaign_id, "Finished")
@@ -34,35 +34,41 @@ class SendController < ApplicationController
 
     if campaign.campaign_status == CampaignStatus.find_by_name("Pending")
       campaign.campaign_status = CampaignStatus.find_by_name(campaign_status)
-    else if campaign.campaign_status == CampaignStatus.find_by_name("Running")
-           campaign.campaign_status = CampaignStatus.find_by_name(campaign_status)
-         end
+    elsif campaign.campaign_status == CampaignStatus.find_by_name("Running")
+      campaign.campaign_status = CampaignStatus.find_by_name(campaign_status)
+    end
 
     campaign.save
-    end
+  end
 
-    def send_smm(messages, campaign_customers, test)
-      @messages.each do |message|
-        @campaign_customers.each do |customer|
-          dispatch_smm(customer.phone, message.text, test)
-        end
+  def send_smm(messages, campaign_customers, test)
+    @progress = Array.new
+
+    @messages.each do |message|
+      @campaign_customers.each do |customer|
+        msg = dispatch_smm(customer.phone, message.text, test)
+        @progress.push(msg)
       end
     end
 
-    # Dispatch SMS using 3rd party provider.
-    def dispatch_smm(to_phone_number, message_text, test)
+    return @progress
+  end
 
-      # put your own credentials here
-      if test == 'true'
-        from_phone_number = TEST_PHONE_NUMBER
-        account_sid = TEST_ACCOUNT_SID
-        auth_token = TEST_AUTH_TOKEN
-      else
-        from_phone_number = PROD_PHONE_NUMBER
-        account_sid = PROD_ACCOUNT_SID
-        auth_token = PROD_AUTH_TOKEN
-      end
+  # Dispatch SMS using 3rd party provider.
+  def dispatch_smm(to_phone_number, message_text, test)
 
+    # put your own credentials here
+    if test == 'true'
+      from_phone_number = TEST_PHONE_NUMBER
+      account_sid = TEST_ACCOUNT_SID
+      auth_token = TEST_AUTH_TOKEN
+    else
+      from_phone_number = PROD_PHONE_NUMBER
+      account_sid = PROD_ACCOUNT_SID
+      auth_token = PROD_AUTH_TOKEN
+    end
+
+    begin
       # set up a client to talk to the Twilio REST API
       @client = Twilio::REST::Client.new account_sid, auth_token
 
@@ -71,7 +77,9 @@ class SendController < ApplicationController
                                           :to => to_phone_number,
                                           :body => message_text + ';)',
                                       })
-
+      return "Successfully sent to " + to_phone_number
+    rescue Exception => msg
+      return msg
     end
   end
 end

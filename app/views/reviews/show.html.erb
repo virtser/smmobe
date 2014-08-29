@@ -13,19 +13,22 @@
 
     <h2>Customers</h2>
     <%= render 'customers/customers' %>
-    <%= render 'customers/form' %>
 
 
-    <div style="float: left; height: 20px;">
-      <input type="checkbox" id="test" value="0" checked /> Uncheck if you want to send the SMS for real (Charges will be applied)
-    </div>
+    <% if @campaigns.first.campaign_status.name == 'Pending' %>
+        <div style="float: left; height: 20px;">
+          <input type="checkbox" id="test" value="0" checked /> Uncheck if you want to send the SMS for real (Charges will be applied)
+        </div>
 
-    <div style="float: right; height: 20px;">
-      <input class="btn btn-danger" name="commit" type="submit" value="Send"
-                    onclick="buildURL();"/>
-    </div>
+        <div style="float: right; height: 20px;">
+          <%= link_to 'Edit', edit_campaign_path(params[:id]), class: 'btn' %>
 
-    <div style="clear: left;"></div>
+          <input class="btn btn-danger" name="commit" type="submit" value="Send"
+                        onclick="buildURL();"/>
+        </div>
+
+        <div style="clear: left;"></div>
+    <% end %>
 <% end %>
 
 <script language="javascript">

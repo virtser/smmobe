@@ -1,8 +1,9 @@
 <h1>Add customers</h1>
 
 <%= render 'campaigns/steps', :locals => {:step1 => "passed",
-                                          :step2 => "passed",
-                                          :step3 => "selected"} %>
+          :step2 => "passed",
+          :step3 => "selected"} %>
+
 
 <%= render 'form' %>
 
@@ -10,7 +11,7 @@
     <h2>Customers list:</h2>
     <%= render 'customers' %>
 
-    <input class="btn" name="commit" type="submit" value="Next"
+    <input class="btn" name="commit" type="submit" value="Next      →"
            onclick="location.href='/reviews/<%= flash[:campaign_id] %>'"/>
 <% end %>
 

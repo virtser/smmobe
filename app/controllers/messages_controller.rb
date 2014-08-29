@@ -57,7 +57,11 @@ class MessagesController < ApplicationController
       if @message.update(message_params)
         format.html {
           #redirect_to @message, notice: 'Message was successfully updated.'
-          redirect_to :controller => 'reviews', :action => 'show', :id => @message.campaign_id
+          #flash[:campaign_id] = @customer.campaign_id
+          #@customer.campaign_id = flash[:campaign_id]
+          #customer = Message.find_by_campaign_id(@campaign.id)
+          flash[:campaign_id] = @message.campaign_id
+          redirect_to :controller => 'customers', :action => 'new'
         }
         format.json { render :show, status: :ok, location: @message }
       else

@@ -9,8 +9,7 @@
   <tbody>
   <% @messages.each do |message| %>
       <tr>
-        <td><%= message.text %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
+        <td colspan="2"><%= message.text %></td>
       </tr>
   <% end %>
   </tbody>
