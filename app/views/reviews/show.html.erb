@@ -17,7 +17,7 @@
 
     <% if @campaigns.first.campaign_status.name == 'Pending' %>
         <div style="float: left; height: 20px;">
-          <input type="checkbox" id="test" value="0" checked /> Uncheck if you want to send the SMS for real (Charges will be applied)
+          <input type="checkbox" id="test" value="0" checked /> Check to simulate SMS sending to find errors, uncheck to send for real (charges will be applied)
         </div>
 
         <div style="float: right; height: 20px;">
@@ -32,12 +32,11 @@
 <% end %>
 
 <script language="javascript">
-  function buildURL() {
-      if (confirm('Are you sure you want to send this campaign to your customers?')) {
-          test = document.getElementById('test').checked
-          location.href='/send/<%= params[:id] %>?test=' + test
-      } else {
-          // Do nothing!
-      }
-  }
+    function buildURL() {
+        test = document.getElementById('test').checked
+
+        if (test || confirm('Are you sure you want to send this campaign to your customers?')) {
+            location.href = '/send/<%= params[:id] %>?test=' + test
+        }
+    }
 </script>

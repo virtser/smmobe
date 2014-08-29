@@ -75,7 +75,7 @@ class SendController < ApplicationController
       @client.account.messages.create({
                                           :from => from_phone_number,
                                           :to => to_phone_number,
-                                          :body => message_text + ';)',
+                                          :body => message_text,
                                       })
       return "Successfully sent to " + to_phone_number
     rescue Exception => msg
