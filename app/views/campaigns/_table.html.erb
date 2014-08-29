@@ -13,7 +13,7 @@
   <tbody>
   <% @campaigns.each do |campaign| %>
       <tr>
-        <td><strong><%= link_to campaign.title, review_path(campaign) %></strong></td>
+        <td><strong><%= campaign.title %></strong></td>
         <td><%= campaign.description %></td>
         <td><%= campaign.campaign_type.name %></td>
         <td><%= campaign.campaign_status.name %></td>
@@ -21,8 +21,9 @@
         <% if campaign.campaign_status.name == "Pending" &&
                 current_page?(:controller => 'campaigns', :action => 'index')%>
             <td><%= link_to 'Edit', edit_campaign_path(campaign), class: 'btn' %></td>
+            <td><%= link_to 'Send', review_path(campaign), class: 'btn' %></td>
         <% else %>
-            <td></td>
+            <td colspan="2"></td>
         <% end %>
       </tr>
   <% end %>

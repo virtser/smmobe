@@ -1,29 +1,22 @@
 <h1>Listing customers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Phone</th>
-      <th>Name</th>
-      <th>Campaign</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'campaigns/steps', :locals => {:step1 => "passed",
+                                          :step2 => "passed",
+                                          :step3 => "selected"} %>
 
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.phone %></td>
-        <td><%= customer.name %></td>
-        <td><%= customer.campaign_id %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<div>
+    <%= link_to 'Manually Add Customers', new_customer_path, class: 'btn' %>
+    <%= link_to 'Import Customers from CSV', '#', class: 'btn' %>
+    <%= link_to 'Import from CRM', '#', class: 'btn' %>
+</div>
 
-<%= link_to 'New Customer', new_customer_path %>
+<br/>
+
+<% if !@customers.nil? && @customers.count > 0 %>
+    <h2>Customers list:</h2>
+    <%= render 'customers' %>
+
+    <input class="btn" name="commit" type="submit" value="Next      →"
+           onclick="location.href='/reviews/<%= flash[:campaign_id] %>'"/>
+<% end %>

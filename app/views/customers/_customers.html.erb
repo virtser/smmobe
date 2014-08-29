@@ -9,11 +9,11 @@
   </thead>
 
   <tbody>
-  <% @campaign_customers.each do |customer| %>
+  <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
         <td><%= customer.phone %></td>
-        <% if current_page?(:controller => 'customers', :action => 'new') %>
+        <% if current_page?(:controller => 'customers', :action => 'index') %>
             <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
             <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>

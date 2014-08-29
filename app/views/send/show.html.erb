@@ -1,17 +1,17 @@
 <h1>Sending</h1>
 
-<p>Message text:
+<p><strong>SMS text:</strong>
   <% @messages.each do |message| %>
       <%= message.text %>
   <% end %>
 
 </p>
 
-<p>Sending to number of customers: <%= @campaign_customers.count %><p>
+<p><strong>Sending to number of customers:</strong> <%= @campaign_customers.count %><p>
 
-<h2>Progress</h2>
+<h2>Progress status</h2>
 
-<div>
+<div style="font-style: italic">
   <% @progress.each do |error_msg| %>
     <p><%= error_msg %></p>
   <% end %>

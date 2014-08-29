@@ -4,7 +4,14 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    flash[:campaign_id] = flash[:campaign_id]
+
+    if !flash[:campaign_id].nil?
+      @customers = Customer.where(campaign_id: flash[:campaign_id]).order!(name: :asc)
+    else
+      @customers = Customer.where(campaign_id: 0)
+    end
+
   end
 
   # GET /customers/1
@@ -42,7 +49,7 @@ class CustomersController < ApplicationController
       if @customer.save
         format.html  {
           flash[:campaign_id] = @customer.campaign_id
-          redirect_to :controller => 'customers', :action => 'new'
+          redirect_to :controller => 'customers', :action => 'index'
         }
         format.json { render :show, status: :created, location: @customer }
       else
@@ -59,7 +66,7 @@ class CustomersController < ApplicationController
       if @customer.update(customer_params)
         format.html  {
           flash[:campaign_id] = @customer.campaign_id
-          redirect_to :controller => 'customers', :action => 'new'
+          redirect_to :controller => 'customers', :action => 'index'
           #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
         }
         format.json { render :show, status: :ok, location: @customer }
@@ -77,7 +84,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html  {
         flash[:campaign_id] = @customer.campaign_id
-        redirect_to :controller => 'customers', :action => 'new'
+        redirect_to :controller => 'customers', :action => 'index'
         #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
       }
       format.json { head :no_content }

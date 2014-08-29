@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
       if @message.save
         format.html {
           flash[:campaign_id] = @message.campaign_id
-          redirect_to :controller => 'customers', :action => 'new'
+          redirect_to :controller => 'customers', :action => 'index'
         }
         format.json { render :show, status: :created, location: @message }
       else
@@ -61,7 +61,7 @@ class MessagesController < ApplicationController
           #@customer.campaign_id = flash[:campaign_id]
           #customer = Message.find_by_campaign_id(@campaign.id)
           flash[:campaign_id] = @message.campaign_id
-          redirect_to :controller => 'customers', :action => 'new'
+          redirect_to :controller => 'customers', :action => 'index'
         }
         format.json { render :show, status: :ok, location: @message }
       else

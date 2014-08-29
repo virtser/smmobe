@@ -77,7 +77,7 @@ class SendController < ApplicationController
                                           :to => to_phone_number,
                                           :body => message_text,
                                       })
-      return "Successfully sent to " + to_phone_number
+      return "Successfully sent message To " + to_phone_number + "."
     rescue Exception => msg
       return msg
     end

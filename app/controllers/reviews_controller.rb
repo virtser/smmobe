@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
     if @campaigns.count > 0
       @messages = Message.where(campaign_id: params[:id])
-      @campaign_customers = Customer.where(campaign_id: params[:id])
+      @customers = Customer.where(campaign_id: params[:id]).order!(name: :asc)
     end
 
     @customer = Customer.new
