@@ -3,3 +3,14 @@
     <%= f.input :campaign_id, :as => :hidden %>
     <%= f.button :submit, value: "Next      →" %>
 <% end %>
+
+<div class="dynamic_params">
+  <p>Use the following placeholders in message body to replace them with dynamic customer params:</p>
+  <ul style="list-style-type: none">
+    <li><b>#name</b> - Customer Name.</li>
+    <li><b>#phone</b> - Customer Phone number.</li>
+    <li><b>#custom1</b> - Custom column number 1.</li>
+    <li><b>#custom2</b> - Custom column number 2.</li>
+    <li><b>#custom3</b> - Custom column number 3.</li>
+  </ul>
+</div>

@@ -20,10 +20,13 @@
         <td><%= campaign.created_at.to_date %></td>
         <% if campaign.campaign_status.name == "Pending" &&
                 current_page?(:controller => 'campaigns', :action => 'index')%>
-            <td><%= link_to 'Edit', edit_campaign_path(campaign), class: 'btn' %></td>
-            <td><%= link_to 'Send', review_path(campaign), class: 'btn' %></td>
+            <td style=" text-align: right;">
+              <%= link_to 'Send', review_path(campaign), class: 'btn' %>
+              <%= link_to 'Edit', edit_campaign_path(campaign), class: 'btn' %>
+              <%= link_to 'Delete', campaign, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
+            </td>
         <% else %>
-            <td colspan="2"></td>
+            <td></td>
         <% end %>
       </tr>
   <% end %>

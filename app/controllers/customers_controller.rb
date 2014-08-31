@@ -11,7 +11,6 @@ class CustomersController < ApplicationController
     else
       @customers = Customer.where(campaign_id: 0)
     end
-
   end
 
   # GET /customers/1
@@ -26,6 +25,7 @@ class CustomersController < ApplicationController
     # In case that passed campaign_id param from messages controller in flash var
     if !flash[:campaign_id].nil?
       @customer.campaign_id = flash[:campaign_id]
+      flash[:campaign_id] = flash[:campaign_id]
     end
 
     # find all customers associated with this campaign id

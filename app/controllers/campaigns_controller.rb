@@ -63,9 +63,21 @@ class CampaignsController < ApplicationController
   # DELETE /campaigns/1
   # DELETE /campaigns/1.json
   def destroy
+    @messages = Message.where(campaign_id: @campaign.id)
+    @messages.each do |m|
+      m.destroy
+    end
+
+    @customers = Customer.where(campaign_id: @campaign.id)
+    @customers.each do |c|
+      c.destroy
+    end
+
     @campaign.destroy
     respond_to do |format|
-      format.html { redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.' }
+      format.html {
+        redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.'
+      }
       format.json { head :no_content }
     end
   end
