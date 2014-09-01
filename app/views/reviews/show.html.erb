@@ -21,6 +21,7 @@
         </div>
 
         <div style="float: right; height: 20px;">
+          <%= link_to 'Edit', edit_campaign_path(params[:id]), class: 'btn' %>
           <input class="btn btn-danger" name="commit" type="submit" value="Send"
                         onclick="buildURL();"/>
         </div>

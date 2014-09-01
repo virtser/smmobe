@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
     flash[:campaign_id] = flash[:campaign_id]
 
     if !flash[:campaign_id].nil?
-      @customers = Customer.where(campaign_id: flash[:campaign_id]).order!(name: :asc)
+      @customers = Customer.where(campaign_id: flash[:campaign_id]).order!(:first_name, :last_name)
     else
       @customers = Customer.where(campaign_id: 0)
     end
@@ -31,7 +31,7 @@ class CustomersController < ApplicationController
     # find all customers associated with this campaign id
     if !@customer.campaign_id.nil?
       @campaign = Campaign.find(@customer.campaign_id)
-      @campaign_customers =  @campaign.customers.order(:name)
+      @campaign_customers =  @campaign.customers.order(:first_name, :last_name)
     end
 
   end
@@ -99,6 +99,6 @@ class CustomersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def customer_params
-    params.require(:customer).permit(:phone, :name, :campaign_id)
+    params.require(:customer).permit(:phone, :first_name, :last_name, :campaign_id, :custom1, :custom2, :custom3)
   end
 end
