@@ -1,9 +1,9 @@
 <%= simple_form_for(@customer, html: {class: 'form-inline' }) do |f|%>
     <%= f.input_field :phone, placeholder: 'Phone: +1 (123) 456-6655'%>
-    <%= f.error :phone, id: 'error' %><br/>
+    <%= f.error :phone, id: 'error' %>
     <%= f.input_field :first_name, placeholder: 'First Name' %>
     <%= f.error :first_name, id: 'error' %>
-    <%= f.input_field :last_name, placeholder: 'Last Name' %>
+    <%= f.input_field :last_name, placeholder: 'Last Name' %><br/>
     <%= f.input_field :custom1, placeholder: 'Optional custom field 1'%>
     <%= f.input_field :custom2, placeholder: 'Optional custom field 2'%>
     <%= f.input_field :custom3, placeholder: 'Optional custom field 3'%>
