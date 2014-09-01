@@ -1,4 +1,5 @@
 class SendController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   # Twilio credentials
   TEST_PHONE_NUMBER = '+15005550006'
@@ -9,26 +10,27 @@ class SendController < ApplicationController
   PROD_ACCOUNT_SID = 'ACb6cb809937dc461855486ad0790988ed'
   PROD_AUTH_TOKEN = 'ec2179c879978ff07e15e7a0cce5f8fc'
 
-  def show
-    @campaign_id = params[:id]
+  # POST /send
+  def index
+    campaign_id = params[:campaign_id]
     test = params[:test].to_s.to_bool
 
-    if !@campaign_id.nil?
+    if !campaign_id.nil?
 
       # Update campaign status to "Running"
       unless test
-        update_campaign_status(@campaign_id, "Running")
+        update_campaign_status(campaign_id, "Running")
       end
 
       # TODO: Send all the SMMs to queue, a worker will pull from queue and process it.
-      @messages = Message.where(campaign_id: @campaign_id)
-      @campaign_customers = Customer.where(campaign_id: @campaign_id)
+      @messages = Message.where(campaign_id: campaign_id)
+      @campaign_customers = Customer.where(campaign_id: campaign_id)
 
       @progress = send_smm(@messages, @campaign_customers, test)
 
       # Update campaign status to "Finished"
       unless test
-        update_campaign_status(@campaign_id, "Finished")
+        update_campaign_status(campaign_id, "Finished")
       end
 
     end
@@ -47,17 +49,17 @@ class SendController < ApplicationController
   end
 
   def send_smm(messages, campaign_customers, test)
-    @progress = Array.new
+    progress = Array.new
 
-    @messages.each do |message|
-      @campaign_customers.each do |customer|
+    messages.each do |message|
+      campaign_customers.each do |customer|
         message_text = replace_params(message, customer)
         status_msg = dispatch_smm(customer.phone, message_text, test)
-        @progress.push(status_msg)
+        progress.push(status_msg)
       end
     end
 
-    return @progress
+    return progress
   end
 
   def replace_params(message, customer)

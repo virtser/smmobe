@@ -14,28 +14,19 @@
     <h2>Customers</h2>
     <%= render 'customers/customers' %>
 
-
     <% if @campaigns.first.campaign_status.name == 'Pending' %>
-        <div style="float: left; height: 20px;">
-          <input type="checkbox" id="test" value="0" checked /> Check to simulate SMS sending to find errors, uncheck to send for real (charges will be applied)
-        </div>
+        <form action="/send"  id="send" method="post">
+          <div style="float: left; height: 20px;">
+            <input type="checkbox" name="test" id="test" value="1" checked onclick="$(this).val(this.checked ? 1 : 0)"/> Check to simulate SMS sending to find errors, uncheck to send for real (charges will be applied)
+          </div>
 
-        <div style="float: right; height: 20px;">
-          <%= link_to 'Edit', edit_campaign_path(params[:id]), class: 'btn' %>
-          <input class="btn btn-danger" name="commit" type="submit" value="Send"
-                        onclick="buildURL();"/>
-        </div>
+          <div style="float: right; height: 20px;" >
+            <%= link_to 'Edit', edit_campaign_path(params[:id]), class: 'btn', style: 'display: inline-block' %>
+            <input type="hidden" name="campaign_id" value="<%= params[:id] %>" />
+            <input class="btn btn-danger" name="commit" type="submit" value="Send">
+          </div>
 
-        <div style="clear: left;"></div>
+          <div style="clear: left;"></div>
+        </form>
     <% end %>
 <% end %>
-
-<script language="javascript">
-    function buildURL() {
-        test = document.getElementById('test').checked
-
-        if (test || confirm('Are you sure you want to send this campaign to your customers?')) {
-            location.href = '/send/<%= params[:id] %>?test=' + test
-        }
-    }
-</script>

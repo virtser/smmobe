@@ -15,14 +15,16 @@ Rails.application.routes.draw do
   resources :reviews, only: [:show]
   match '/reviews/:id',    to: 'reviews#show',        via: 'get'
 
-  resources :send, only: [:show]
-  match '/send/:id',    to: 'send#show',        via: 'get'
+  resources :send, only: [:index]
+  match '/send',    to: 'send#index',        via: 'post'
 
   resources :campaigns
 
   resources :messages
 
   resources :customers
+
+  #match '/import',    to: 'customers#import',        via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
