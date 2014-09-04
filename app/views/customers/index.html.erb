@@ -7,9 +7,11 @@
 
 <div>
     <%= link_to 'Manually Add Customers', new_customer_path, class: 'btn' %>
-    <%= link_to 'Import Customers from CSV', '#', class: 'btn' %>
+    <%= link_to 'Import Customers from CSV', import_path, class: 'btn' %>
     <%= link_to 'Import from CRM', '#', class: 'btn' %>
 </div>
+
+<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>
 
 <br/>
 

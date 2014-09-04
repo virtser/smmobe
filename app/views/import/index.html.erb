@@ -1,0 +1,7 @@
+<h1>Import Customers</h1>
+
+<%= form_tag import_path, multipart: true do %>
+    <%= hidden_field_tag('campaign_id', flash[:campaign_id]) %>
+    <%= file_field_tag :file, class: 'btn btn-default btn-file' %>
+    <%= submit_tag "Import", class: 'btn' %>
+<% end %>

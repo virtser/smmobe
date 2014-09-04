@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   resources :reviews, only: [:show]
-  match '/reviews/:id',    to: 'reviews#show',        via: 'get'
+  match '/reviews/:id',    to: 'reviews#show',  via: 'get'
 
   resources :send, only: [:index]
-  match '/send',    to: 'send#index',        via: 'post'
+  match '/send',    to: 'send#index',           via: 'post'
 
   resources :campaigns
 
@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
   resources :customers
 
-  #match '/import',    to: 'customers#import',        via: 'post'
+  resources :import, only: [:index, :create]
+  match '/import/:id',    to: 'import#index',        via: 'get'
+  match '/import',    to: 'import#create',       via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
