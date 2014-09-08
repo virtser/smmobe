@@ -4,7 +4,6 @@
                                           :step2 => "passed",
                                           :step3 => "selected"} %>
 
-
 <div>
     <%= link_to 'Manually Add Customers', new_customer_path, class: 'btn' %>
     <%= link_to 'Import Customers from CSV', import_path, class: 'btn' %>
@@ -16,7 +15,7 @@
 <br/>
 
 <% if !@customers.nil? && @customers.count > 0 %>
-    <h2>Customers list:</h2>
+    <h2>Customers list</h2>
     <%= render 'customers' %>
 
     <input class="btn" name="commit" type="submit" value="Next      →"

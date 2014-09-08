@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SMMobe</title>
+
+	<style type="text/css" media="screen">
+		body {
+			background-image: url('app/assets/images/background.png');
+			background-position: top;
+			background-repeat: repeat-x;
+			background-color: #edeff2;			
+			margin:0;
+			font-family: "Lucida Grande";
+			font-size: 12px;
+			color: #5c5c5c;
+			text-align: center;
+		}
+		.container {
+			margin: 0 auto;
+			width: 1000px;
+			text-align: left;
+		}
+
+		/* topmenu */
+		header .topmenu {
+			padding: 6px 5px;			
+		}
+		header .topmenu ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			text-align: right;
+		}		
+		header .topmenu ul li { display: inline; }
+		header .topmenu ul li a {
+			padding: 0 5px;
+			color: #fff;
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		header .topmenu ul li a:hover {
+			text-decoration: underline;
+		}
+
+		/* submenu */
+		header .submenu {
+			height: 87px;
+			padding: 8px 5px 0px 8px;
+		}
+		header .submenu .logo {
+			float:left;
+		}
+		header .submenu .buttons {
+			float:right;
+			padding: 26px 0 0 0;
+		}
+		header .submenu .buttons ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;			
+		}
+		header .submenu .buttons ul li {
+			display: inline;
+		}
+		header .submenu .buttons ul li a {
+			padding: 0px 25px;
+			color: #626262;
+			text-decoration: none;
+			font-size: 19px;
+		}
+		header .submenu .buttons ul li a:hover {
+			color: #00a5a7;
+		}
+
+		/* section */		
+		section {
+			background-color: #edeff2;
+			height:600px;	
+			padding:5px;		
+		}
+		section .main {
+			width:70%;
+			height:600px;
+			float: left;
+		}
+		section .side {
+			height:600px;
+			float: right;
+		}
+
+		/* footer */
+		footer {
+			height: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<header>
+	<nav class="topmenu">
+		<ul>
+			<li><a href="#">Register</a></li>
+			<li><a href="#">Login</a></li>
+			<li><a href="#">Support</a></li>
+		</ul>
+	</nav>
+		<div class="submenu">
+			<div class="logo">
+				<img src="app/assets/images/logo.png" alt="SMMobe - Smart Mobile Messages" />
+			</div>
+			<nav class="buttons">
+				<ul>
+					<li><a href="#">Create Campaign</a></li>
+					<li><a href="#">My SMM Campaigns</a></li>
+				</ul>				
+			</nav>
+		</div>
+	</header>	
+
+	<section>
+		<div class="main">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo mollitia possimus, exercitationem excepturi. Aliquam dolore consequatur veritatis delectus animi repellat voluptas, voluptatem eligendi alias voluptates amet expedita placeat fuga ab?
+		</div>
+
+		<div class="aside">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio magnam eligendi eum a veritatis accusamus, aspernatur dolore, dolorum porro quia nobis cum doloribus. Enim id quasi commodi repudiandae libero.
+		</div>
+	</section>
+
+	<footer>
+		<small>&copy; SMMobe 2014</small>
+	</footer>
+</div>
+</body>
+</html>

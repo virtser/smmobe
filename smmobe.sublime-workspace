@@ -1,0 +1,306 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"st",
+				"style	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/Chrome.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"pro",
+				"Project: Save As"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib2,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
+			"aaa",
+			"import urllib2,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/david/RubymineProjects/SMMobe"
+	],
+	"file_history":
+	[
+		"/Users/david/SMMobe_Home/public/index.html",
+		"/Users/david/SMMobe_Home/Gemfile",
+		"/Users/david/SMMobe_Home/config.ru",
+		"/Users/david/Downloads/SMMobe_logo_final_small.jpg",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Chrome.sublime-build",
+		"/Users/david/rails_projects/sample_app/spec/support/utilities.rb",
+		"/Users/david/rails_projects/sample_app/config/routes.rb",
+		"/Users/david/rails_projects/sample_app/app/views/static_pages/home.html.erb",
+		"/Users/david/rails_projects/sample_app/app/views/users/new.html.erb",
+		"/Users/david/rails_projects/sample_app/spec/requests/static_pages_spec.rb",
+		"/Users/david/rails_projects/sample_app/spec/requests/user_pages_spec.rb",
+		"/Users/david/octopress/source/_posts/2014-07-31-popular-programming-languages-in-israel.markdown",
+		"/Users/david/rails_projects/sample_app/app/assets/stylesheets/custom.css.scss",
+		"/Users/david/rails_projects/sample_app/config/application.rb",
+		"/Users/david/rails_projects/sample_app/Gemfile",
+		"/Users/david/rails_projects/sample_app/app/views/layouts/application.html.erb",
+		"/Users/david/rails_projects/sample_app/app/views/layouts/_header.html.erb",
+		"/Users/david/rails_projects/sample_app/app/views/layouts/_footer.html.erb",
+		"/Users/david/rails_projects/sample_app/app/views/static_pages/contact.html.erb",
+		"/Users/david/rails_projects/sample_app/app/views/layouts/_shim.html.erb",
+		"/Users/david/rails_projects/sample_app/app/views/layouts/shim.html.erb",
+		"/Users/david/rails_projects/sample_app/app/helpers/application_helper.rb",
+		"/Users/david/rails_projects/sample_app/example_user.rb",
+		"/Users/david/rails_projects/sample_app/app/controllers/static_pages_controller.rb",
+		"/Users/david/rails_projects/sample_app/Guardfile",
+		"/Users/david/rails_projects/sample_app/app/views/static_pages/help.html.erb",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/david/rails_projects/demo_app/log/.keep",
+		"/Users/david/rails_projects/demo_app/config/environment.rb",
+		"/Users/david/rails_projects/demo_app/config/initializers/inflections.rb",
+		"/Users/david/rails_projects/demo_app/config/initializers/secret_token.rb",
+		"/Users/david/rails_projects/demo_app/.vagrant/machines/default/virtualbox/action_set_name",
+		"/Users/david/rails_projects/demo_app/config/initializers/filter_parameter_logging.rb",
+		"/Users/david/rails_projects/sample_app/app/views/layouts/foobar",
+		"/Users/david/rails_projects/sample_app/app/views/static_pages/about.html.erb",
+		"/Users/david/rails_projects/sample_app/spec/spec_helper.rb",
+		"/Users/david/rails_projects/sample_app/app/helpers/static_pages_helper.rb",
+		"/Users/david/rails_projects/sample_app/config/initializers/secret_token.rb",
+		"/Users/david/rails_projects/demo_app/app/models/micropost.rb",
+		"/Users/david/rails_projects/demo_app/app/models/user.rb",
+		"/Users/david/rails_projects/demo_app/app/controllers/users_controller.rb",
+		"/Users/david/rails_projects/demo_app/config/routes.rb",
+		"/Users/david/rails_projects/demo_app/app/views/microposts/index.html.erb",
+		"/Users/david/rails_projects/demo_app/app/views/users/index.html.erb",
+		"/Users/david/rails_projects/demo_app/Gemfile",
+		"/Users/david/rails_projects/Vagrantfile",
+		"/Users/david/rails_projects/rails_projects/first_app/Gemfile",
+		"/Users/david/rails_projects/rails_projects/first_app/.gitignore",
+		"/Users/david/vagrantansible/Vagrantfile",
+		"/Users/david/test/test/readme.txt",
+		"/Users/david/vagrantansible/Ansible/couchdb.sh",
+		"/Users/david/vagrantansible/Ansible/back.yml"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"soon",
+			"//",
+			"'\n",
+			"about_path",
+			"signup_path",
+			"999",
+			">\n",
+			"\n  ",
+			"} ",
+			"Ruby on Rails Tutorial Sample App",
+			"virtualbox"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 25.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "smmobe.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,12 +1,12 @@
-<% provide(:title, "Sign in") %>
+<% provide(:title, "Login") %>
 
-<h1>Sign in</h1>
+<h1>Login</h1>
 
 <%= simple_form_for(:session, url: sessions_path, html: {class: 'form-inline' }) do |f|%>
 
     <%= f.input :email, placeholder: 'user@domain.com' %>
     <%= f.input :password %>
-    <%= f.button :submit, value: 'Sign in' %>
+    <%= f.button :submit, value: 'Login' %>
 
 <% end %>
 

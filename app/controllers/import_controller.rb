@@ -31,7 +31,7 @@ class ImportController < ApplicationController
       CSV.foreach(file.path, headers: true) do |row|
         single_customer_data = row.to_hash
         single_customer_data[:campaign_id] = campaign_id
-        customers = Customer.create!(single_customer_data)
+        Customer.create!(single_customer_data)
       end
     rescue Exception => error_msg
       return error_msg
