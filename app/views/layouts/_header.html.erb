@@ -1,27 +1,35 @@
 <header>
-  <nav class="topmenu">
-    <ul>
-      <% if signed_in? %>
-        <!-- <li><%= link_to "Profile", current_user %></li> -->
-        <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-      <% else %>
-        <li><%= link_to "Sign-up", signup_path %></li>
-        <li><%= link_to "Login", signin_path %></li>
-        <li><%= link_to "Help",    help_path %></li>      
-      <% end %> 
-    </ul>
-  </nav>
-    <div class="submenu">
-      <div class="logo">
-      <%= link_to image_tag("logo.png", :border => 0), root_path %>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="nav-collapse collapse">
+          <ul class="nav navbar-nav  pull-right">
+          <% if signed_in? %>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+          <% else %>
+            <li><%= link_to "Sign-up", signup_path %></li>
+            <li><%= link_to "Login", signin_path %></li>
+            <li><%= link_to "Help",    help_path %></li>      
+          <% end %> 
+          </ul>
+         </div>
       </div>
-      <% if signed_in? %>
-        <nav class="buttons">
-          <ul>
-              <li><%= link_to "Create Campaign", new_campaign_path %></li>
-              <li><%= link_to "My Campaigns", campaigns_path %></li>
-          </ul>       
-        </nav>
-      <% end %>
     </div>
+  </div>
+
+ <div class="container">
+  <div class="submenu">
+    <div class="logo">
+    <%= link_to image_tag("logo.png", :border => 0), root_path %>
+    </div>
+    <% if signed_in? %>
+      <nav class="buttons">
+        <ul>
+            <li><%= link_to "Create Message", new_campaign_path %></li>
+            <li><%= link_to "My Messages", campaigns_path %></li>
+        </ul>       
+      </nav>
+    <% end %>
+  </div>  
+ </div>
 </header>

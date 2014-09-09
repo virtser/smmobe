@@ -1,4 +1,4 @@
-<h1>Listing customers</h1>
+<h1>Choose customers</h1>
 
 <%= render 'campaigns/steps', :locals => {:step1 => "passed",
                                           :step2 => "passed",
@@ -15,7 +15,7 @@
 <br/>
 
 <% if !@customers.nil? && @customers.count > 0 %>
-    <h2>Customers list</h2>
+    <h2>Customers</h2>
     <%= render 'customers' %>
 
     <input class="btn" name="commit" type="submit" value="Next      →"

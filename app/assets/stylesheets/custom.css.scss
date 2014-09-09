@@ -16,15 +16,9 @@ body {
   background-position: top;
   background-repeat: repeat-x;
   background-color: #edeff2;      
-  font-family: "Lucida Grande";
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 12px;
   color: #5c5c5c;
-  text-align: center;  
-}
-.container {
-  margin: auto;
-  width: 1000px;
-  text-align: left;
 }
 
 .center {
@@ -49,30 +43,12 @@ p {
 /* header */
 /** topmenu **/
 header {
-  .topmenu {
-    padding: 5px 5px;     
-    ul {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      text-align: right;
-      li { 
-        display: inline; 
-        a {
-          padding: 0 5px;
-          color: #fff;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: normal;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
  .submenu {
-      height: 87px;
+      position: relative;
+      background-color: #fff;
+      border-bottom: 2px solid #cecece;
+      top:40px;
+      min-height: 80px;
       padding: 6px 5px 0px 8px;
       .logo { float:left; }
       .buttons {
@@ -100,6 +76,9 @@ header {
 
 /* section */   
 section {
+  clear:both;
+  position: relative;
+  top:40px;
   background-color: #edeff2;
   min-height: 600px; 
   padding:5px;    
@@ -116,6 +95,9 @@ section {
 
 /* footer */
 footer {
+  clear:both;
+  position: relative;
+  top:40px;
   height: 20px;
   text-align: center;
 }
