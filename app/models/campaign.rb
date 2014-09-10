@@ -6,5 +6,5 @@ class Campaign < ActiveRecord::Base
   has_many :customers
 
   validates :title, presence: true, length: 3..80
-  validates :description, presence: true, length: 5..500
+  #validates :description, presence: true, length: 5..500
 end

@@ -82,15 +82,6 @@ section {
   background-color: #edeff2;
   min-height: 600px; 
   padding:5px;    
-  .main {
-    width:70%;
-    min-height: 600px;
-    float: left;
-  }
-  .side {
-    min-height: 600px;
-    float: right;
-  }
 }
 
 /* footer */
@@ -102,7 +93,105 @@ footer {
   text-align: center;
 }
 
+
+.campaign
+{
+  padding: 10px 0;
+}
+
+.campaign .steps h1 {
+  font-size: 25px;
+}
+
+.campaign .steps .numbers p {
+  font-size: 15px;
+}
+
+.campaign .types {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #cecece;
+}
+
 /* miscellaneous */
+
+.campaign .steps .button {
+  padding-top: 10px;
+}
+
+.campaign #campaign_title {
+  width: 100%;
+}
+
+.campaign .types {
+  padding: 24px;
+}
+.campaign .types h4 {
+  margin: 0px;
+}
+.campaign .types .row .enabled {
+  margin-top: 20px;
+  width: 125px;
+  height: 125px;
+  border: 1px solid #cecece;
+  background-color: #edeff2;
+}
+.campaign .types .row .enabled:hover {
+  width: 123px;
+  height: 123px;
+  border: 2px solid #0b5dac;
+  cursor: pointer;
+}
+.campaign .types .row .enabled div {
+  padding-top: 20px;
+}
+.campaign .types .row .selected {
+  width: 123px;
+  height: 123px;
+  border: 2px solid #0b5dac;
+  background-color: #e9f0fb;
+}
+.campaign .types .row .disabled {
+  margin-top: 20px;
+  width: 125px;
+  height: 125px;
+  border: 1px solid #cecece;
+  background-color: #edeff2;
+}
+.campaign .types .row .disabled div {
+  padding-top: 20px;
+}
+
+.btn-green {
+  color: white;
+  font-size: 18px;
+  padding: 8px 20px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5bb65b;
+  background-image: -moz-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#17b4b6), to(#17b4b6));
+  background-image: -webkit-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: -o-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: linear-gradient(to bottom, #17b4b6, #17b4b6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF17b4b6', endColorstr='#FF17b4b6', GradientType=0);
+  border-color: #17b4b6 #17b4b6 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #17b4b6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+/* line 513, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-green:hover, .btn-green:focus, .btn-green:active, .btn-green.active, .btn-green.disabled, .btn-green[disabled] {
+  color: white;
+  background-color: #17b4b6;
+  *background-color: #499249;
+}
+/* line 521, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-green:active, .btn-green.active {
+  background-color: #408140 \9;
+}
+
 
 .debug_dump {
   clear: both;

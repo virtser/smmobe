@@ -1,35 +1,45 @@
 <header>
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <div class="nav-collapse collapse">
-          <ul class="nav navbar-nav  pull-right">
-          <% if signed_in? %>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-          <% else %>
-            <li><%= link_to "Sign-up", signup_path %></li>
-            <li><%= link_to "Login", signin_path %></li>
-            <li><%= link_to "Help",    help_path %></li>      
-          <% end %> 
-          </ul>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+            <% if signed_in? %>
+              <li><%= link_to "Help",    help_path %></li>      
+              <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            <% else %>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "About",    about_path %></li>      
+              <li><%= link_to "Contact",    contact_path %></li>      
+              <li><%= link_to "Sign up", signup_path %></li>
+            <% end %> 
+            </ul>
+
+            <% if !signed_in? %>
+              <%= simple_form_for(:session, url: sessions_path, html: {class: 'navbar-form pull-left' }) do |f|%>
+                  <%= f.input_field :email, placeholder: 'Email', label: false, class: 'span2' %>
+                  <%= f.input_field :password, placeholder: 'Password', label: false, class: 'span2' %>
+                  <%= f.button :submit, value: 'Login', input_html: {class: 'btn'} %>
+              <% end %>
+            <% end %>
          </div>
       </div>
     </div>
-  </div>
-
- <div class="container">
-  <div class="submenu">
-    <div class="logo">
-    <%= link_to image_tag("logo.png", :border => 0), root_path %>
-    </div>
-    <% if signed_in? %>
-      <nav class="buttons">
-        <ul>
-            <li><%= link_to "Create Message", new_campaign_path %></li>
-            <li><%= link_to "My Messages", campaigns_path %></li>
-        </ul>       
-      </nav>
-    <% end %>
   </div>  
- </div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="submenu">
+          <%= link_to image_tag("logo.png", :border => 0), root_path %>
+        <% if signed_in? %>
+        <div class="buttons">
+            <ul>
+                <li><%= link_to "Create Message", new_campaign_path %></li>
+                <li><%= link_to "My Messages", campaigns_path %></li>
+            </ul>       
+        </div>
+        <% end %>
+     </div>
+  </div>
+  </div>
 </header>

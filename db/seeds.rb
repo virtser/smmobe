@@ -8,16 +8,16 @@
 
 # Default campaign types
 
-if CampaignType.find_by(name: 'Promotion').nil?
-  CampaignType.create(name: 'Promotion')
+if CampaignType.find_by(name: 'Marketing').nil?
+  CampaignType.create(name: 'Marketing')
 end
 
-if CampaignType.find_by(name: 'Event').nil?
-  CampaignType.create(name: 'Event')
+if CampaignType.find_by(name: 'Events').nil?
+  CampaignType.create(name: 'Events')
 end
 
-if CampaignType.find_by(name: 'Survey').nil?
-  CampaignType.create(name: 'Survey')
+if CampaignType.find_by(name: 'Surveys').nil?
+  CampaignType.create(name: 'Surveys')
 end
 
 if CampaignType.find_by(name: 'Scheduling').nil?
@@ -36,10 +36,6 @@ end
 
 if CampaignStatus.find_by(name: 'Finished').nil?
   CampaignStatus.create(name: 'Finished')
-end
-
-if CampaignStatus.find_by(name: 'Stopped').nil?
-  CampaignStatus.create(name: 'Stopped')
 end
 
 # One user record for tests duplicate user email validation

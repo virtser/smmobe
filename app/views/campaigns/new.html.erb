@@ -1,7 +1,8 @@
-<h1>Choose type</h1>
-
-<%= render 'steps', :locals => {:step1 => "selected",
-                                :step2 => "dimmed",
-                                :step3 => "dimmed"} %>
-
-<%= render 'form' %>
+<div class="row campaign">
+	<div class="span8">
+		<%= render 'form' %>
+	</div>	
+	<div class="span4 phone">
+		<%= image_tag("phone.png"); %>
+	</div>
+</div>

@@ -11,7 +11,21 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready( function(){	
+    $('.types .row').on('click','.enabled',function () {
+    	 // apply selected class on selected type
+         $('.enabled').removeClass('selected');
+         $(this).addClass('selected')
+
+         // get the campaing type id
+         campaign_type_id = $('.selected div:first-child').attr('id');
+         console.log('campaign_type_id: ' +campaign_type_id);
+         $('#campaign_campaign_type_id').val(campaign_type_id);
+    });
+});
