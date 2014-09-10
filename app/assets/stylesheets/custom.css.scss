@@ -2,7 +2,9 @@
 
 /* mixins, variables, etc. */
 
-$grayMediumLight: #eaeaea;
+$baseFontColor: #5c5c5c;
+$baseBackgroundColor: #edeff2;
+$baseBorderColor: #cecece;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -15,10 +17,10 @@ body {
   background-image: image-url("background.png");
   background-position: top;
   background-repeat: repeat-x;
-  background-color: #edeff2;      
+  background-color: $baseBackgroundColor;      
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 12px;
-  color: #5c5c5c;
+  color: $baseFontColor;
 }
 
 .center {
@@ -46,7 +48,7 @@ header {
  .submenu {
       position: relative;
       background-color: #fff;
-      border-bottom: 2px solid #cecece;
+      border-bottom: 2px solid $baseBorderColor;
       top:40px;
       min-height: 80px;
       padding: 6px 5px 0px 8px;
@@ -73,13 +75,12 @@ header {
   }
 }
 
-
 /* section */   
 section {
   clear:both;
   position: relative;
   top:40px;
-  background-color: #edeff2;
+  background-color: $baseBackgroundColor;
   min-height: 600px; 
   padding:5px;    
 }
@@ -93,74 +94,71 @@ footer {
   text-align: center;
 }
 
+.steps_header h1 { 
+  font-size: 25px; 
+  margin: 5px 0 10px 0;
+}
 
+/* campaign */
 .campaign
 {
-  padding: 10px 0;
+  .steps {
+    .numbers {
+      p { font-size: 15px; }
+    }
+    .button {
+      padding-top: 10px;
+    } 
+  }
+  .types {
+    background-color: #fff;
+    padding: 24px;
+    border: 1px solid $baseBorderColor;
+    h4 {
+      margin: 0px;
+    }
+    .row {
+      .enabled {
+        margin-top: 20px;
+        width: 125px;
+        height: 125px;
+        border: 1px solid $baseBorderColor;
+        background-color: $baseBackgroundColor;
+        div {
+          padding-top: 20px;
+        }
+      }
+      .enabled:hover {
+        width: 123px;
+        height: 123px;
+        border: 2px solid #0b5dac;
+        cursor: pointer;
+      }
+      .selected {
+        width: 123px;
+        height: 123px;
+        border: 2px solid #0b5dac;
+        background-color: #e9f0fb;
+      }
+      .disabled {
+        margin-top: 20px;
+        width: 125px;
+        height: 125px;
+        border: 1px solid $baseBorderColor;
+        background-color: $baseBackgroundColor;
+        div {
+          padding-top: 20px;
+        }
+      }
+    }
+  } 
+  #campaign_title {
+    width: 100%;
+  }
 }
 
-.campaign .steps h1 {
-  font-size: 25px;
-}
-
-.campaign .steps .numbers p {
-  font-size: 15px;
-}
-
-.campaign .types {
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #cecece;
-}
 
 /* miscellaneous */
-
-.campaign .steps .button {
-  padding-top: 10px;
-}
-
-.campaign #campaign_title {
-  width: 100%;
-}
-
-.campaign .types {
-  padding: 24px;
-}
-.campaign .types h4 {
-  margin: 0px;
-}
-.campaign .types .row .enabled {
-  margin-top: 20px;
-  width: 125px;
-  height: 125px;
-  border: 1px solid #cecece;
-  background-color: #edeff2;
-}
-.campaign .types .row .enabled:hover {
-  width: 123px;
-  height: 123px;
-  border: 2px solid #0b5dac;
-  cursor: pointer;
-}
-.campaign .types .row .enabled div {
-  padding-top: 20px;
-}
-.campaign .types .row .selected {
-  width: 123px;
-  height: 123px;
-  border: 2px solid #0b5dac;
-  background-color: #e9f0fb;
-}
-.campaign .types .row .disabled {
-  margin-top: 20px;
-  width: 125px;
-  height: 125px;
-  border: 1px solid #cecece;
-  background-color: #edeff2;
-}
-.campaign .types .row .disabled div {
-  padding-top: 20px;
-}
 
 .btn-green {
   color: white;
