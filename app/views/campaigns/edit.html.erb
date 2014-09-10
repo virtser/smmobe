@@ -1,7 +1,10 @@
-<h1>Choose type</h1>
+<%= render 'campaigns/steps_header' %>
 
-<%= render 'steps', :locals => {:step1 => "selected",
-                                :step2 => "dimmed",
-                                :step3 => "dimmed"} %>
-
-<%= render 'form' %>
+<div class="row campaign">
+	<div class="span8">
+		<%= render 'campaigns/form' %>
+	</div>	
+	<div class="span4 phone">
+		<%= render 'campaigns/phone' %>
+	</div>
+</div>

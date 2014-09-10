@@ -1,3 +1,74 @@
 // Place all the styles related to the Campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+$baseFontColor: #5c5c5c;
+$baseBackgroundColor: #edeff2;
+$baseBorderColor: #cecece;
+
+.steps_header h1 { 
+  font-size: 25px; 
+  margin: 5px 0 10px 0;
+}
+
+/* campaign */
+.campaign
+{
+  .steps {
+    .numbers {
+      p { font-size: 15px; }
+    }
+    .button {
+      padding-top: 10px;
+    } 
+  }
+  .types {
+    background-color: #fff;
+    padding: 24px;
+    border: 1px solid $baseBorderColor;
+    h4 {
+      margin: 0px;
+    }
+    .row {
+      .enabled {
+        margin-top: 20px;
+        width: 125px;
+        height: 125px;
+        border: 1px solid $baseBorderColor;
+        background-color: $baseBackgroundColor;
+        div {
+          padding-top: 20px;
+        }
+      }
+      .enabled:hover {
+        width: 123px;
+        height: 123px;
+        border: 2px solid #0b5dac;
+        cursor: pointer;
+      }
+      .selected {
+        width: 123px;
+        height: 123px;
+        border: 2px solid #0b5dac;
+        background-color: #e9f0fb;
+      }
+      .disabled {
+        margin-top: 20px;
+        width: 125px;
+        height: 125px;
+        border: 1px solid $baseBorderColor;
+        background-color: $baseBackgroundColor;
+        div {
+          padding-top: 20px;
+        }
+      }
+    }
+  } 
+  #campaign_title {
+    width: 100%;
+  }
+  .phone {
+    padding-top: 45px;
+  }
+}

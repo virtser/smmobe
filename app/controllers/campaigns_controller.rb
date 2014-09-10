@@ -47,10 +47,13 @@ class CampaignsController < ApplicationController
     respond_to do |format|
       if @campaign.update(campaign_params)
         format.html {
-          #redirect_to @campaign, notice: 'Campaign was successfully updated.'
-          @message_id = Message.find_by_campaign_id(@campaign.id)
           flash[:campaign_id] = @campaign.id
-          redirect_to :controller => 'messages', :action => 'edit', :id => @message_id
+          @message_id = Message.find_by_campaign_id(@campaign.id)
+          if @message_id.nil? 
+            redirect_to :controller => 'messages', :action => 'new'
+          else
+            redirect_to :controller => 'messages', :action => 'edit', :id => @message_id
+          end
         }
         format.json { render :show, status: :ok, location: @campaign }
       else

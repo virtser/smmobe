@@ -18,14 +18,25 @@
 //= require_tree .
 
 $(document).ready( function(){	
-    $('.types .row').on('click','.enabled',function () {
+	// in edit mode, select the right campaign type
+	if (typeof campaign_type_id != "undefined")
+		selectType();
+
+	// campaign type selection on click event trigger
+    $('.types .row').on('click','.enabled', selectType);
+
+	function selectType() {
     	 // apply selected class on selected type
          $('.enabled').removeClass('selected');
-         $(this).addClass('selected')
+
+         if (event.type == 'click') 
+         	$(this).addClass('selected')	
+         else 
+     	   	$('.types .row #' + campaign_type_id).addClass('selected')
 
          // get the campaing type id
-         campaign_type_id = $('.selected div:first-child').attr('id');
-         console.log('campaign_type_id: ' +campaign_type_id);
+         campaign_type_id = $('.selected').attr('id');
+         console.log('campaign_type_id: ' + campaign_type_id);
          $('#campaign_campaign_type_id').val(campaign_type_id);
-    });
+    }
 });

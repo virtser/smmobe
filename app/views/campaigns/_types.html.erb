@@ -1,27 +1,31 @@
 	<div class="types">
 		<h4>Choose your SMM type:</h4>
 
+	<%= javascript_tag do %>
+  		var campaign_type_id = <%= @campaign.campaign_type.id %>;
+	<% end %>
+
 			<div class="row">
-		    	<div class="span1 enabled center selected">
-		    		<div id="1">
+		    	<div class="span1 enabled center" id="1">
+		    		<div>
 		    			<%= image_tag("types/Marketing.png"); %>
 		    			<p>Marketing</p>
 		    		</div>
 		    	</div>
-		    	<div class="span1 enabled  center">
-		    		<div id="2">
+		    	<div class="span1 enabled  center" id="2">
+		    		<div>
 			    		<%= image_tag("types/Events.png"); %>
 			    		<p>Events</p>		    		
 		    		</div>
 		    	</div>
-		    	<div class="span1 enabled center">
-		    		<div id="3">
+		    	<div class="span1 enabled center" id="3">
+		    		<div>
 			    		<%= image_tag("types/Surveys.png"); %>
 			    		<p>Surveys</p>		    		
 		    		</div>
 		    	</div>		    	
-		    	<div class="span1 enabled center">
-		    		<div id="4">
+		    	<div class="span1 enabled center" id="4">
+		    		<div>
 			    		<%= image_tag("types/Scheduling.png"); %>
 			    		<p>Scheduling</p>		    		
 		    		</div>
