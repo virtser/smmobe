@@ -1,8 +1,10 @@
-<h1>Add customers</h1>
+<%= render 'campaigns/steps_header' %>
 
-<%= render 'campaigns/steps', :locals => {:step1 => "passed",
-          :step2 => "passed",
-          :step3 => "selected"} %>
-
-
-<%= render 'form' %>
+<div class="row customers">
+	<div class="span8">
+		<%= render 'form' %>
+	</div>	
+	<div class="span4 phone">
+		<%= render 'campaigns/phone' %>
+	</div>
+</div>

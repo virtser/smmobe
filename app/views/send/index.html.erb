@@ -1,18 +1,49 @@
-<h1>Sending</h1>
+<%= render 'campaigns/steps_header' %>
 
-<p><strong>SMS text:</strong>
-  <% @messages.each do |message| %>
-      <%= message.text %>
-  <% end %>
+<div class="row cusomers">
+  <div class="span8">
 
-</p>
+ <div class="steps">
+      <div class="container">
+        <div class="row numbers">   
+          
+          <%= render 'campaigns/steps', :locals => {:step1 => "active",
+                                :step2 => "active",
+                                :step3 => "active"} %>
+          
+      </div>
+    </div>
+  </div>  
 
-<p><strong>Sending to number of customers:</strong> <%= @campaign_customers.count %><p>
+  <div class="row cusomers">
+    <div class="span8">
 
-<h2>Progress status</h2>
+    <h2>Sending</h2>
 
-<div style="font-style: italic">
-  <% @progress.each do |error_msg| %>
-    <p><%= error_msg %></p>
-  <% end %>
-</div>
+	<p><strong>SMS text:</strong>
+	  <% @messages.each do |message| %>
+	      <%= message.text %>
+	  <% end %>
+
+	</p>
+
+	<p><strong>Sending to number of customers:</strong> <%= @campaign_customers.count %><p>
+
+	<h3>Progress status</h3>
+
+	<div style="font-style: italic">
+	  <% @progress.each do |error_msg| %>
+	    <p><%= error_msg %></p>
+	  <% end %>
+	</div>
+
+
+
+    </div>
+  </div>
+
+  </div>  
+  <div class="span4 phone">
+    <img alt="Phone" src="/assets/phone.png" />
+  </div>
+</div>	

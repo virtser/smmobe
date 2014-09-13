@@ -1,7 +1,38 @@
-<h1>Import customers</h1>
+<%= render 'campaigns/steps_header' %>
 
-<%= form_tag import_path, multipart: true do %>
-    <%= hidden_field_tag('campaign_id', flash[:campaign_id]) %>
-    <%= file_field_tag :file, class: 'btn btn-default btn-file' %>
-    <%= submit_tag "Import", class: 'btn' %>
-<% end %>
+<div class="row cusomers">
+	<div class="span8">
+
+			<%= form_tag import_path, multipart: true do %>
+
+	<div class="steps">
+	    <div class="container">
+	      <div class="row numbers">   
+	        
+	        <%= render 'campaigns/steps', :locals => {:step1 => "active",
+	                              :step2 => "active",
+	                              :step3 => "active"} %>
+	        
+	         <div class="span2 center button">
+			    <%= submit_tag "IMPORT", class: 'btn btn-next' %>
+		   	</div>
+	    </div>
+	  </div>
+	</div>  
+
+	<div class="row cusomers">
+		<div class="span8">
+			<h3>Import customers</h3>
+
+			    <%= hidden_field_tag('campaign_id', flash[:campaign_id]) %>
+			    <%= file_field_tag :file, class: 'btn btn-default btn-file' %>
+		</div>
+	</div>
+
+			<% end %>
+
+	</div>	
+	<div class="span4 phone">
+		<img alt="Phone" src="/assets/phone.png" />
+	</div>
+</div>

@@ -49,6 +49,8 @@ class CampaignsController < ApplicationController
         format.html {
           flash[:campaign_id] = @campaign.id
           @message_id = Message.find_by_campaign_id(@campaign.id)
+          
+          # in case that customer didn't complete campaign creation flow and have no message
           if @message_id.nil? 
             redirect_to :controller => 'messages', :action => 'new'
           else

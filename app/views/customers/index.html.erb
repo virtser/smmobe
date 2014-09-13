@@ -1,23 +1,47 @@
-<h1>Choose customers</h1>
+<%= render 'campaigns/steps_header' %>
 
-<%= render 'campaigns/steps', :locals => {:step1 => "passed",
-                                          :step2 => "passed",
-                                          :step3 => "selected"} %>
+<div class="row cusomers">
+	<div class="span8">
 
-<div>
-    <%= link_to 'Manually Add Customers', new_customer_path, class: 'btn' %>
-    <%= link_to 'Import Customers from CSV', import_path, class: 'btn' %>
-    <%= link_to 'Import from CRM', '#', class: 'btn' %>
+
+	<div class="steps">
+	    <div class="container">
+	      <div class="row numbers">   
+	        <%= render 'campaigns/steps', :locals => {:step1 => "active",
+	                              :step2 => "active",
+	                              :step3 => "active"} %>
+		        
+		         <div class="span2 center button">
+			   	    <input class="btn btn-next" name="commit" type="submit" value="NEXT" onclick="location.href='/reviews/<%= flash[:campaign_id] %>'"/>
+			   	</div>
+			</div>
+
+			<div class="row cusomers">
+				<div class="span8">
+					<div>
+					    <%= link_to 'Manually Add Customers', new_customer_path, class: 'btn' %>
+					    <%= link_to 'Import Customers from CSV', import_path, class: 'btn' %>
+					    <%= link_to 'Import from CRM', '#', class: 'btn' %>
+					</div>
+					<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>
+
+					<br/>
+				</div>
+			</div>
+
+			<div class="row cusomers">
+				<div class="span8">
+					<% if !@customers.nil? && @customers.count > 0 %>
+					    <h2>Customers</h2>
+					    <%= render 'customers' %>
+					<% end %>
+				</div>	
+			</div>
+			</div>
+	</div>
+
+	</div>	
+	<div class="span4 phone">
+		<img alt="Phone" src="/assets/phone.png" />
+	</div>
 </div>
-
-<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>
-
-<br/>
-
-<% if !@customers.nil? && @customers.count > 0 %>
-    <h2>Customers</h2>
-    <%= render 'customers' %>
-
-    <input class="btn" name="commit" type="submit" value="Next      →"
-           onclick="location.href='/reviews/<%= flash[:campaign_id] %>'"/>
-<% end %>

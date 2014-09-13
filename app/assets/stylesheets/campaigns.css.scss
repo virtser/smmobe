@@ -1,6 +1,3 @@
-// Place all the styles related to the Campaigns controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
 $baseFontColor: #5c5c5c;
@@ -19,9 +16,6 @@ $baseBorderColor: #cecece;
     .numbers {
       p { font-size: 15px; }
     }
-    .button {
-      padding-top: 10px;
-    } 
   }
   .types {
     background-color: #fff;
@@ -68,7 +62,34 @@ $baseBorderColor: #cecece;
   #campaign_title {
     width: 100%;
   }
-  .phone {
-    padding-top: 78px;
-  }
+}
+
+.btn-green {
+  color: white;
+  font-size: 18px;
+  padding: 8px 20px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5bb65b;
+  background-image: -moz-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#17b4b6), to(#17b4b6));
+  background-image: -webkit-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: -o-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: linear-gradient(to bottom, #17b4b6, #17b4b6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF17b4b6', endColorstr='#FF17b4b6', GradientType=0);
+  border-color: #17b4b6 #17b4b6 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #17b4b6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+/* line 513, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-green:hover, .btn-green:focus, .btn-green:active, .btn-green.active, .btn-green.disabled, .btn-green[disabled] {
+  color: white;
+  background-color: #17b4b6;
+  *background-color: #499249;
+}
+/* line 521, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-green:active, .btn-green.active {
+  background-color: #408140 \9;
 }

@@ -21,8 +21,8 @@
         <td><%= customer.custom2 %></td>
         <td><%= customer.custom3 %></td>
         <% if current_page?(:controller => 'customers', :action => 'index') %>
-            <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-            <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'E', edit_customer_path(customer) %></td>
+            <td><%= link_to 'X', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% else %>
             <td></td>
             <td></td>

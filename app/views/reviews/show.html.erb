@@ -1,32 +1,53 @@
-<h1>Message Review</h1>
+<%= render 'campaigns/steps_header' %>
 
-<%= render 'campaigns/steps', :locals => {:step1 => "passed",
-                                          :step2 => "passed",
-                                          :step3 => "selected"} %>
+<div class="row cusomers">
+  <div class="span8">
 
-<% if @campaigns.count > 0 %>
-    <h2>Type</h2>
-    <%= render 'campaigns/table' %>
+ <div class="steps">
+      <div class="container">
+        <div class="row numbers">   
+          
+          <%= render 'campaigns/steps', :locals => {:step1 => "active",
+                                :step2 => "active",
+                                :step3 => "active"} %>
+          
+           <div class="span2 center button">
 
-    <h2>Content</h2>
-    <%= render 'messages/table' %>
+      <% if @campaigns.first.campaign_status.name == 'Pending' %>
+          <form action="/send"  id="send" method="post">
+            <div>
+              <input type="hidden" name="campaign_id" value="<%= params[:id] %>" />
+              <input class="btn btn-next" name="commit" type="submit" value="SEND">
+            </div>
+            <div>
+              <input type="checkbox" name="test" id="test" value="1" checked onclick="$(this).val(this.checked ? 1 : 0)"/> Simulate sending
+            </div>
+          </form>
+      <% end %>
 
-    <h2>Customers</h2>
-    <%= render 'customers/customers' %>
+        </div>
+      </div>
+    </div>
+  </div>  
 
-    <% if @campaigns.first.campaign_status.name == 'Pending' %>
-        <form action="/send"  id="send" method="post">
-          <div style="float: left; height: 20px;">
-            <input type="checkbox" name="test" id="test" value="1" checked onclick="$(this).val(this.checked ? 1 : 0)"/> Check to simulate SMS sending to find errors, uncheck to send for real (charges will be applied)
-          </div>
+  <div class="row cusomers">
+    <div class="span8">
+  <% if @campaigns.count > 0 %>
+      <h3>Type</h3>
+      <%= render 'campaigns/table' %>
 
-          <div style="float: right; height: 20px;" >
-            <%= link_to 'Edit', edit_campaign_path(params[:id]), class: 'btn', style: 'display: inline-block' %>
-            <input type="hidden" name="campaign_id" value="<%= params[:id] %>" />
-            <input class="btn btn-danger" name="commit" type="submit" value="Send">
-          </div>
+      <h3>Content</h3>
+      <%= render 'messages/table' %>
 
-          <div style="clear: left;"></div>
-        </form>
-    <% end %>
-<% end %>
+      <h3>Customers</h3>
+      <%= render 'customers/customers' %>
+  <% end %>
+
+    </div>
+  </div>
+
+  </div>  
+  <div class="span4 phone">
+    <img alt="Phone" src="/assets/phone.png" />
+  </div>
+</div>

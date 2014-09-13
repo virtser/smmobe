@@ -13,4 +13,40 @@
  *= require_tree .
  *= require_self
  */
+  .phone {
+    padding-top: 0px;
+  }
 
+  .button {
+    padding-top: 10px;
+  } 
+  
+.btn-next {
+  color: white;
+  font-size: 18px;
+  padding: 8px 20px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5bb65b;
+  background-image: -moz-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#17b4b6), to(#17b4b6));
+  background-image: -webkit-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: -o-linear-gradient(top, #17b4b6, #17b4b6);
+  background-image: linear-gradient(to bottom, #17b4b6, #17b4b6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF17b4b6', endColorstr='#FF17b4b6', GradientType=0);
+  border-color: #17b4b6 #17b4b6 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #17b4b6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+/* line 513, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-next:hover, .btn-next:focus, .btn-next:active, .btn-next.active, .btn-next.disabled, .btn-next[disabled] {
+  color: white;
+  background-color: #17b4b6;
+  *background-color: #499249;
+}
+/* line 521, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-next:active, .btn-next.active {
+  background-color: #408140 \9;
+}
