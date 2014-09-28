@@ -4,6 +4,110 @@
 		"selected_items":
 		[
 			[
+				"mess",
+				"message_id"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"mari",
+				"margin-top"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"backg",
+				"background"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"list-ste",
+				"list-style-type"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"bacl",
+				"background-color"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"max-",
+				"max-height"
+			],
+			[
+				"def",
+				"def	def … end"
+			],
+			[
+				"styl",
+				"style	Attr"
+			],
+			[
 				"st",
 				"style	Tag"
 			]
@@ -12,20 +116,236 @@
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "app/views/campaigns/new.html.erb",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 195,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/import/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 904,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/reviews/show.html.erb",
+			"settings":
+			{
+				"buffer_size": 1413,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/send/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 962,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/customers/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 1301,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/messages/new.html.erb",
+			"settings":
+			{
+				"buffer_size": 194,
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "Packages/User/Chrome.sublime-build",
+	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 400.0,
 		"selected_items":
 		[
+			[
+				"diff",
+				"Git: Diff Current File"
+			],
+			[
+				"git di",
+				"Git: Diff Current File"
+			],
+			[
+				"git dif",
+				"Git: Diff Current File"
+			],
+			[
+				"git current",
+				"Git: Log Current File"
+			],
+			[
+				"git pu",
+				"Git: Push"
+			],
+			[
+				"comm",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
+			[
+				"git sta",
+				"Git: Status"
+			],
+			[
+				"curre",
+				"Git: Log Current File"
+			],
+			[
+				"git curr",
+				"Git: Log Current File"
+			],
+			[
+				"git",
+				"Git: Log Current File"
+			],
+			[
+				"git ",
+				"Git: Status"
+			],
+			[
+				"git hi",
+				"Git: Commit history"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"col",
+				"Color Picker"
+			],
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"snippet: div",
+				"Snippet: <div>"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				"snippet: sty",
+				"Snippet: <style>"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"snippet: forea",
+				"Snippet: File.foreach (\"..\") { |line| .. }"
+			],
+			[
+				"markdw",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"markdown",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"markdow",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"snipp",
+				"Snippet: html"
+			],
+			[
+				"settings",
+				"Preferences: Settings - User"
+			],
+			[
+				"ke",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"key ",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"html",
+				"Snippet: html"
+			],
+			[
+				"snippet",
+				"Snippet: form_tag"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html"
+			],
+			[
+				"sni",
+				"Snippet: html"
+			],
 			[
 				"pro",
 				"Project: Save As"
@@ -33,18 +353,6 @@
 			[
 				"add",
 				"Project: Add Folder"
-			],
-			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
-				"key",
-				"Preferences: Key Bindings - User"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"install pa",
@@ -57,19 +365,17 @@
 			[
 				"",
 				"About"
-			],
-			[
-				"Snippet: ",
-				"Snippet: html"
 			]
 		],
-		"width": 449.0
+		"width": 583.0
 	},
 	"console":
 	{
-		"height": 126.0,
+		"height": 418.0,
 		"history":
 		[
+			"npm install livereload",
+			"ls",
 			"import urllib2,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
 			"aaa",
 			"import urllib2,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')"
@@ -86,10 +392,77 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/david/RubymineProjects/SMMobe"
+		"/Users/david/RubymineProjects/SMMobe",
+		"/Users/david/RubymineProjects/SMMobe/app",
+		"/Users/david/RubymineProjects/SMMobe/app/assets",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets",
+		"/Users/david/RubymineProjects/SMMobe/app/views",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns",
+		"/Users/david/RubymineProjects/SMMobe/app/views/import",
+		"/Users/david/RubymineProjects/SMMobe/app/views/messages",
+		"/Users/david/RubymineProjects/SMMobe/app/views/reviews",
+		"/Users/david/RubymineProjects/SMMobe/app/views/send",
+		"/Users/david/RubymineProjects/SMMobe/app/views/static_pages"
 	],
 	"file_history":
 	[
+		"/Users/david/RubymineProjects/SMMobe/app/views/import/index.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/reviews/show.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/send/index.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/custom.css.scss",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/customers.css.scss",
+		"/Users/david/RubymineProjects/SMMobe/app/views/customers/_form.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/customers/index.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/application.css",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/campaigns.css.scss",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/messages.css.scss",
+		"/Users/david/RubymineProjects/SMMobe/app/views/customers/_customers.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/customers/new.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/messages/new.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/messages/_form.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/controllers/customers_controller.rb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/messages/edit.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/_steps.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/_form.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/new.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/javascripts/application.js",
+		"/Users/david/RubymineProjects/SMMobe/app/controllers/campaigns_controller.rb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/_types.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/layouts/_footer.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/edit.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/_steps_header.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/_phone.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/javascripts/campaigns.js",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/javascripts/campaigns.js.coffee",
+		"/Users/david/RubymineProjects/SMMobe/Gemfile",
+		"/Users/david/RubymineProjects/SMMobe/db/seeds.rb",
+		"/Users/david/RubymineProjects/SMMobe/app/models/campaign_status.rb",
+		"/Users/david/RubymineProjects/SMMobe/config/initializers/session_store.rb",
+		"/Users/david/RubymineProjects/SMMobe/.idea/runConfigurations/All_tests_in_spec__SMMobe.xml",
+		"/Users/david/RubymineProjects/SMMobe/index.html",
+		"/Users/david/RubymineProjects/SMMobe/app/views/layouts/_header.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/models/campaign.rb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/layouts/application.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/controllers/sessions_controller.rb",
+		"/Users/david/RubymineProjects/SMMobe/config/routes.rb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/index.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/static_pages/help.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/users/new.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/sessions/new.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/views/sessions/create.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/config/secrets.yml",
+		"/Users/david/RubymineProjects/SMMobe/smmobe.sublime-project",
+		"/Users/david/RubymineProjects/SMMobe/public/robots.txt",
+		"/Users/david/RubymineProjects/SMMobe/Rakefile",
+		"/Users/david/RubymineProjects/SMMobe/app/views/static_pages/home.html.erb",
+		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/scaffolds.css.scss",
+		"/Users/david/RubymineProjects/SMMobe/app/controllers/import_controller.rb",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/LiveReload.sublime-settings",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/LiveReload/LiveReload.sublime-settings",
+		"/Users/david/RubymineProjects/SMMobe/tmp/cache/assets/development/sprockets/10fcfbe6ebae11a40c8eac41939a1b9a",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
 		"/Users/david/SMMobe_Home/public/index.html",
 		"/Users/david/SMMobe_Home/Gemfile",
 		"/Users/david/SMMobe_Home/config.ru",
@@ -116,7 +489,6 @@
 		"/Users/david/rails_projects/sample_app/app/controllers/static_pages_controller.rb",
 		"/Users/david/rails_projects/sample_app/Guardfile",
 		"/Users/david/rails_projects/sample_app/app/views/static_pages/help.html.erb",
-		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
 		"/Users/david/rails_projects/demo_app/log/.keep",
 		"/Users/david/rails_projects/demo_app/config/environment.rb",
 		"/Users/david/rails_projects/demo_app/config/initializers/inflections.rb",
@@ -145,13 +517,14 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -159,6 +532,39 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sending",
+			"btn-green",
+			";\n",
+			"numbers",
+			"row",
+			"span1",
+			"applica",
+			"jquer",
+			"width",
+			"51a351",
+			"62c462",
+			".btn-success",
+			"input_html",
+			"position",
+			"}\n",
+			"container",
+			"box_sizing",
+			"navcontainer",
+			"container",
+			";\n",
+			"navcontainer",
+			"png",
+			"logo",
+			"\n	",
+			"ipsum",
+			"World",
+			"Lorem",
+			"\n		",
+			"ul",
+			"\", ",
+			"hardeol",
+			"end",
+			"home",
 			"soon",
 			"//",
 			"'\n",
@@ -177,6 +583,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"btn-next",
+			"17b4b6",
+			".btn-green",
+			"success",
+			"topmenu"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -192,24 +603,24 @@
 			[
 				{
 					"buffer": 0,
+					"file": "app/views/campaigns/new.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 195,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								180,
+								149
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -217,13 +628,159 @@
 					},
 					"stack_index": 0,
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/import/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 904,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/reviews/show.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1396,
+								1396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/send/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								909,
+								909
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/customers/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1285,
+								1285
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/messages/new.html.erb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								194,
+								194
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 38.0
 	},
 	"input":
 	{
@@ -260,10 +817,14 @@
 	{
 		"height": 0.0
 	},
+	"output.git":
+	{
+		"height": 98.0
+	},
 	"project": "smmobe.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -271,6 +832,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"rout",
+				"config/routes.rb"
+			],
+			[
+				"sessions/new",
+				"app/views/sessions/new.html.erb"
+			]
 		],
 		"width": 0.0
 	},
@@ -298,7 +871,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 226.0,
+	"side_bar_width": 236.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
