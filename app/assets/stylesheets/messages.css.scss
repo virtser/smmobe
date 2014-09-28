@@ -11,4 +11,21 @@ $baseBorderColor: #cecece;
 	}
 }
 
+.dynamic_params ul {
+	list-style-type: none; 
+	margin:0;
+}
+
+.dynamic_params ul li {
+	display: inline;
+}
+
+.dynamic_params ul li a 
+{
+	border: 1px solid #3a8ee6;
+	background-color: #dcedff;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 2px;
+}
 

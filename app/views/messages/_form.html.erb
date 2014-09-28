@@ -28,14 +28,50 @@
   <% end %>
 
   <div class="dynamic_params">
-    <p>Use the following placeholders in message body to replace them with dynamic customer params:</p>
-    <ul style="list-style-type: none">
-      <li><b>#first_name</b> - Customer first name</li>
-      <li><b>#last_name</b> - Customer last name</li>
-      <li><b>#custom1</b> - Custom column 1</li>
-      <li><b>#custom2</b> - Custom column 2</li>
-      <li><b>#custom3</b> - Custom column 3</li>
-      <li><b>#phone</b> - Customer phone number</li>
+      <small>Use the following placeholders in message body to replace them with dynamic customer params:</small>
+    <ul>
+      <li><a title="Insert customer first name" onclick="insertAtCaret('message_text','#first_name');return false;">#first_name</a></li>
+      <li><a title="Insert customer last name" onclick="insertAtCaret('message_text','#last_name');return false;">#last_name</a></li>
+      <li><a title="Insert custom column 1" onclick="insertAtCaret('message_text','#custom1');return false;">#custom1</a></li>
+      <li><a title="Insert custom column 2" onclick="insertAtCaret('message_text','#custom2');return false;">#custom2</a></li>
+      <li><a title="Insert custom column 3" onclick="insertAtCaret('message_text','#custom3');return false;">#custom3</a></li>
     </ul>
   </div>
 </div>
+
+
+<script>
+function insertAtCaret(areaId,text) {
+    var txtarea = document.getElementById(areaId);
+    var scrollPos = txtarea.scrollTop;
+    var strPos = 0;
+    var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ? 
+        "ff" : (document.selection ? "ie" : false ) );
+    if (br == "ie") { 
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart ('character', -txtarea.value.length);
+        strPos = range.text.length;
+    }
+    else if (br == "ff") strPos = txtarea.selectionStart;
+
+    var front = (txtarea.value).substring(0,strPos);  
+    var back = (txtarea.value).substring(strPos,txtarea.value.length); 
+    txtarea.value=front+text+back;
+    strPos = strPos + text.length;
+    if (br == "ie") { 
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart ('character', -txtarea.value.length);
+        range.moveStart ('character', strPos);
+        range.moveEnd ('character', 0);
+        range.select();
+    }
+    else if (br == "ff") {
+        txtarea.selectionStart = strPos;
+        txtarea.selectionEnd = strPos;
+        txtarea.focus();
+    }
+    txtarea.scrollTop = scrollPos;
+}  
+</script>
