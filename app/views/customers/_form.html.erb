@@ -9,13 +9,15 @@
                               :step3 => "active"} %>
         
         <div class="span2 center button">
-              <%= f.button :submit, value: "NEXT", class: "btn btn-next" %>
+              <%= f.button :submit, value: "ADD", class: "btn btn-next" %>
         </div>
       </div>
     </div>  
   </div>
 
-<div class="add_customer">
+<%= render 'tabs', :locals => {:list => "", :manual => "active", :csv => ""} %>
+
+<div class="add_customer tab-block">
     <h3>Add customer</h3>
 
     <%= f.input_field :phone, placeholder: 'Phone: +1 (123) 456-6655'%>

@@ -13,6 +13,33 @@
  *= require_tree .
  *= require_self
  */
+  .nav
+  {
+      margin:0; padding:0;
+  }
+  .nav .nav-tabs ul {
+      margin:0; padding:0;
+    }
+  .nav .nav-tabs ul li {
+      margin:0; padding:0;
+    }
+
+  .tab-block {
+    padding: 15px;
+    background-color: #fff;    
+    min-height: 400px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tab-block-full
+  {
+      padding: 15px;
+      background-color: #fff;    
+      min-height: 400px;
+      border: 1px solid #ddd;
+  }
   .phone {
     padding-top: 0px;
   }

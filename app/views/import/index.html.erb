@@ -20,13 +20,13 @@
 	  </div>
 	</div>  
 
-	<div class="row cusomers">
-		<div class="span8">
+	<%= render 'customers/tabs', :locals => {:list => "", :manual => "", :csv => "active"} %>	
+
+	<div class="row tab-block">
 			<h3>Import customers</h3>
 
 			    <%= hidden_field_tag('campaign_id', flash[:campaign_id]) %>
 			    <%= file_field_tag :file, class: 'btn btn-default btn-file' %>
-		</div>
 	</div>
 
 			<% end %>

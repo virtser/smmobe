@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li class="<%= locals[:list] %>">
+  	<%= link_to 'Customers list', customers_path %>
+  </li>
+  <li class="<%= locals[:manual] %>">
+  	<%= link_to 'Manuall Insertion', new_customer_path %>
+  </li>
+  <li class="<%= locals[:csv] %>">
+  	<%= link_to 'Import from file', import_path %>
+  </li>
+  <li class="disabled">
+  	<%= link_to 'Integration to CRM', '#', disabled: true %>
+  </li>
+</ul>		

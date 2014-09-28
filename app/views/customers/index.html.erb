@@ -6,8 +6,8 @@
 
 	<div class="steps">
 	    <div class="container">
-	      <div class="row numbers">   
-	        <%= render 'campaigns/steps', :locals => {:step1 => "active",
+	      	<div class="row numbers">   
+	        	<%= render 'campaigns/steps', :locals => {:step1 => "active",
 	                              :step2 => "active",
 	                              :step3 => "active"} %>
 		        
@@ -16,27 +16,18 @@
 			   	</div>
 			</div>
 
-			<div class="row cusomers">
-				<div class="span8">
-					<div>
-					    <%= link_to 'Manually Add Customers', new_customer_path, class: 'btn' %>
-					    <%= link_to 'Import Customers from CSV', import_path, class: 'btn' %>
-					    <%= link_to 'Import from CRM', '#', class: 'btn', disabled: true %>
-					</div>
-					<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>
+			<%= render 'tabs', :locals => {:list => "active", :manual => "", :csv => ""} %>
 
-					<br/>
-				</div>
-			</div>
-
-			<div class="row cusomers">
+			<div class="row tab-block">
 				<div class="span8">
 					<% if !@customers.nil? && @customers.count > 0 %>
-					    <h2>Customers</h2>
+					    <h3>Customers</h3>
 					    <%= render 'customers' %>
 					<% end %>
 				</div>	
 			</div>
+
+			<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>			
 			</div>
 	</div>
 
