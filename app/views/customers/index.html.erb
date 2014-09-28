@@ -16,15 +16,15 @@
 			   	</div>
 			</div>
 
-			<%= render 'tabs', :locals => {:list => "active", :manual => "inactive", :csv => "inactive"} %>
+			<div class="span8">
+				<%= render 'tabs', :locals => {:list => "active", :manual => "inactive", :csv => "inactive"} %>
 
-			<div class="tab-block">
-				<div class="span8">
+				<div class="tab-block">
 					<% if !@customers.nil? && @customers.count > 0 %>
 					    <h3>Customers</h3>
 					    <%= render 'customers' %>
 					<% end %>
-				</div>	
+				</div>
 			</div>
 
 			<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>			
