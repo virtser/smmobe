@@ -28,17 +28,16 @@
     padding: 15px;
     background-color: #fff;    
     min-height: 400px;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
+    border-top-color: transparent;
   }
-  
+
   .tab-block-full
   {
-      padding: 15px;
-      background-color: #fff;    
-      min-height: 400px;
-      border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;    
+    min-height: 400px;
+    border: 1px solid #ddd;
   }
   .phone {
     padding-top: 0px;

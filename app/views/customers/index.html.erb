@@ -18,7 +18,7 @@
 
 			<%= render 'tabs', :locals => {:list => "active", :manual => "", :csv => ""} %>
 
-			<div class="row tab-block">
+			<div class="tab-block">
 				<div class="span8">
 					<% if !@customers.nil? && @customers.count > 0 %>
 					    <h3>Customers</h3>
@@ -28,7 +28,7 @@
 			</div>
 
 			<div style="font-style: italic; color: red;"><%= flash[:notice] %></div>			
-			</div>
+		</div>
 	</div>
 
 	</div>	
