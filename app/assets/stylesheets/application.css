@@ -39,6 +39,16 @@
     cursor: pointer;
   }
 
+  .nav-tabs > .disabled > a,
+  .nav-tabs > .disabled > a:hover,
+  .nav-tabs > .disabled > a:focus {
+    color: lightgray;
+    background-color: #ececec;
+    border: 1px solid lightgray;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+
   .tab-block {
     padding: 15px;
     background-color: #fff;    
