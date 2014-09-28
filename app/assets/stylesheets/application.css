@@ -13,16 +13,31 @@
  *= require_tree .
  *= require_self
  */
-  .nav
-  {
+  .nav {
       margin:0; padding:0;
   }
   .nav .nav-tabs ul {
       margin:0; padding:0;
-    }
+  }
   .nav .nav-tabs ul li {
       margin:0; padding:0;
-    }
+  }
+
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover,
+  .nav-tabs > .active > a:focus {
+    color: #3c8ee0;
+  }
+
+  .nav-tabs > .inactive > a,
+  .nav-tabs > .inactive > a:hover,
+  .nav-tabs > .inactive > a:focus {
+    color: #135faa;
+    background-color: #dcedff;
+    border: 1px solid #3a8ee6;
+    border-bottom-color: transparent;
+    cursor: pointer;
+  }
 
   .tab-block {
     padding: 15px;
