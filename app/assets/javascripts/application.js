@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require angular
 //= require_tree .
 
 var main =  function(){	

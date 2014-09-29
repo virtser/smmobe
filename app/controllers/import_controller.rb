@@ -5,6 +5,7 @@ class ImportController < ApplicationController
   def index
     if !flash[:campaign_id].nil?
       flash[:campaign_id] = flash[:campaign_id]
+      flash[:message_text] = flash[:message_text]
     end
   end
 
@@ -21,6 +22,7 @@ class ImportController < ApplicationController
       end
 
       flash[:campaign_id] = params[:campaign_id]
+      flash[:message_text] = flash[:message_text]
       redirect_to :controller => 'customers', :action => 'index'
 
     end

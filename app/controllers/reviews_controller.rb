@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
 
     @customer = Customer.new
     @customer.campaign_id = params[:id]
+    flash[:message_text] = flash[:message_text]
   end
 
   def index

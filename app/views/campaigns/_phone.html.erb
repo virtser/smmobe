@@ -1,1 +1,24 @@
-<%= image_tag("phone.png"); %>
+<div class="device-mockup iphone5 portrait white">
+  <div class="device">
+    <div class="screen">
+      <!-- PUT CONTENTS HERE -->
+
+      <% if flash[:message_text].nil? %>
+          <div class="baloonTo" ng-show="messageText">
+            {{ messageText }}
+          </div>
+      <% else %>
+          <div class="baloonTo">
+            <%= flash[:message_text] %>
+          </div>
+      <% end %>
+
+      <!--<div class="baloonFrom" ng-show="messageText">-->
+        <!--{{ messageText }}-->
+      <!--</div>-->
+    </div>
+    <div class="button">
+      <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+    </div>
+  </div>
+</div>

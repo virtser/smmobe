@@ -5,6 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     flash[:campaign_id] = flash[:campaign_id]
+    flash[:message_text] = flash[:message_text]
 
     if !flash[:campaign_id].nil?
       @customers = Customer.where(campaign_id: flash[:campaign_id]).order!(:first_name, :last_name)
@@ -26,6 +27,7 @@ class CustomersController < ApplicationController
     if !flash[:campaign_id].nil?
       @customer.campaign_id = flash[:campaign_id]
       flash[:campaign_id] = flash[:campaign_id]
+      flash[:message_text] = flash[:message_text]
     end
 
     # find all customers associated with this campaign id
@@ -49,6 +51,7 @@ class CustomersController < ApplicationController
       if @customer.save
         format.html  {
           flash[:campaign_id] = @customer.campaign_id
+          flash[:message_text] = flash[:message_text]
           redirect_to :controller => 'customers', :action => 'index'
         }
         format.json { render :show, status: :created, location: @customer }
@@ -66,6 +69,7 @@ class CustomersController < ApplicationController
       if @customer.update(customer_params)
         format.html  {
           flash[:campaign_id] = @customer.campaign_id
+          flash[:message_text] = flash[:message_text]
           redirect_to :controller => 'customers', :action => 'index'
           #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
         }
@@ -84,6 +88,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html  {
         flash[:campaign_id] = @customer.campaign_id
+        flash[:message_text] = flash[:message_text]
         redirect_to :controller => 'customers', :action => 'index'
         #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
       }
