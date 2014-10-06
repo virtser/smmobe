@@ -1,33 +1,35 @@
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Phone</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Custom 1</th>
-    <th>Custom 2</th>
-    <th>Custom 3</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<div class="customers-table">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Phone</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Custom 1</th>
+      <th>Custom 2</th>
+      <th>Custom 3</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.phone %></td>
-        <td><%= customer.first_name %></td>
-        <td><%= customer.last_name %></td>
-        <td><%= customer.custom1 %></td>
-        <td><%= customer.custom2 %></td>
-        <td><%= customer.custom3 %></td>
-        <% if current_page?(:controller => 'customers', :action => 'index') %>
-            <td><%= link_to image_tag("edit.png", :border=>0, :width=>16), edit_customer_path(customer) %></td>
-            <td><%= link_to image_tag("delete.png", :border=>0, :width=>16), customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-            <td></td>
-            <td></td>
-        <% end %>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+    <tbody>
+    <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.phone %></td>
+          <td><%= customer.first_name %></td>
+          <td><%= customer.last_name %></td>
+          <td><%= customer.custom1 %></td>
+          <td><%= customer.custom2 %></td>
+          <td><%= customer.custom3 %></td>
+          <% if current_page?(:controller => 'customers', :action => 'index') %>
+              <td><%= link_to image_tag("edit.png", :border=>0, :width=>16), edit_customer_path(customer) %></td>
+              <td><%= link_to image_tag("delete.png", :border=>0, :width=>16), customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+              <td></td>
+              <td></td>
+          <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

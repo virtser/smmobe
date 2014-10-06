@@ -22,6 +22,15 @@
 
  /* GENERAL STYLE */
 
+.device-mockup .screen .greeting {
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 34px;
+	text-align: center;
+	padding-top: 150px;
+	line-height: 40px;
+}
+
 .device-mockup .screen {
   background-color: black;
 }
@@ -33,7 +42,7 @@
   border-radius: 10px;
   display: inline-block;
 }
-.device-mockup .screen .baloonFrom {
+.device-mockup .screen .baloonFrom { 
   background-color: greenyellow;
   margin: 10px 10px 10px 30px;
   padding: 5px;

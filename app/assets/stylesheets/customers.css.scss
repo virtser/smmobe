@@ -8,6 +8,11 @@ $baseBorderColor: #cecece;
 	.add_customer input {
 		width: 32%;
 	}
+	.customers-table {
+		width: 800px;   
+	    overflow: auto;    
+	    scrollbar-base-color:#ffeaff
+	}
 }
 
 	.span8 {

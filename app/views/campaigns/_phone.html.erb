@@ -13,9 +13,11 @@
           </div>
       <% end %>
 
-      <!--<div class="baloonFrom" ng-show="messageText">-->
-        <!--{{ messageText }}-->
-      <!--</div>-->
+      <% if current_page?(:controller => 'campaigns', :action => 'new') %>
+        <div class="greeting">
+          Start building your message
+        </div>  
+      <% end %>
     </div>
     <div class="button">
       <!-- You can hook the "home button" to some JavaScript events or just remove it -->

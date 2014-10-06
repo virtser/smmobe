@@ -14,7 +14,8 @@
 		</div>	
 	</div>
 
-    <%= f.input :title, label: 'Name your message:' %>	
+    <%= f.input_field :title, placeholder: 'Name your message' %>	
+    <%= f.error :title, id: 'error' %>
 
 	<%= render 'types' %>
 

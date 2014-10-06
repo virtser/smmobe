@@ -14,7 +14,6 @@
     </div>  
   </div>
 
-
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#">Content</a></li>
   <li class="inactive disabled"><a href="#">Templates</a></li>
@@ -25,7 +24,7 @@
     <%= f.input :text, label: "Message content:",
                 placeholder: "Hello #first_name! Your product was delivered today. Did you enjoy our service? Please give us your feedback by replying 'yes' or 'no'." ,
                 as: :text, class: "message_text",
-                input_html: { "ng-model" => "messageText", "ng-init" => "messageText = '" + ( @message.text.nil? ? '' : @message.text) + "'" } %>
+                input_html: { "ng-model" => "messageText", "ng-init" => "messageText='" + ( @message.text.nil? ? '' : @message.text) + "'" } %>
     <%= f.input :campaign_id, :as => :hidden %>
 
   <% end %>
