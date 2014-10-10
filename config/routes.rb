@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :send, only: [:index]
   match '/send',    to: 'send#index',           via: 'post'
 
+  resources :receive, only: [:index]
+  match '/receive',    to: 'receive#index',     via: 'post'
+
   resources :campaigns
 
   resources :messages
