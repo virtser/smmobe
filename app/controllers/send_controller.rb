@@ -22,7 +22,7 @@ class SendController < ApplicationController
         update_campaign_status(campaign_id, "Running")
       end
 
-      # TODO: Send all the SMMs to queue, a worker will pull from queue and process it.
+      # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. - Twilio has queues support - https://www.twilio.com/docs/api/rest
       @messages = Message.where(campaign_id: campaign_id)
       @campaign_customers = Customer.where(campaign_id: campaign_id)
 
