@@ -97,7 +97,10 @@ class SendController < ApplicationController
                                           :to => to_phone_number,
                                           :body => message_text,
                                       })
-      save_sent_message_log(@message_details)
+      if !test
+        save_sent_message_log(@message_details)
+      end 
+      
       return "Successfully sent message To " + to_phone_number + "."
     rescue Exception => error_msg
       return error_msg
