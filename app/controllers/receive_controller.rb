@@ -4,11 +4,11 @@ class ReceiveController < ApplicationController
   # POST /send
   def index
     message_sid = params[:MessageSid]
-    message_date = params[:Date]
+    message_date = params[:DateSent]
     from_phone_number = params[:From]
     to_phone_number = params[:To]
     body = params[:Body]
-    status = params[:Status]
+    status = params[:MessageStatus]
 
     save_received_message_log(message_sid, message_date, from_phone_number, to_phone_number, body, status)
   end
