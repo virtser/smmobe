@@ -91,14 +91,28 @@ class SendController < ApplicationController
       # set up a client to talk to the Twilio REST API
       @client = Twilio::REST::Client.new account_sid, auth_token
 
-      @client.account.messages.create({
+      # TODO: add status callback to get message delivery status and errors  - https://www.twilio.com/docs/api/rest/sending-messages#post-parameters-required
+      @message_details = @client.account.messages.create({
                                           :from => from_phone_number,
                                           :to => to_phone_number,
                                           :body => message_text,
                                       })
+      save_sent_message_log(@message_details)
       return "Successfully sent message To " + to_phone_number + "."
     rescue Exception => error_msg
       return error_msg
     end
+  end
+
+  def save_sent_message_log(message)
+     @sent_message_log = MessageSend.new(
+                                          sid: message.sid,
+                                          date: DateTime.now,
+                                          from_phone: message.from,
+                                          to_phone: message.to,
+                                          body: message.body,
+                                          status: message.status
+                                        )
+     @sent_message_log.save
   end
 end

@@ -3,8 +3,8 @@ class ReceiveController < ApplicationController
 
   # POST /send
   def index
-    message_sid = params[:SID]
-    message_date = params[:Date]
+    message_sid = params[:Sid]
+    message_date = params[:SentDate]
     from_phone = params[:From]
     to_phone = params[:To]
     body - params[:Body]
