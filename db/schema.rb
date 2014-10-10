@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901095110) do
+ActiveRecord::Schema.define(version: 20141010094119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,28 @@ ActiveRecord::Schema.define(version: 20140901095110) do
     t.string   "custom1"
     t.string   "custom2"
     t.string   "custom3"
+  end
+
+  create_table "message_receives", force: true do |t|
+    t.string   "sid"
+    t.datetime "date"
+    t.text     "from_phone"
+    t.text     "to_phone"
+    t.text     "body"
+    t.text     "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_sends", force: true do |t|
+    t.string   "sid"
+    t.datetime "date"
+    t.text     "from_phone"
+    t.text     "to_phone"
+    t.text     "body"
+    t.text     "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|
