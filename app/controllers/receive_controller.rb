@@ -8,7 +8,7 @@ class ReceiveController < ApplicationController
     from_phone_number = params[:From]
     to_phone_number = params[:To]
     body = params[:Body]
-    status = params
+    status = params.to_s
 
     save_received_message_log(message_sid, message_date, from_phone_number, to_phone_number, body, status)
   end
