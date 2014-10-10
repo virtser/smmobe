@@ -27,7 +27,7 @@ class SendController < ApplicationController
         update_campaign_status(campaign_id, "Running")
       end
 
-      # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. - Twilio has queues support - https://www.twilio.com/docs/api/rest
+      # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. 
       @messages = Message.where(campaign_id: campaign_id)
       @campaign_customers = Customer.where(campaign_id: campaign_id)
 
@@ -101,6 +101,7 @@ class SendController < ApplicationController
                                           :from => from_phone_number,
                                           :to => to_phone_number,
                                           :body => message_text,
+                                          #:status_callback => 'http://smmobe.herokuapp.com/send/callback'
                                       })
       if !test
         save_sent_message_log(@message_details)

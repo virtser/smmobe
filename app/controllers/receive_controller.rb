@@ -17,6 +17,9 @@ class ReceiveController < ApplicationController
     status = params[:SmsStatus]
 
     save_received_message_log(message_sid, message_date, from_phone_number, to_phone_number, body, status)
+
+    # TODO: reply if body contains defined variable to reply.
+    
   end
 
   def save_received_message_log(message_sid, message_date, from_phone, to_phone, body, status)
