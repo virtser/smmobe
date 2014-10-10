@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <!-- <th>SID</th> -->
+    <th>Date</th>
+    <th>To</th>
+    <th>Body</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @message_logs.each do |message_log| %>
+      <tr>
+        <!-- <td><strong><%= message_log.sid %></strong></td> -->
+        <td><%= message_log.date %></td>
+        <td><%= message_log.to_phone %></td>
+        <td><%= message_log.body %></td>
+        <td><%= message_log.status %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

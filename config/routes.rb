@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   resources :reviews, only: [:show]
   match '/reviews/:id',    to: 'reviews#show',  via: 'get'
 
-  resources :send, only: [:index]
+  resources :send, only: [:index, :show]
   match '/send',    to: 'send#index',           via: 'post'
+  match '/send',    to: 'send#show',            via: 'get'
 
-  resources :receive, only: [:index]
-  match '/receive',    to: 'receive#index',     via: 'post'
+  resources :receive, only: [:show, :create]
+  match '/receive',    to: 'receive#show',     via: 'get'
+  match '/receive',    to: 'receive#create',    via: 'post'
 
   resources :campaigns
 

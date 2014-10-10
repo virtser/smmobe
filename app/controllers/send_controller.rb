@@ -10,6 +10,11 @@ class SendController < ApplicationController
   PROD_ACCOUNT_SID = 'ACb6cb809937dc461855486ad0790988ed'
   PROD_AUTH_TOKEN = 'ec2179c879978ff07e15e7a0cce5f8fc'
 
+  # GET /send/1
+  def show
+     @message_logs = MessageSend.all.where(campaign_id: params[:id])
+  end
+
   # POST /send
   def index
     campaign_id = params[:campaign_id]
@@ -114,7 +119,8 @@ class SendController < ApplicationController
                                           from_phone: message.from,
                                           to_phone: message.to,
                                           body: message.body,
-                                          status: message.status
+                                          status: message.status,
+                                          campaign_id: params[:campaign_id]
                                         )
      @sent_message_log.save
   end

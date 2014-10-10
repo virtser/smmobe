@@ -1,8 +1,14 @@
 class ReceiveController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  # POST /send
-  def index
+
+  # GET /receive/1
+  def show
+     @message_logs = MessageReceive.all  # .where(campaign_id: params[:id])
+  end
+
+  # POST /receive
+  def create
     message_sid = params[:MessageSid]
     message_date = DateTime.now
     from_phone_number = params[:From]
