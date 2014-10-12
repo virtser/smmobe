@@ -7,9 +7,8 @@ class ReceiveController < ApplicationController
      @message_logs = MessageReceive.all  # .where(campaign_id: params[:id])
   end
 
-  # GET /receive
-  def callback
-    if (!params[:messageId].nil?)
+  # POST /receive
+  def create
     message_sid = params[:messageId]
     message_date = DateTime.now
     from_phone_number = params[:msisdn]
@@ -20,7 +19,6 @@ class ReceiveController < ApplicationController
     save_received_message_log(message_sid, message_date, from_phone_number, to_phone_number, body, status)
 
     # TODO: reply if body contains defined variable to reply.
-    end
 
     render :nothing => true # this will supply the needed http 200 OK
   end
