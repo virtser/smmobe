@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   match '/send',    to: 'send#index',           via: 'post'
   match '/send',    to: 'send#show',            via: 'get'
 
-  resources :receive, only: [:show, :create]
+  resources :receive, only: [:index, :show]
   match '/receive',    to: 'receive#show',     via: 'get'
-  match '/receive',    to: 'receive#create',    via: 'post'
+  match '/receive/callback',    to: 'receive#callback',    via: 'get'
 
   resources :campaigns
 
