@@ -15,7 +15,7 @@ class ReceiveController < ApplicationController
       from_phone_number = params[:msisdn]
       to_phone_number = params[:to]
       body = params[:text]
-      status = params.to_s  #params[:type]
+      status = params[:type]
 
       save_received_message_log(message_sid, message_date, from_phone_number, to_phone_number, body, status)
 
