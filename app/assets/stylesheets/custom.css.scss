@@ -52,7 +52,35 @@ header {
       top:40px;
       min-height: 80px;
       padding: 6px 5px 0px 8px;
-      .logo { float:left; }
+      .logo {
+        float:left;
+        padding-right: 10px;
+        img {
+          width: 70px;
+        }
+        a:hover {
+          text-decoration: none;
+        }
+      }
+     .brandname {
+       float:left;
+       color: #26a9e0;
+       font-size: 32pt;
+       font-weight: bold;
+       font-variant: Verdana, Geneva, sans-serif;
+       span {
+         padding-top: 20px;
+         display: block;
+       }
+       .brandname-subtitle{
+         padding-top: 10px;
+         color: #a4a6a9;
+         font-size: 10pt;
+         text-transform: uppercase;
+         font-weight: normal;
+         letter-spacing: 0.2pt;
+       }
+      }
       .buttons {
         float:right;
         padding: 26px 0 0 0;

@@ -30,7 +30,14 @@
 <div class="jumbotron">
   <div class="container">
     <div class="submenu">
-          <%= link_to image_tag("logo.png", :border => 0), root_path %>
+      <div class="logo">
+        <%= link_to image_tag("smmobe_logo.png", :title => "Smmobe - Smart Mobile Messages", :border => 0), root_path %>
+      </div>
+      <div class="brandname">
+          <span>Smmobe</span>
+          <span class="brandname-subtitle">Smart Mobile Messages</span>
+      </div>
+
         <% if signed_in? %>
         <div class="buttons">
             <ul>
