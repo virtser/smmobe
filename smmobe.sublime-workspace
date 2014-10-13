@@ -4,12 +4,32 @@
 		"selected_items":
 		[
 			[
-				"cur",
-				"cursor"
+				"mes",
+				"message_text"
+			],
+			[
+				"to",
+				"to_phone_number"
+			],
+			[
+				"st",
+				"status"
 			],
 			[
 				"min",
-				"min-height"
+				"min-width"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"cur",
+				"cursor"
 			],
 			[
 				"mess",
@@ -60,10 +80,6 @@
 				"position"
 			],
 			[
-				"font",
-				"font-size"
-			],
-			[
 				"backg",
 				"background"
 			],
@@ -78,10 +94,6 @@
 			[
 				"list-ste",
 				"list-style-type"
-			],
-			[
-				"tex",
-				"text-decoration"
 			],
 			[
 				"text",
@@ -114,36 +126,24 @@
 			[
 				"styl",
 				"style	Attr"
-			],
-			[
-				"st",
-				"style	Tag"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "app/assets/stylesheets/messages.css.scss",
+			"file": "app/controllers/send_controller.rb",
 			"settings":
 			{
-				"buffer_size": 429,
+				"buffer_size": 4263,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/assets/stylesheets/application.css",
+			"file": "app/controllers/receive_controller.rb",
 			"settings":
 			{
-				"buffer_size": 3279,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/messages/_form.html.erb",
-			"settings":
-			{
-				"buffer_size": 2963,
+				"buffer_size": 1325,
 				"line_ending": "Unix"
 			}
 		}
@@ -151,9 +151,29 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 373.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal	",
+				"Package Control: Install Package"
+			],
+			[
+				"insta	",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"isnta",
+				"Package Control: Install Package"
+			],
 			[
 				"scirpt",
 				"Snippet: <script>"
@@ -231,10 +251,6 @@
 				"Color Picker"
 			],
 			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
 				"remove",
 				"Package Control: Remove Package"
 			],
@@ -257,10 +273,6 @@
 			[
 				"snippet: sty",
 				"Snippet: <style>"
-			],
-			[
-				"instal",
-				"Package Control: Install Package"
 			],
 			[
 				"packa",
@@ -355,13 +367,14 @@
 				"About"
 			]
 		],
-		"width": 583.0
+		"width": 467.0
 	},
 	"console":
 	{
-		"height": 418.0,
+		"height": 323.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
 			"npm install livereload",
 			"ls",
 			"import urllib2,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), 'wb' ).write(by) if dh == h else None; print('Error validating download (got %s instead of %s), please try manual install' % (dh, h) if dh != h else 'Please restart Sublime Text to finish installation')",
@@ -380,18 +393,74 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/david/RubymineProjects/SMMobe",
-		"/Users/david/RubymineProjects/SMMobe/app",
-		"/Users/david/RubymineProjects/SMMobe/app/assets",
-		"/Users/david/RubymineProjects/SMMobe/app/assets/javascripts",
-		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets",
-		"/Users/david/RubymineProjects/SMMobe/app/views",
-		"/Users/david/RubymineProjects/SMMobe/app/views/messages",
-		"/Users/david/RubymineProjects/SMMobe/app/views/reviews",
-		"/Users/david/RubymineProjects/SMMobe/app/views/send"
+		"/Users/dvirtser/Projects/smmobe",
+		"/Users/dvirtser/Projects/smmobe/app",
+		"/Users/dvirtser/Projects/smmobe/app/controllers",
+		"/Users/dvirtser/Projects/smmobe/app/models",
+		"/Users/dvirtser/Projects/smmobe/app/views",
+		"/Users/dvirtser/Projects/smmobe/app/views/receive",
+		"/Users/dvirtser/Projects/smmobe/app/views/send",
+		"/Users/dvirtser/Projects/smmobe/config",
+		"/Users/dvirtser/Projects/smmobe/db/migrate",
+		"/Users/dvirtser/Projects/smmobe/spec/models",
+		"/Users/dvirtser/Projects/smmobe/spec/models/user"
 	],
 	"file_history":
 	[
+		"/Users/dvirtser/Projects/smmobe/app/controllers/receive_controller.rb",
+		"/Users/dvirtser/Projects/smmobe/app/controllers/send_controller.rb",
+		"/Users/dvirtser/Projects/smmobe/app/models/message.rb",
+		"/Users/dvirtser/Projects/smmobe/config/routes.rb",
+		"/Users/dvirtser/Projects/smmobe/app/views/receive/_log.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/send/_log.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/campaigns/_table.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/receive/show.html.erb",
+		"/Users/dvirtser/Projects/smmobe/db/migrate/20141010151100_add_campaignid_to_message_sends.rb",
+		"/Users/dvirtser/Projects/smmobe/app/controllers/reviews_controller.rb",
+		"/Users/dvirtser/Projects/smmobe/app/models/campaign.rb",
+		"/Users/dvirtser/Projects/smmobe/app/views/campaigns/index.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/receive/index.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/models/message_receive.rb",
+		"/Users/dvirtser/Projects/smmobe/app/controllers/customers_controller.rb",
+		"/Users/dvirtser/Projects/smmobe/app/views/send/index.html.erb",
+		"/Users/dvirtser/Projects/smmobe/spec/models/message_send_spec.rb",
+		"/Users/dvirtser/Projects/smmobe/spec/models/message_receive_spec.rb",
+		"/Users/dvirtser/Projects/smmobe/db/migrate/20141010093901_create_message_receives.rb",
+		"/Users/dvirtser/Projects/smmobe/config/secrets.yml",
+		"/Users/dvirtser/Projects/smmobe/smmobe.sublime-project",
+		"/Users/dvirtser/Projects/smmobe/app/views/customers/_customers.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/assets/stylesheets/customers.css.scss",
+		"/Users/dvirtser/Projects/smmobe/Gemfile",
+		"/Users/dvirtser/Projects/smmobe/app/views/campaigns/_form.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/campaigns/_types.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/messages/_form.html.erb",
+		"/Users/dvirtser/Projects/smmobe/config/initializers/simple_form.rb",
+		"/Users/dvirtser/Projects/smmobe/app/views/campaigns/_phone.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/controllers/campaigns_controller.rb",
+		"/Users/dvirtser/Projects/smmobe/app/assets/stylesheets/device-mockups.css.scss",
+		"/Users/dvirtser/Projects/smmobe/app/assets/stylesheets/application.css",
+		"/Users/dvirtser/Projects/smmobe/app/views/customers/_form.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/helpers/static_pages_helper.rb",
+		"/Users/dvirtser/Projects/smmobe/config/environments/production.rb",
+		"/Users/dvirtser/Projects/smmobe/.git/COMMIT_EDITMSG",
+		"/Users/dvirtser/Projects/smmobe/app/helpers/application_helper.rb",
+		"/Users/dvirtser/Projects/smmobe/app/views/layouts/_footer.html.erb",
+		"/Users/dvirtser/Projects/smmobe/app/views/static_pages/home.html.erb",
+		"/Users/dvirtser/Projects/smmobe/index.html",
+		"/Users/dvirtser/Projects/smmobe/spec/requests/static_pages_spec.rb",
+		"/Users/dvirtser/Projects/smmobe/app/assets/javascripts/angular-app.js.coffee",
+		"/Users/dvirtser/Projects/smmobe/config/database.yml",
+		"/Users/dvirtser/.gemrc",
+		"/Users/dvirtser/Projects/smmobe/spec/models/user/user_profile_spec.rb",
+		"/Users/dvirtser/Projects/smmobe/public/robots.txt",
+		"/Users/dvirtser/Projects/smmobe/app/controllers/static_pages_controller.rb",
+		"/Users/dvirtser/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/dvirtser/Projects/smmobe/app/assets/stylesheets/messages.css.scss",
+		"/Users/dvirtser/Projects/smmobe/config/environment.rb",
+		"/Users/dvirtser/Projects/smmobe/app/validators/email_validator.rb",
+		"/Users/dvirtser/Projects/smmobe/config/initializers/mime_types.rb",
+		"/Users/dvirtser/Projects/smmobe/db/migrate/20140806175215_add_remember_token_to_users.rb",
+		"/Users/dvirtser/Projects/smmobe/config.ru",
 		"/Users/david/RubymineProjects/SMMobe/app/assets/stylesheets/application.css",
 		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/index.html.erb",
 		"/Users/david/RubymineProjects/SMMobe/app/views/campaigns/_table.html.erb",
@@ -465,69 +534,34 @@
 		"/Users/david/Downloads/SMMobe_logo_final_small.jpg",
 		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Chrome.sublime-build",
 		"/Users/david/rails_projects/sample_app/spec/support/utilities.rb",
-		"/Users/david/rails_projects/sample_app/config/routes.rb",
-		"/Users/david/rails_projects/sample_app/app/views/static_pages/home.html.erb",
-		"/Users/david/rails_projects/sample_app/app/views/users/new.html.erb",
-		"/Users/david/rails_projects/sample_app/spec/requests/static_pages_spec.rb",
-		"/Users/david/rails_projects/sample_app/spec/requests/user_pages_spec.rb",
-		"/Users/david/octopress/source/_posts/2014-07-31-popular-programming-languages-in-israel.markdown",
-		"/Users/david/rails_projects/sample_app/app/assets/stylesheets/custom.css.scss",
-		"/Users/david/rails_projects/sample_app/config/application.rb",
-		"/Users/david/rails_projects/sample_app/Gemfile",
-		"/Users/david/rails_projects/sample_app/app/views/layouts/application.html.erb",
-		"/Users/david/rails_projects/sample_app/app/views/layouts/_header.html.erb",
-		"/Users/david/rails_projects/sample_app/app/views/layouts/_footer.html.erb",
-		"/Users/david/rails_projects/sample_app/app/views/static_pages/contact.html.erb",
-		"/Users/david/rails_projects/sample_app/app/views/layouts/_shim.html.erb",
-		"/Users/david/rails_projects/sample_app/app/views/layouts/shim.html.erb",
-		"/Users/david/rails_projects/sample_app/app/helpers/application_helper.rb",
-		"/Users/david/rails_projects/sample_app/example_user.rb",
-		"/Users/david/rails_projects/sample_app/app/controllers/static_pages_controller.rb",
-		"/Users/david/rails_projects/sample_app/Guardfile",
-		"/Users/david/rails_projects/sample_app/app/views/static_pages/help.html.erb",
-		"/Users/david/rails_projects/demo_app/log/.keep",
-		"/Users/david/rails_projects/demo_app/config/environment.rb",
-		"/Users/david/rails_projects/demo_app/config/initializers/inflections.rb",
-		"/Users/david/rails_projects/demo_app/config/initializers/secret_token.rb",
-		"/Users/david/rails_projects/demo_app/.vagrant/machines/default/virtualbox/action_set_name",
-		"/Users/david/rails_projects/demo_app/config/initializers/filter_parameter_logging.rb",
-		"/Users/david/rails_projects/sample_app/app/views/layouts/foobar",
-		"/Users/david/rails_projects/sample_app/app/views/static_pages/about.html.erb",
-		"/Users/david/rails_projects/sample_app/spec/spec_helper.rb",
-		"/Users/david/rails_projects/sample_app/app/helpers/static_pages_helper.rb",
-		"/Users/david/rails_projects/sample_app/config/initializers/secret_token.rb",
-		"/Users/david/rails_projects/demo_app/app/models/micropost.rb",
-		"/Users/david/rails_projects/demo_app/app/models/user.rb",
-		"/Users/david/rails_projects/demo_app/app/controllers/users_controller.rb",
-		"/Users/david/rails_projects/demo_app/config/routes.rb",
-		"/Users/david/rails_projects/demo_app/app/views/microposts/index.html.erb",
-		"/Users/david/rails_projects/demo_app/app/views/users/index.html.erb",
-		"/Users/david/rails_projects/demo_app/Gemfile",
-		"/Users/david/rails_projects/Vagrantfile",
-		"/Users/david/rails_projects/rails_projects/first_app/Gemfile",
-		"/Users/david/rails_projects/rails_projects/first_app/.gitignore",
-		"/Users/david/vagrantansible/Vagrantfile",
-		"/Users/david/test/test/readme.txt",
-		"/Users/david/vagrantansible/Ansible/couchdb.sh",
-		"/Users/david/vagrantansible/Ansible/back.yml"
+		"/Users/david/rails_projects/sample_app/config/routes.rb"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/dvirtser/Projects/smmobe",
 			""
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"sid",
+			"baloon",
+			"Name your message",
+			"Name of the SMM",
+			".device-mockup",
+			".phone",
+			"phone",
+			"SMMobe",
 			"sending",
 			"btn-green",
 			";\n",
@@ -579,6 +613,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Smmobe",
 			"btn-next",
 			"17b4b6",
 			".btn-green",
@@ -594,57 +629,59 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/assets/stylesheets/messages.css.scss",
+					"file": "app/controllers/send_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 429,
+						"buffer_size": 4263,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								425,
-								425
+								3064,
+								3064
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1215.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/assets/stylesheets/application.css",
+					"file": "app/controllers/receive_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3279,
+						"buffer_size": 1325,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1095,
-								1101
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -654,43 +691,13 @@
 					},
 					"stack_index": 1,
 					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/messages/_form.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2963,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1556,
-								1556
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 334.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -734,7 +741,7 @@
 	"project": "smmobe.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -742,6 +749,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"send",
+				"app/controllers/send_controller.rb"
+			],
+			[
+				"phone",
+				"app/views/campaigns/_phone.html.erb"
+			],
+			[
+				"db",
+				"config/database.yml"
+			],
 			[
 				"messages/new",
 				"app/views/messages/new.html.erb"

@@ -90,11 +90,11 @@ class SendController < ApplicationController
 
     begin
       # set up a client to talk to the Nexmo REST API
-      @nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
+      nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
 
 
       # TODO: add status callback to get message delivery status and errors
-      @message_details = nexmo.send_message(
+      response = nexmo.send_message(
                                             from: from_phone_number,
                                             to: to_phone_number,
                                             text: message_text
@@ -102,17 +102,15 @@ class SendController < ApplicationController
 
 
       # if !test
-        save_sent_message_log(@message_details)
+        #save_sent_message_log(@message_details)
       # end
 
       if response.success?
-        puts "Sent message: #{response.message_id}"
+        return "Successfully sent message To " + to_phone_number + "."
       elsif response.failure?
         raise response.error
       end
-
-
-      return "Successfully sent message To " + to_phone_number + "."
+      
     rescue Exception => error_msg
       return error_msg
     end
