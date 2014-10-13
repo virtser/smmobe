@@ -55,7 +55,8 @@ class SendController < ApplicationController
     messages.each do |message|
       campaign_customers.each do |customer|
         message_text = replace_params(message, customer)
-        status_msg = dispatch_smm(customer.phone, message_text, test)
+        to_phone = clean_phone(customer.phone)
+        status_msg = dispatch_smm(to_phone, message_text, test)
         progress.push(status_msg)
       end
     end
@@ -63,11 +64,20 @@ class SendController < ApplicationController
     return progress
   end
 
+  def clean_phone(phone_number)
+    phone_number = phone_number.to_s.tr("+", "")
+    phone_number = phone_number.to_s.tr("-", "")
+    phone_number = phone_number.to_s.tr("(", "")
+    phone_number = phone_number.to_s.tr(")", "")
+    phone_number = phone_number.to_s.tr(" ", "")
+    return phone_number
+  end
+
   def replace_params(message, customer)
     transformed_message = message.text
     transformed_message = transformed_message.gsub('#first_name', customer.first_name)
     transformed_message = transformed_message.gsub('#last_name', customer.last_name)
-    transformed_message = transformed_message.gsub('#phone', customer.phone)
+    #transformed_message = transformed_message.gsub('#phone', customer.phone)
     transformed_message = transformed_message.gsub('#custom1', customer.custom1)
     transformed_message = transformed_message.gsub('#custom2', customer.custom2)
     transformed_message = transformed_message.gsub('#custom3', customer.custom3)
@@ -94,7 +104,7 @@ class SendController < ApplicationController
 
 
       # TODO: add status callback to get message delivery status and errors
-      response = nexmo.send_message(
+      messageId = nexmo.send_message(
                                             from: from_phone_number,
                                             to: to_phone_number,
                                             text: message_text
@@ -102,30 +112,26 @@ class SendController < ApplicationController
 
 
       # if !test
-        #save_sent_message_log(@message_details)
+        save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
       # end
 
-      if response.success?
-        return "Successfully sent message To " + to_phone_number + "."
-      elsif response.failure?
-        raise response.error
-      end
-      
+      return "Successfully sent message To " + to_phone_number + "."
+
     rescue Exception => error_msg
       return error_msg
     end
   end
 
-  def save_sent_message_log(message)
+  def save_sent_message_log(message_sid, from_phone, to_phone, body, status)
      @sent_message_log = MessageSend.new(
-                                          sid: message.sid,
-                                          date: DateTime.now,
-                                          from_phone: message.from,
-                                          to_phone: message.to,
-                                          body: message.body,
-                                          status: message.status,
-                                          campaign_id: params[:campaign_id]
-                                        )
+        sid: message_sid,
+        date: DateTime.now,
+        from_phone: from_phone,
+        to_phone: to_phone,
+        body: body,
+        status: status,
+        campaign_id: params[:campaign_id]
+     )
      @sent_message_log.save
   end
 end
