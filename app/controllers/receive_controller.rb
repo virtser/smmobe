@@ -16,7 +16,7 @@ class ReceiveController < ApplicationController
       body = params[:text]
       status = params[:type]
       campaign_id = params[:unique_identifier]
-      
+
       save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id)
 
       # TODO: reply if body contains defined variable to reply.

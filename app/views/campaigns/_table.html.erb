@@ -17,7 +17,7 @@
         <!-- <td><%= campaign.description %></td> -->
         <td><%= campaign.campaign_type.name %></td>
         <td><%= campaign.campaign_status.name %></td>
-        <td><%= campaign.created_at.to_date %></td>
+        <td><%= campaign.created_at %></td>
         <% if campaign.campaign_status.name == "Pending" &&
                 current_page?(:controller => 'campaigns', :action => 'index')%>
             <td style=" text-align: right;">
