@@ -4,10 +4,13 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @customer = Customer.new
+
     flash[:campaign_id] = flash[:campaign_id]
     flash[:message_text] = flash[:message_text]
 
     if !flash[:campaign_id].nil?
+      @customer.campaign_id = flash[:campaign_id]
       @customers = Customer.where(campaign_id: flash[:campaign_id]).order!(:first_name, :last_name)
     else
       @customers = Customer.where(campaign_id: 0)

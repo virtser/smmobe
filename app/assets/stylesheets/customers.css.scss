@@ -5,12 +5,22 @@ $baseBackgroundColor: #edeff2;
 $baseBorderColor: #cecece;
 
 .customers {
-	.add_customer input {
-		width: 32%;
+	h3 {
+		margin: 0;
+		padding: 0;
 	}
+}
+
+.add_customer input {
+	width: 150px;
 }
 
 .span8 {
 	margin-left: 0px !important;
 }	
 
+.hiddenfile {
+	 width: 0px;
+	 height: 0px;
+	 overflow: hidden;
+}

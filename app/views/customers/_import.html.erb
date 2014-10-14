@@ -1,0 +1,36 @@
+<div class="import-customers">
+	<%= form_tag import_path, :id => 'import_file_form' , multipart: true do %>
+<div class="row">
+	<div class="span6">
+	    <%= hidden_field_tag('campaign_id', flash[:campaign_id]) %>
+	    <div class="hiddenfile">
+	    	<%= file_field_tag :file, class: 'btn-file' %>
+	    </div>
+	</div>
+	<div class="span1">
+	    <a class="btn btn-import" onclick="importFile();">Import</a>
+	</div>
+
+	<% end %>
+
+</div>	
+</div>
+<script>
+ var importFile = function() {
+	$('#file').trigger('click');  
+ }
+
+$(function(){
+    $("#file").change(function(){
+
+		if($('#file').val().toLowerCase().indexOf('.csv') != -1){
+	      //$('#spinner').show();
+		  $("#import_file_form").submit();
+	    }
+	    else{
+	      alert('Invalid File format. Please, upload CSV file')	    
+	    }    	
+        
+    });
+});
+</script>

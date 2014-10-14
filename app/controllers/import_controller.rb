@@ -15,11 +15,11 @@ class ImportController < ApplicationController
       file = params[:file]
       @status = process_csv(file, params[:campaign_id])
 
-      if @status.nil?
-        flash[:notice] = "Imported successfully!"
-      else
-        flash[:notice] = @status
-      end
+      # if @status.nil?
+      #   flash[:notice] = "Imported successfully!"
+      # else
+      #   flash[:notice] = @status
+      # end
 
       flash[:campaign_id] = params[:campaign_id]
       flash[:message_text] = flash[:message_text]
