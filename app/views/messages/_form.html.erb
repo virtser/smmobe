@@ -30,7 +30,7 @@
   <% end %>
 
   <div class="dynamic_params">
-      <small>Use the following placeholders in message body to replace them with dynamic customer params:</small>
+      <small>Use the following placeholders in message body to replace them with dynamic customer data.</small>
     <ul>
       <li><a title="Insert customer first name" onclick="insertAtCaret('message_text','#first_name');return false;">#first_name</a></li>
       <li><a title="Insert customer last name" onclick="insertAtCaret('message_text','#last_name');return false;">#last_name</a></li>
@@ -38,6 +38,7 @@
       <li><a title="Insert custom column 2" onclick="insertAtCaret('message_text','#custom2');return false;">#custom2</a></li>
       <li><a title="Insert custom column 3" onclick="insertAtCaret('message_text','#custom3');return false;">#custom3</a></li>
     </ul>
+          <small>* Customers data is inserted in the next step - Distribution.</small>
   </div>
 </div>
 
