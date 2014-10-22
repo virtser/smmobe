@@ -1,5 +1,6 @@
 class ImportController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_phones, only: [:create]
 
   # GET /import/1
   def index
@@ -15,11 +16,11 @@ class ImportController < ApplicationController
       file = params[:file]
       @status = process_csv(file, params[:campaign_id])
 
-      # if @status.nil?
-      #   flash[:notice] = "Imported successfully!"
-      # else
-      #   flash[:notice] = @status
-      # end
+      if @status.nil?
+        flash[:notice] = "Imported successfully!"
+      else
+        flash[:notice] = @status
+      end
 
       flash[:campaign_id] = params[:campaign_id]
       flash[:message_text] = flash[:message_text]
@@ -33,11 +34,34 @@ class ImportController < ApplicationController
       CSV.foreach(file.path, headers: true) do |row|
         single_customer_data = row.to_hash
         single_customer_data[:campaign_id] = campaign_id
-        Customer.create!(single_customer_data)
+
+        if !duplicate(single_customer_data) # Check if number wasn't already imported
+          Customer.create!(single_customer_data)
+        end
       end
     rescue Exception => error_msg
       return error_msg
     end
   end
+
+  def duplicate(single_customer_data)
+    phone = single_customer_data['phone']
+
+    dup = false
+    @phones.each do |p|
+      if p == phone
+        dup = true
+        break
+      end
+    end
+
+    return dup
+  end
+
+  private
+    # initiate @phones globally on import to check for duplicates
+    def set_phones
+      @phones = Customer.where(campaign_id: flash[:campaign_id]).pluck(:phone)
+    end
 
 end

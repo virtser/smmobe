@@ -20,16 +20,17 @@
 				<%= render 'tabs', :locals => {:list => "active", :manual => "inactive", :csv => "inactive"} %>
 
 				<div class="tab-block">
-					<%= render 'import' %>		
+                    <div class="span8" style="font-style: italic; color: red;"><%= flash[:notice] %></div>
+					<%= render 'import' %>
 
 					<% if !@customers.nil? && @customers.count > 0 %>
 					    <h3>Customers</h3>
 					    <%= render 'customers' %>
 					<% end %>
 
+
 					<%= render 'form' %>
 
-					<div class="span8" style="font-style: italic; color: red;"><%= flash[:notice] %></div>
 				</div>
 			</div>
 
