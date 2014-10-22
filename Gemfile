@@ -19,7 +19,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 
 # AngularJS
-gem 'angularjs-rails'
+gem 'angularjs-rails', '1.2.26'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -40,7 +40,7 @@ gem 'simple_form'
 gem 'bcrypt-ruby', '3.1.2'
 
 # for SMS sending with Twilio
-gem 'twilio-ruby', '~> 3.11'
+gem 'nexmo', '~> 2.0.0'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
