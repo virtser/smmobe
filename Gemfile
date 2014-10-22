@@ -39,7 +39,7 @@ gem 'simple_form'
 # for passwords encrypting and hashing
 gem 'bcrypt-ruby', '3.1.2'
 
-# for SMS sending with Twilio
+# for SMS sending with Nexmo
 gem 'nexmo', '~> 2.0.0'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
