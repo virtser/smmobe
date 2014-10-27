@@ -32,7 +32,9 @@ class TropoController < ApplicationController
       logger.error error_msg
     end
 
-    render status: 200, json: t.response
+    respond_to do |format|
+      format.json { render json: t.response }
+    end
 
   end
 
