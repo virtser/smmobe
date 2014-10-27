@@ -10,7 +10,7 @@ class TropoController < ApplicationController
     begin
 
       logger.info "=== GOT POST REQUEST FROM TOPO ==="
-      logger.indo request.raw_post
+      logger.info request.raw_post
 
       data = JSON.parse(request.raw_post)
       logger.info "JSON parsed response data: " + data
