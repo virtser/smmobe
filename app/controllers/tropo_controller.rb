@@ -29,7 +29,7 @@ class TropoController < ApplicationController
       logger.error error_msg
     end
 
-    render :json =>  t.response
+    render status: 200, json:  t.response
 
   end
 
