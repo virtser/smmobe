@@ -39,8 +39,8 @@ gem 'simple_form'
 # for passwords encrypting and hashing
 gem 'bcrypt-ruby', '3.1.2'
 
-# for SMS sending with Nexmo
-gem 'nexmo', '~> 2.0.0'
+# for SMS sending with Tropo
+gem 'tropo-webapi-ruby'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do

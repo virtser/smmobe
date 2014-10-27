@@ -1,10 +1,9 @@
 class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  # Nexmo credentials
-  PROD_PHONE_NUMBER = '972526549530'
-  PROD_API_KEY = 'b5c09331'
-  PROD_API_SECRET = '4cd27bd4'
+  # Tropo credentials
+  PROD_PHONE_NUMBER = '+14075550100'
+  PROD_API_KEY = '0280354cc1ca294b841f21ca2f21788086708edc5c3f56c9bc539c7399c4878e6a31134b855a8bc6618ce971'
 
   # GET /send/1
   def show
@@ -95,27 +94,26 @@ class SendController < ApplicationController
     # else
       from_phone_number = PROD_PHONE_NUMBER
       api_key = PROD_API_KEY
-      api_secret = PROD_API_SECRET
+     # api_secret = PROD_API_SECRET
     # end
 
     begin
       # set up a client to talk to the Nexmo REST API
-      nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
+      #nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
 
+      t = Tropo::Generator.new()
+      t.call(:from => from_phone_number, :to => '+' + to_phone_number, :network => "SMS", :name => params[:campaign_id])
+      t.say(:value => message_text, :name => params[:campaign_id])
+      t.response
+      messageId = 1
 
       # TODO: add status callback to get message delivery status and errors
-      messageId = nexmo.send_message(
-                                            from: from_phone_number,
-                                            to: to_phone_number,
-                                            text: message_text
-      )
-
 
       # if !test
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
       # end
 
-      return "Successfully sent message To " + to_phone_number + "."
+      return "Successfully sent message To " + to_phone_number + '.' + t.response.to_s
 
     rescue Exception => error_msg
       return error_msg

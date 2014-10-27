@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   match '/receive',    to: 'receive#index',     via: 'get'
   match '/receive:id', to: 'receive#show',      via: 'get'
 
+  resources :tropo, only: [:index]
+  match '/tropo',    to: 'tropo#index',           via: 'post'
+
   resources :campaigns
 
   resources :messages
