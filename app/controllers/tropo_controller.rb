@@ -4,7 +4,6 @@ class TropoController < ApplicationController
   # Tropo credentials
   PROD_PHONE_NUMBER = '+12898140357'
 
-
   # POST /tropo.json
   def index
 

@@ -103,9 +103,10 @@ class SendController < ApplicationController
       # set up a client to talk to the Nexmo REST API
       #nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
 
-      result = Net::HTTP.get(URI.parse('https://api.tropo.com/1.0/sessions?action=create&token=' + api_key))
+      result = Net::HTTP.get(URI.parse('https://api.tropo.com/1.0/sessions?action=create&token=' + api_key +
+                                           '&numbertodial=' + to_phone_number + '&msg=' + message_text))
       parsed = JSON.parse(result)
-      messageId = parsed['session']['id']
+      messageId = parsed[:session][:id]
 
       # TODO: add status callback to get message delivery status and errors
 
@@ -113,7 +114,7 @@ class SendController < ApplicationController
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
       # end
 
-      return "Successfully sent message To " + to_phone_number + '.' + t.response.to_s
+      return "Successfully sent message To " + to_phone_number + '. ' + result
 
     rescue Exception => error_msg
       return error_msg
