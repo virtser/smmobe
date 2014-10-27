@@ -14,9 +14,9 @@ class TropoController < ApplicationController
 
       data = JSON.parse(request.raw_post)
 
-      numbertodial = data[:session][:parameters][:numbertodial]
-      msg = data[:session][:parameters][:msg]
-      id = data[:session][:parameters][:customername]
+      numbertodial = data['session']['parameters']['numbertodial']
+      msg = data['session']['parameters']['msg']
+      id = data['session']['parameters']['customername']
 
       t = Tropo::Generator.new()
       t.call(:from => PROD_PHONE_NUMBER, :to => "+" + numbertodial, :network => 'SMS', :name => id)
