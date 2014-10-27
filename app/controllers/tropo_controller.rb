@@ -2,7 +2,7 @@ class TropoController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   # Tropo credentials
-  PROD_PHONE_NUMBER = '+14075550100'
+  PROD_PHONE_NUMBER = '+12898140357'
 
   # POST /tropo.json
   def index
