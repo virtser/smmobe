@@ -100,12 +100,16 @@ class SendController < ApplicationController
     # end
 
     begin
-      result = Net::HTTP.get(URI.parse('https://api.tropo.com/1.0/sessions?action=create&token=' + api_key +
-                                           '&numbertodial=' + to_phone_number + '&msg=' + message_text))
-      Hash.from_xml(result)['session'].inject({}) do |result, elem|
-        result[elem["name"]] = elem["value"]
+      messageId = 0
+
+      result = Net::HTTP.get(URI.parse(URI.encode('https://api.tropo.com/1.0/sessions?action=create&token=' + api_key +
+                                           '&numbertodial=' + to_phone_number + '&msg=' + message_text)))
+
+      Hash.from_xml(result)["session"].inject({}) do |result, elem|
+        if elem[0] == "id"
+          messageId = elem[1]
+        end
       end
-        messageId = result
 
       # TODO: add status callback to get message delivery status and errors
 

@@ -8,9 +8,11 @@ class TropoController < ApplicationController
   def index
 
     data = JSON.parse(request.raw_post)
-    numbertodial = [:session][:parameters][:numbertodial]
+    logger.info data
+
+    numbertodial = data[:session][:parameters][:numbertodial]
     msg = data[:session][:parameters][:msg]
-    id = [:session][:parameters][:customername]
+    id = data[:session][:parameters][:customername]
 
     t = Tropo::Generator.new()
     t.call(:from => PROD_PHONE_NUMBER, :to => '+' + numbertodial, :network => 'SMS', :name => id)
