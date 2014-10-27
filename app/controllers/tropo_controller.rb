@@ -9,6 +9,9 @@ class TropoController < ApplicationController
 
     begin
 
+      logger.info "=== GOT POST REQUEST FROM TOPO ==="
+      logger.indo request.raw_post
+
       data = JSON.parse(request.raw_post)
       logger.info "JSON parsed response data: " + data
 
@@ -29,7 +32,7 @@ class TropoController < ApplicationController
       logger.error error_msg
     end
 
-    render status: 200, json:  t.response
+    render status: 200, json: t.response
 
   end
 
