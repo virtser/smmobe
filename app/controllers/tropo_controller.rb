@@ -26,9 +26,7 @@ class TropoController < ApplicationController
       logger.error error_msg
     end
 
-    respond_to do |format|
-      format.json { render json: t.response }
-    end
+    render json: t.response
 
   end
 
