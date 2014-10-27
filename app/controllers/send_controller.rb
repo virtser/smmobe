@@ -1,3 +1,5 @@
+require 'net/http'
+
 class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
 
@@ -101,11 +103,9 @@ class SendController < ApplicationController
       # set up a client to talk to the Nexmo REST API
       #nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
 
-      t = Tropo::Generator.new()
-      t.call(:from => from_phone_number, :to => '+' + to_phone_number, :network => "SMS", :name => params[:campaign_id])
-      t.say(:value => message_text, :name => params[:campaign_id])
-      t.response
-      messageId = 1
+      result = Net::HTTP.get(URI.parse('https://api.tropo.com/1.0/sessions?action=create&token=' + api_key))
+      parsed = JSON.parse(result)
+      messageId = parsed['session']['id']
 
       # TODO: add status callback to get message delivery status and errors
 
