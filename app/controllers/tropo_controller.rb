@@ -64,7 +64,7 @@ class TropoController < ApplicationController
     logger.info "=== SENDING RESPONSE TO TROPO ==="
     response =  t.response
 
-    log.info "RESPONSE TO TROPO: " + response
+    logger.info "RESPONSE TO TROPO: " + response
     render json: response
 
   end
