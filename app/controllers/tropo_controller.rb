@@ -17,8 +17,8 @@ class TropoController < ApplicationController
 
         logger.info "=== GOT POST REQUEST FROM TROPO FOR RESPOND ON SMS MESSAGE ==="
 
-        answer = data[:result][:actions][:color][:value]
-        t.say(:value => "You said " + answer)
+        #answer = data[:result][:actions][:color][:value]
+        t.say(:value => "Thank you!")
 
       else
 
