@@ -111,6 +111,8 @@ class SendController < ApplicationController
         end
       end
 
+      logger.info "=== SENT GET REQUEST TO TROPO TO INITIATE SENDING SMS ==="
+
       # TODO: add status callback to get message delivery status and errors
 
       # if !test
