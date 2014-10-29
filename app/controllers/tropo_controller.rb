@@ -7,9 +7,12 @@ class TropoController < ApplicationController
   # POST /tropo.json
   def index
 
+    t = Tropo::Generator.new()
+
     begin
 
       data = JSON.parse(request.raw_post)
+      logger.info request.raw_post
 
       if (params[:continue] == "true")
 
@@ -31,7 +34,6 @@ class TropoController < ApplicationController
           msg = data['session']['parameters']['msg']
           id = data['session']['parameters']['customername']
 
-          t = Tropo::Generator.new()
           t.call(:from => PROD_PHONE_NUMBER, :to => "+" + numbertodial, :network => 'SMS', :name => id)
 
           t.ask :name => 'color',
@@ -40,7 +42,6 @@ class TropoController < ApplicationController
                 :choices => {:value => "red, blue, green"}
 
           t.on :event => 'continue', :next => '/tropo?continue=true'
-          render json: t.response
 
 
         else
@@ -49,12 +50,8 @@ class TropoController < ApplicationController
 
           numbertodial = data['session']['from']['id']
           answer = data['session']['initialText']
-
-          t = Tropo::Generator.new()
           t.call(:from => PROD_PHONE_NUMBER, :to => "+" + numbertodial, :network => 'SMS')
           t.say(:value => "You answered: " + answer)
-
-          render json: t.response
 
         end
 
@@ -64,6 +61,8 @@ class TropoController < ApplicationController
       logger.error error_msg
     end
 
+    logger.info "=== SENDING RESPONSE TO TROPO ==="
+    render json: t.response
 
   end
 
