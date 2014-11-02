@@ -2,7 +2,7 @@ class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   # Nexmo credentials
-  PROD_PHONE_NUMBER = '447507331440'
+  # PROD_PHONE_NUMBER = '447507331440' - taken from DB now.
   PROD_API_KEY = 'b5c09331'
   PROD_API_SECRET = '4cd27bd4'
 
@@ -93,7 +93,7 @@ class SendController < ApplicationController
     #   account_sid = TEST_ACCOUNT_SID
     #   auth_token = TEST_AUTH_TOKEN
     # else
-      from_phone_number = PROD_PHONE_NUMBER
+      from_phone_number = User.where(id: current_user[:id]).pluck(:campaign_phone)[0]
       api_key = PROD_API_KEY
       api_secret = PROD_API_SECRET
     # end

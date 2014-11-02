@@ -3,5 +3,10 @@
     <%= f.input :email, placeholder: 'user@domain.com' %>
     <%= f.input :phone, placeholder: '+1 (123) 456-6655'%>
     <%= f.input :password %>
+
+    <% if controller.controller_name == 'users' && controller.action_name == 'edit' %>
+        <%= f.input :campaign_phone %>
+    <% end %>
+
     <%= f.button :submit %>
 <% end %>
