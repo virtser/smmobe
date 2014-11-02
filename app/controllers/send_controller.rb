@@ -2,7 +2,7 @@ class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   # Nexmo credentials
-  PROD_PHONE_NUMBER = '972526549530'
+  PROD_PHONE_NUMBER = '441143597290'
   PROD_API_KEY = 'b5c09331'
   PROD_API_SECRET = '4cd27bd4'
 
