@@ -8,7 +8,7 @@ class SendController < ApplicationController
 
   # GET /send/1
   def show
-     @message_logs = MessageSend.all.where(campaign_id: params[:id])
+     @message_logs = MessageSend.all.where(campaign_id: params[:id]).order!(created_at: :desc)
   end
 
   # POST /send
