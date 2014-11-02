@@ -2,7 +2,7 @@ class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   # Nexmo credentials
-  PROD_PHONE_NUMBER = '46737494173'
+  PROD_PHONE_NUMBER = '12267984501'
   PROD_API_KEY = 'b5c09331'
   PROD_API_SECRET = '4cd27bd4'
 
@@ -107,7 +107,9 @@ class SendController < ApplicationController
       messageId = nexmo.send_message(
                                             from: from_phone_number,
                                             to: to_phone_number,
-                                            text: message_text
+                                            text: message_text,
+                                            :'client-ref' => params[:campaign_id]
+
       )
 
 
