@@ -15,7 +15,7 @@ class ReceiveController < ApplicationController
       to_phone_number = params[:to]
       body = params[:text]
       status = params[:type]
-      campaign_id = params[:unique_identifier]
+      campaign_id = params[:'client-ref']
 
       save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id)
 
