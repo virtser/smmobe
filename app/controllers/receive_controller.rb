@@ -4,7 +4,7 @@ class ReceiveController < ApplicationController
 
   # GET /receive/1
   def show
-     @message_logs = MessageReceive.all.order!(created_at: :desc)  # .where(campaign_id: params[:id])
+     @message_logs = MessageReceive.all.order!(created_at: :desc).where(user_id: current_user[:id])  # .where(campaign_id: params[:id])
   end
 
   # GET /receive
