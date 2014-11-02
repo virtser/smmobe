@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20141210151100) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "campaign_id"
+    t.integer  "user_id"
   end
 
   create_table "messages", force: true do |t|

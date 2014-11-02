@@ -133,7 +133,8 @@ class SendController < ApplicationController
         to_phone: to_phone,
         body: body,
         status: status,
-        campaign_id: params[:campaign_id]
+        campaign_id: params[:campaign_id],
+        user_id: current_user[:id]
      )
      @sent_message_log.save
   end

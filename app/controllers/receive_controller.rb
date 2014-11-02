@@ -16,7 +16,7 @@ class ReceiveController < ApplicationController
       body = params[:text]
       body = params[:text]
       status = params[:type]
-      campaign_id = params[:'client-ref'] # not really in use
+      campaign_id = params[:'client-ref'] # not really in use at the moment
       user_id = User.where(campaign_phone: to_phone_number).limit(1).pluck(:id)[0]
       save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
