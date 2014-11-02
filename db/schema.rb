@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20141210151100) do
     t.string   "phone"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.string   "campaign_phone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
