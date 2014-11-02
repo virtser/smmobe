@@ -108,7 +108,7 @@ class SendController < ApplicationController
                                             from: from_phone_number,
                                             to: to_phone_number,
                                             text: message_text,
-                                            type: 'unicode',
+                                            type: message_text.multibyte? ? 'unicode' : 'text',
                                             :'client-ref' => params[:campaign_id]
 
       )

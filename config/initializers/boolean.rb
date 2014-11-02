@@ -4,8 +4,12 @@ class String
     return false if self == false || self.blank? || self =~ (/^(false|f|no|n|0)$/i)
     raise ArgumentError.new("invalid value for Boolean: \"#{self}\"")
   end
-end
 
+  # detect if string is in unicode or not
+  def multibyte?
+    chars.count < bytes.count
+  end
+end
 class Fixnum
   def to_bool
     return true if self == 1
