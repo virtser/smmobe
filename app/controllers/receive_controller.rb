@@ -15,16 +15,16 @@ class ReceiveController < ApplicationController
       to_phone_number = params[:to]
       body = params[:text]
       status = params[:type]
-      campaign_id = params[:'client-ref']
-
-      save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id)
+      campaign_id = params[:'client-ref'] # not really in use
+      user_id = from_phone_number = User.where(campaign_phone: from_phone_number).limit(1).pluck(:id)[0]
+      save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
       # TODO: reply if body contains defined variable to reply.
     end
     render :nothing => true # this will supply the needed http 200 OK
   end
 
-  def save_received_message_log(message_sid, from_phone, to_phone, body, status, campaign_id)
+  def save_received_message_log(message_sid, from_phone, to_phone, body, status, campaign_id, user_id)
      @sent_message_log = MessageReceive.new(
         sid: message_sid,
         date: DateTime.now,
@@ -32,7 +32,8 @@ class ReceiveController < ApplicationController
         to_phone: to_phone,
         body: body,
         status: status,
-        campaign_id: campaign_id
+        campaign_id: campaign_id,
+        user_id: user_id
      )
      @sent_message_log.save
    end
