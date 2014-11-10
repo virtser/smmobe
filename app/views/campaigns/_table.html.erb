@@ -5,7 +5,7 @@
     <!-- <th>Description</th> -->
     <th>Type</th>
     <th>Status</th>
-    <th>Date</th>
+    <th>Created</th>
     <th></th>
   </tr>
   </thead>
@@ -25,7 +25,7 @@
               <%= link_to 'Edit', edit_campaign_path(campaign), class: 'btn' %>
               <%= link_to 'Delete', campaign, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
             </td>
-        <% elsif campaign.campaign_status.name == "Finished" &&
+        <% elsif campaign.campaign_status.name != "Pending" &&
                 current_page?(:controller => 'campaigns', :action => 'index')%>
             <td style=" text-align: right;">
               <%= link_to 'Send Log', send_path(campaign), class: 'btn' %>

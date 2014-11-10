@@ -2,7 +2,6 @@ class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   # Nexmo credentials
-  # PROD_PHONE_NUMBER = '447507331440' - taken from DB now.
   PROD_API_KEY = 'b5c09331'
   PROD_API_SECRET = '4cd27bd4'
 
@@ -18,27 +17,25 @@ class SendController < ApplicationController
 
     if !campaign_id.nil?
 
-      # Update campaign status to "Running"
-      unless test
-        update_campaign_status(campaign_id, "Running")
-      end
-
       # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. 
       @messages = Message.where(campaign_id: campaign_id)
       @campaign_customers = Customer.where(campaign_id: campaign_id)
+      @from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:phone)[0]
 
-      @progress = send_smm(@messages, @campaign_customers, test)
+      @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test)
 
-      # Update campaign status to "Finished"
+      # Update campaign status to "Running"
       unless test
-        update_campaign_status(campaign_id, "Finished")
+        update_campaign_status(campaign_id, @from_phone_number, "Running")
       end
 
     end
   end
 
-  def update_campaign_status(campaign_id, campaign_status)
+  def update_campaign_status(campaign_id, from_phone_number, campaign_status)
     campaign = Campaign.find(campaign_id)
+
+    campaign.sent_from_phone = from_phone_number
 
     if campaign.campaign_status == CampaignStatus.find_by_name("Pending")
       campaign.campaign_status = CampaignStatus.find_by_name(campaign_status)
@@ -49,14 +46,14 @@ class SendController < ApplicationController
     campaign.save
   end
 
-  def send_smm(messages, campaign_customers, test)
+  def send_smm(messages, campaign_customers, from_phone_number, test)
     progress = Array.new
 
     messages.each do |message|
       campaign_customers.each do |customer|
         message_text = replace_params(message, customer)
         to_phone = clean_phone(customer.phone)
-        status_msg = dispatch_smm(to_phone, message_text, test)
+        status_msg = dispatch_smm(from_phone_number, to_phone, message_text, test)
         progress.push(status_msg)
       end
     end
@@ -85,29 +82,11 @@ class SendController < ApplicationController
   end
 
   # Dispatch SMS using 3rd party provider.
-  def dispatch_smm(to_phone_number, message_text, test)
-
-    # put your own credentials here
-    # if test
-    #   from_phone_number = TEST_PHONE_NUMBER
-    #   account_sid = TEST_ACCOUNT_SID
-    #   auth_token = TEST_AUTH_TOKEN
-    # else
-
-    if current_user[:istest]
-      from_phone_number = current_user[:phone]
-    else
-      from_phone_number = Phone.where(campaign_id: params[:campaign_id], user_id: current_user[:id]).limit(1).pluck(:phone)[0]
-    end
-
-
-      api_key = PROD_API_KEY
-      api_secret = PROD_API_SECRET
-    # end
+  def dispatch_smm(from_phone_number, to_phone_number, message_text, test)
 
     begin
       # set up a client to talk to the Nexmo REST API
-      nexmo = Nexmo::Client.new(key: api_key, secret: api_secret)
+      nexmo = Nexmo::Client.new(key: PROD_API_KEY, secret: PROD_API_SECRET)
 
 
       # TODO: add status callback to get message delivery status and errors
