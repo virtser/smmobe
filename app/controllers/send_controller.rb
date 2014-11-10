@@ -93,7 +93,7 @@ class SendController < ApplicationController
     #   account_sid = TEST_ACCOUNT_SID
     #   auth_token = TEST_AUTH_TOKEN
     # else
-      from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:campaign_phone)[0]
+      from_phone_number = Phone.where(campaign_id: params[:campaign_id], user_id: current_user[:id]).limit(1).pluck(:phone)[0]
       api_key = PROD_API_KEY
       api_secret = PROD_API_SECRET
     # end
@@ -104,19 +104,18 @@ class SendController < ApplicationController
 
 
       # TODO: add status callback to get message delivery status and errors
-      messageId = nexmo.send_message(
-                                            from: from_phone_number,
-                                            to: to_phone_number,
-                                            text: message_text,
-                                            type: message_text.multibyte? ? 'unicode' : 'text',
-                                            :'client-ref' => params[:campaign_id]
+      unless test
+        messageId = nexmo.send_message(
+                                              from: from_phone_number,
+                                              to: to_phone_number,
+                                              text: message_text,
+                                              type: message_text.multibyte? ? 'unicode' : 'text',
+                                              :'client-ref' => params[:campaign_id]
 
-      )
+        )
 
-
-      # if !test
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
-      # end
+      end
 
       return "Successfully sent message To " + to_phone_number + "."
 

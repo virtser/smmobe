@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   match '/receive',    to: 'receive#index',     via: 'get'
   match '/receive:id', to: 'receive#show',      via: 'get'
 
+  resources :phones
+
   resources :campaigns
 
   resources :messages
