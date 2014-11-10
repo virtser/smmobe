@@ -93,7 +93,14 @@ class SendController < ApplicationController
     #   account_sid = TEST_ACCOUNT_SID
     #   auth_token = TEST_AUTH_TOKEN
     # else
+
+    if current_user[:istest]
+      from_phone_number = current_user[:phone]
+    else
       from_phone_number = Phone.where(campaign_id: params[:campaign_id], user_id: current_user[:id]).limit(1).pluck(:phone)[0]
+    end
+
+
       api_key = PROD_API_KEY
       api_secret = PROD_API_SECRET
     # end
