@@ -38,11 +38,18 @@ if CampaignStatus.find_by(name: 'Finished').nil?
   CampaignStatus.create(name: 'Finished')
 end
 
-# One user record for tests duplicate user email validation
-# if User.find_by_email('tester@example.com').nil?
-#  User.create(name: "Test User", email: "tester@example.com",
-#              phone: "012-3456789", password: "123456")
-# end
+# Default user types
+if UserType.find_by(name: 'Admin').nil?
+  UserType.create(name: 'Admin')
+end
+
+if UserType.find_by(name: 'Free').nil?
+  UserType.create(name: 'Free')
+end
+
+if UserType.find_by(name: 'Premium').nil?
+  UserType.create(name: 'Premium')
+end
 
 
 
