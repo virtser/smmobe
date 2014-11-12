@@ -19,8 +19,8 @@
               <input type="hidden" name="campaign_id" value="<%= params[:id] %>" />
               <input class="btn btn-next" name="commit" type="submit" value="SEND">
             </div>
-            <div>
-              <input type="checkbox" name="test" id="test" value="1" checked onclick="$(this).val(this.checked ? 1 : 0)"/> Simulate sending
+            <div style="display:none;">
+              <input type="checkbox" name="test" id="test" value="0" checked onclick="$(this).val(this.checked ? 1 : 0)"/> Simulate sending
             </div>
           </form>
       <% end %>
