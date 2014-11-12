@@ -17,7 +17,7 @@ class ReceiveController < ApplicationController
       body = params[:text]
       status = params[:type]
       user_id = User.where(phone: to_phone_number).limit(1).pluck(:id)[0]
-      campaign_id = Campaign.where("sent_from_phone = '" + to_phone_number + "' AND updated_at + interval '2' day  > now()").limit(1).pluck(:id)[0]
+      campaign_id = Campaign.where("sent_from_phone = '" + to_phone_number + "' AND updated_at + interval '3' day  > now()").limit(1).pluck(:id)[0]
       save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
       # TODO: reply if body contains defined variable to reply.
