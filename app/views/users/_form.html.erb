@@ -4,5 +4,9 @@
     <%= f.input :phone, placeholder: '+1 (123) 456-6655'%>
     <%= f.input :password %>
 
+	<% if controller.controller_name == 'users' && controller.action_name == 'edit' %>
+		<%= f.input :user_type_id %>	
+    <% end %>
+    
     <%= f.button :submit %>
 <% end %>

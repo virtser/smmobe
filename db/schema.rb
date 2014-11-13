@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20141210151109) do
     t.string   "phone"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "user_type_id",    default: 1, null: false
+    t.integer  "user_type_id",    default: 2, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
