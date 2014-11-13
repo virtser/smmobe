@@ -20,7 +20,7 @@ class ReceiveController < ApplicationController
 
       # possible campaign IDs to assign the message to
       campaign_id = Campaign.where("user_id = (?) AND updated_at + interval '3' day  > now()", user_id)
-                             .joins("LEFT OUTER JOIN customers ON customers.phone = (?)", from_phone_number).limit(1).pluck("campaign.id")[0]
+                             .joins("LEFT OUTER JOIN customers ON customers.phone = '" + from_phone_number + "'").limit(1).pluck("campaign.id")[0]
 
       save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
