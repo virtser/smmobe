@@ -81,7 +81,7 @@ class SendController < ApplicationController
     messages.each do |message|
       campaign_customers.each do |customer|
         message_text = replace_params(message, customer)
-        status_msg = dispatch_smm(from_phone_number, to_phone, message_text, test)
+        status_msg = dispatch_smm(from_phone_number, customer.phone, message_text, test)
         progress.push(status_msg)
       end
     end
