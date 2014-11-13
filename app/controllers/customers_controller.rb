@@ -49,6 +49,7 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
+    @customer.phone = clean_phone(@customer.phone)
 
     respond_to do |format|
       if @customer.save
@@ -103,6 +104,15 @@ class CustomersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_customer
     @customer = Customer.find(params[:id])
+  end
+
+  def clean_phone(phone_number)
+    phone_number = phone_number.to_s.tr("+", "")
+    phone_number = phone_number.to_s.tr("-", "")
+    phone_number = phone_number.to_s.tr("(", "")
+    phone_number = phone_number.to_s.tr(")", "")
+    phone_number = phone_number.to_s.tr(" ", "")
+    return phone_number
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

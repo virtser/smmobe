@@ -34,6 +34,7 @@ class ImportController < ApplicationController
       CSV.foreach(file.path, headers: true) do |row|
         single_customer_data = row.to_hash
         single_customer_data[:campaign_id] = campaign_id
+        single_customer_data['phone'] = clean_phone(single_customer_data['phone'])
 
         if !duplicate(single_customer_data) # Check if number wasn't already imported
           Customer.create!(single_customer_data)
@@ -57,6 +58,15 @@ class ImportController < ApplicationController
 
     return dup
   end
+
+  def clean_phone(phone_number)
+    phone_number = phone_number.to_s.tr("+", "")
+    phone_number = phone_number.to_s.tr("-", "")
+    phone_number = phone_number.to_s.tr("(", "")
+    phone_number = phone_number.to_s.tr(")", "")
+    phone_number = phone_number.to_s.tr(" ", "")
+    return phone_number
+  end  
 
   private
     # initiate @phones globally on import to check for duplicates

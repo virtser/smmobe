@@ -17,57 +17,76 @@ class SendController < ApplicationController
 
     if !campaign_id.nil?
 
-      # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. 
-      @messages = Message.where(campaign_id: campaign_id)
       @campaign_customers = Customer.where(campaign_id: campaign_id)
-      @from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:phone)[0]
+      @messages = Message.where(campaign_id: campaign_id)
 
-      @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test)
+      # Don't allow sending campaign if another one is running with the same phone number, unless current user is Admin
+      unless have_same_number(campaign_id, @campaign_customers)
 
-      # Update campaign status to "Running"
-      unless test
-        update_campaign_status(campaign_id, @from_phone_number, "Running")
+        @from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:phone)[0]
+
+        @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test)
+
+        # Update campaign status to "Running"
+        unless test
+          update_campaign_status(campaign_id, 2)
+        end
+
+      else
+        @progress = Array.new
+        @progress.push("This campaign including phone number which is already exists in another running campaign. Sending stopped!")
       end
-
     end
   end
 
-  def update_campaign_status(campaign_id, from_phone_number, campaign_status)
-    campaign = Campaign.find(campaign_id)
+  def have_same_number(campaign_id, campaign_customers)
 
-    campaign.sent_from_phone = from_phone_number
-
-    if campaign.campaign_status == CampaignStatus.find_by_name("Pending")
-      campaign.campaign_status = CampaignStatus.find_by_name(campaign_status)
-    elsif campaign.campaign_status == CampaignStatus.find_by_name("Running")
-      campaign.campaign_status = CampaignStatus.find_by_name(campaign_status)
+    # allow sending always for Admins
+    if current_user[:user_type_id] == 1
+      return false
     end
 
+    # get all running campaigns, excluding current one
+    all_running_campaigns = Campaign.where("id != " + campaign_id + " AND campaign_status_id = 2 AND updated_at + interval '3' day  > now()").pluck(:id)
+
+    if all_running_campaigns.length == 0
+      return false
+    else
+      all_running_campaigns_customers = Customer.where("campaign_id IN (?)", all_running_campaigns)
+
+      all_running_campaigns_customers.each do |all_running_customer|
+        campaign_customers.each do |current_customer|
+          if current_customer.phone == all_running_customer.phone
+            return true
+          end
+        end 
+      end
+    end
+
+    return false
+
+  end
+
+  def update_campaign_status(campaign_id, campaign_status)
+    campaign = Campaign.find(campaign_id)
+    campaign.campaign_status_id = campaign_status
     campaign.save
   end
 
   def send_smm(messages, campaign_customers, from_phone_number, test)
     progress = Array.new
 
+    # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. 
+
     messages.each do |message|
       campaign_customers.each do |customer|
         message_text = replace_params(message, customer)
-        to_phone = clean_phone(customer.phone)
         status_msg = dispatch_smm(from_phone_number, to_phone, message_text, test)
         progress.push(status_msg)
       end
     end
 
     return progress
-  end
-
-  def clean_phone(phone_number)
-    phone_number = phone_number.to_s.tr("+", "")
-    phone_number = phone_number.to_s.tr("-", "")
-    phone_number = phone_number.to_s.tr("(", "")
-    phone_number = phone_number.to_s.tr(")", "")
-    phone_number = phone_number.to_s.tr(" ", "")
-    return phone_number
   end
 
   def replace_params(message, customer)
