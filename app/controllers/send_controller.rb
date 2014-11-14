@@ -41,13 +41,9 @@ class SendController < ApplicationController
 
   def have_same_number(campaign_id, campaign_customers)
 
-    # allow sending always for Admins
-    if current_user[:user_type_id] == 1
-      return false
-    end
-
     # get all running campaigns, excluding current one
-    all_running_campaigns = Campaign.where("id != " + campaign_id + " AND campaign_status_id = 2 AND updated_at + interval '3' day  > now()").pluck(:id)
+    all_running_campaigns = Campaign.where("campaign_status_id = 2 AND id != (?) AND updated_at + interval '?' day  > now()", 
+                                          campaign_id, Generic.get_campaign_run_interval).pluck(:id)
 
     if all_running_campaigns.length == 0
       return false
