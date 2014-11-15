@@ -9,6 +9,9 @@ class ReceiveController < ApplicationController
 
   # GET /receive
   def index
+    # write received request to log
+    puts params.to_s
+
     if(params[:messageId].present?)
       message_sid = params[:messageId]
       from_phone_number = params[:msisdn]
@@ -27,6 +30,7 @@ class ReceiveController < ApplicationController
 
       # TODO: reply if body contains defined variable to reply.
     end
+    
     render :nothing => true # this will supply the needed http 200 OK
   end
 
