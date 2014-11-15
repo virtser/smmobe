@@ -10,6 +10,8 @@ task :mark_finished_campaigns => :environment do
 			campaign.save
 			puts "Marked as finished campaign #" + campaign.id.to_s
 		end
+	else
+		puts "No campaigns to mark as finished."
   	end
 
   puts "Finished marking finished campaigns..."
