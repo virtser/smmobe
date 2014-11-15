@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210151109) do
+ActiveRecord::Schema.define(version: 20141210151110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141210151109) do
     t.integer  "campaign_type_id",   default: 1, null: false
     t.integer  "campaign_status_id", default: 1, null: false
     t.integer  "user_id",                        null: false
+    t.boolean  "isdisabled", default: false
   end
 
   create_table "customers", force: true do |t|
@@ -95,7 +96,7 @@ ActiveRecord::Schema.define(version: 20141210151109) do
     t.string   "phone"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "user_type_id",    default: 2, null: false
+    t.integer  "user_type_id",    default: 1, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

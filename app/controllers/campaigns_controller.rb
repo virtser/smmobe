@@ -5,7 +5,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     flash[:message_text] = nil
-    @campaigns = Campaign.where(user_id: current_user[:id]).order!('campaign_status_id', created_at: :desc)
+    @campaigns = Campaign.where(user_id: current_user[:id], isdisabled: false).order!('campaign_status_id', created_at: :desc)
   end
 
   # GET /campaigns/1
@@ -69,20 +69,23 @@ class CampaignsController < ApplicationController
   # DELETE /campaigns/1
   # DELETE /campaigns/1.json
   def destroy
-    @messages = Message.where(campaign_id: @campaign.id)
-    @messages.each do |m|
-      m.destroy
-    end
+    # @messages = Message.where(campaign_id: @campaign.id)
+    # @messages.each do |m|
+    #   m.destroy
+    # end
 
-    @customers = Customer.where(campaign_id: @campaign.id)
-    @customers.each do |c|
-      c.destroy
-    end
+    # @customers = Customer.where(campaign_id: @campaign.id)
+    # @customers.each do |c|
+    #   c.destroy
+    # end
 
-    @campaign.destroy
+    @campaign.isdisabled = true
+    @campaign.save
+
+    #@campaign.destroy
     respond_to do |format|
       format.html {
-        redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.'
+        redirect_to campaigns_url, notice: 'Campaign was successfully disabled.'
       }
       format.json { head :no_content }
     end
