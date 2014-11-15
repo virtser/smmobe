@@ -42,7 +42,7 @@ class SendController < ApplicationController
   def have_same_number(campaign_id, campaign_customers)
 
     # get all running campaigns, excluding current one
-    all_running_campaigns = Campaign.where("isdisabled = false AND campaign_status_id = 2 AND id != (?) AND updated_at + interval '?' day  > now()", 
+    all_running_campaigns = Campaign.where("isdisabled = false AND campaign_status_id = 2 AND id != (?)", 
                                           campaign_id, Generic.get_campaign_run_interval).pluck(:id)
 
     if all_running_campaigns.length == 0
