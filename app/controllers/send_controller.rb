@@ -20,6 +20,13 @@ class SendController < ApplicationController
       @campaign_customers = Customer.where(campaign_id: campaign_id)
       @messages = Message.where(campaign_id: campaign_id)
 
+      # don't allow sending if zero customers where added
+      if @campaign_customers.length == 0 
+        @progress = Array.new
+        @progress.push("Hey, you forgot to add some customers phone numbers to send this campaign! Edit the message and some numbers.")        
+        return 
+      end
+
       # Don't allow sending campaign if another one is running with the same phone number, unless current user is Admin
       unless have_same_number(campaign_id, @campaign_customers)
 

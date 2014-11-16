@@ -15,13 +15,14 @@ class ImportController < ApplicationController
   def create
     if !flash[:campaign_id].nil?
       file = params[:file]
-      @status = process_csv(file, params[:campaign_id])
+      @status = Array.new
+      @status = process_csv(file, params[:campaign_id], @status)
 
-      if @status.nil?
-        flash[:notice] = "Imported successfully!"
-      else
-        flash[:notice] = @status
+      if @status.length == 0
+        @status.push("Imported successfully!")
       end
+
+      flash[:notice] = @status
 
       flash[:campaign_id] = params[:campaign_id]
       flash[:message_text] = flash[:message_text]
@@ -30,20 +31,24 @@ class ImportController < ApplicationController
     end
   end
 
-  def process_csv(file, campaign_id)
-    begin
-      CSV.foreach(file.path, headers: true) do |row|
-        single_customer_data = row.to_hash
-        single_customer_data[:campaign_id] = campaign_id
-        single_customer_data['phone'] = Generic.clean_phone(single_customer_data['phone'])
+  def process_csv(file, campaign_id, status)
+      begin
+        CSV.foreach(file.path, headers: true) do |row|
+          single_customer_data = row.to_hash
+          single_customer_data[:campaign_id] = campaign_id
+          single_customer_data['phone'] = Generic.clean_phone(single_customer_data['phone'])
+          single_customer_data['phone'] = Generic.transform_phone(single_customer_data['phone'])
 
-        if !duplicate(single_customer_data) # Check if number wasn't already imported
-          Customer.create!(single_customer_data)
+          if !duplicate(single_customer_data) # Check if number wasn't already imported
+            Customer.create!(single_customer_data)
+          else
+            status.push("Duplicate customer record with phone number " + single_customer_data['phone'] + " was detected and ignored.")
+          end
         end
+      rescue Exception => e
+         status.push(e.message)       
       end
-    rescue Exception => error_msg
-      return error_msg
-    end
+    return status
   end
 
   def duplicate(single_customer_data)

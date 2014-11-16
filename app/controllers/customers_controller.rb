@@ -51,7 +51,8 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.phone = Generic.clean_phone(@customer.phone)
-
+    @customer.phone = Generic.transform_phone(@customer.phone)
+    
     respond_to do |format|
       if @customer.save
         format.html  {
