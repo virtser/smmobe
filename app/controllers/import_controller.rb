@@ -35,14 +35,19 @@ class ImportController < ApplicationController
       begin
         CSV.foreach(file.path, headers: true) do |row|
           single_customer_data = row.to_hash
-          single_customer_data[:campaign_id] = campaign_id
+          single_customer_data['campaign_id'] = campaign_id
           single_customer_data['phone'] = Generic.clean_phone(single_customer_data['phone'])
           single_customer_data['phone'] = Generic.transform_phone(single_customer_data['phone'])
+          puts single_customer_data
 
           if !duplicate(single_customer_data) # Check if number wasn't already imported
-            Customer.create!(single_customer_data)
+            begin
+              Customer.create!(single_customer_data)
+            rescue Exception => e
+              status.push(e.message + " - " + single_customer_data['phone'])       
+            end
           else
-            status.push("Duplicate customer record with phone number " + single_customer_data['phone'] + " was detected and ignored.")
+            status.push("Duplicate customer record was detected and will be ignored - " + single_customer_data['phone'])
           end
         end
       rescue Exception => e
