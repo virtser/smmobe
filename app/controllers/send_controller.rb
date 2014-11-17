@@ -141,7 +141,7 @@ class SendController < ApplicationController
       return "Successfully sent message To " + to_phone_number + "."
 
     rescue => err
-      return err.message
+      return err.message + ". Wrong phone number: " + to_phone_number
     end
   end
 

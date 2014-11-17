@@ -34,7 +34,7 @@ class CampaignsController < ApplicationController
 
         if Rails.env.production?
             tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
-            tracker.track(@campaign.user_id, 'Campaign created')
+            tracker.track(@campaign.user_id, 'Campaign Created')
         end    
 
         format.html {
