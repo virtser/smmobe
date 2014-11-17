@@ -39,7 +39,7 @@ class SendController < ApplicationController
           update_campaign_status(campaign_id, 2)
         end
 
-        puts "Sent message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
+        puts "Campaing sent - message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
 
       else
         @progress = Array.new
@@ -123,7 +123,7 @@ class SendController < ApplicationController
                                               :'client-ref' => params[:campaign_id]
 
         )
-
+        puts "New SMS sent to: " + to_phone_number.to_s
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
       end
 
