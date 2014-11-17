@@ -127,8 +127,8 @@ class SendController < ApplicationController
 
       return "Successfully sent message To " + to_phone_number + "."
 
-    rescue Exception => error_msg
-      return error_msg
+    rescue => err
+      return err.message
     end
   end
 

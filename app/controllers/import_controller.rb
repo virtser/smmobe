@@ -43,15 +43,15 @@ class ImportController < ApplicationController
           if !duplicate(single_customer_data) # Check if number wasn't already imported
             begin
               Customer.create!(single_customer_data)
-            rescue Exception => e
-              status.push(e.message + " - " + single_customer_data['phone'])       
+            rescue => err
+              status.push(err.message + " - " + single_customer_data['phone'])       
             end
           else
             status.push("Duplicate customer record was detected and will be ignored - " + single_customer_data['phone'])
           end
         end
-      rescue Exception => e
-         status.push(e.message)       
+      rescue => err
+         status.push(err.message)       
       end
     return status
   end
