@@ -1,7 +1,7 @@
 <%= simple_form_for(@user, html: {class: 'form-inline' }) do |f|%>
     <%= f.input :name %>
-    <%= f.input :email, placeholder: 'user@domain.com' %>
-    <%= f.input :phone, placeholder: '+1 (123) 456-6655'%>
+    <%= f.input :email %>
+    <%= f.input :phone %>
     <%= f.input :password %>
 
 	<% if controller.controller_name == 'users' && controller.action_name == 'edit' %>

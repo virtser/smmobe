@@ -41,7 +41,8 @@ class SendController < ApplicationController
 
       else
         @progress = Array.new
-        @progress.push("This campaign including phone number which is already exists in another running campaign. Sending stopped!")
+        @progress.push("Sending was aborted because this campaign include phone number which is already exists in another running campaign. ")
+        @progress.push("Please wait until the other campaing is finished.")
       end
     end
   end
