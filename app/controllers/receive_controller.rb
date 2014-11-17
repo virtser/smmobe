@@ -10,7 +10,7 @@ class ReceiveController < ApplicationController
   # GET /receive
   def index
     # write received request to log
-    puts "Received SMS:" + params.to_s
+    puts "New SMS received: " + params.to_s
 
     if(params[:messageId].present?)
       message_sid = params[:messageId]

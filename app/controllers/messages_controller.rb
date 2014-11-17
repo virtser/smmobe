@@ -33,6 +33,8 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        puts "New message created: #{@message.inspect}"        
+
         format.html {
           flash[:campaign_id] = @message.campaign_id
           flash[:message_text] = @message.text
@@ -56,6 +58,8 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
+        puts "Message updated: #{@message.inspect}"        
+
         format.html {
           #redirect_to @message, notice: 'Message was successfully updated.'
           #flash[:campaign_id] = @customer.campaign_id

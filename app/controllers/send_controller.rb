@@ -39,6 +39,8 @@ class SendController < ApplicationController
           update_campaign_status(campaign_id, 2)
         end
 
+        puts "Sent message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
+
       else
         @progress = Array.new
         @progress.push("Sending was aborted because this campaign include phone number which is already exists in another running campaign. ")

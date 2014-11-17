@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        puts "New user registered: #{@user.inspect}"
         sign_in @user
         format.html {
           #redirect_to @user, notice: 'User was successfully created.'

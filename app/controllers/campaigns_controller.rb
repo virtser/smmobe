@@ -30,6 +30,8 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if @campaign.save
+        puts "New campaign created: #{@campaign.inspect}"       
+
         format.html {
           flash[:campaign_id] = @campaign.id
           redirect_to :controller => 'messages', :action => 'new'
@@ -47,6 +49,8 @@ class CampaignsController < ApplicationController
   def update
     respond_to do |format|
       if @campaign.update(campaign_params)
+        puts "Campaign updateded: #{@campaign.inspect}"        
+
         format.html {
           flash[:campaign_id] = @campaign.id
           @message_id = Message.find_by_campaign_id(@campaign.id)
@@ -78,6 +82,7 @@ class CampaignsController < ApplicationController
     # @customers.each do |c|
     #   c.destroy
     # end
+    puts "Campaign deleted: #{@campaign.inspect}"        
 
     @campaign.isdisabled = true
     @campaign.save
