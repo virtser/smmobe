@@ -30,7 +30,7 @@
             <%= link_to 'Receive Log', receive_path(campaign), class: 'btn' %>
         <% end %>
 
-        <% if current_page?(:controller => 'campaigns', :action => 'index')%>
+        <% if current_page?(:controller => 'campaigns', :action => 'index') && current_user[:user_type_id] == Generic.UserTypeAdmin %>
             <%= link_to 'Delete', campaign, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
         <% end %>
         </td>
