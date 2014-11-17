@@ -26,4 +26,7 @@ class Generic
 		return 3  # 3 days
 	end
 
+	def self.get_mixpanel_key
+		return "648a04e0a4fa0f365f862e5351746c8c"
+	end
 end

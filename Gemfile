@@ -43,6 +43,7 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'nexmo', '~> 2.0.0'
 
 gem 'newrelic_rpm'
+gem 'mixpanel-ruby'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do

@@ -32,6 +32,11 @@ class CampaignsController < ApplicationController
       if @campaign.save
         puts "New campaign created: #{@campaign.inspect}"       
 
+        if Rails.env.production?
+            tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+            tracker.track(@campaign.user_id, 'Campaign created')
+        end    
+
         format.html {
           flash[:campaign_id] = @campaign.id
           redirect_to :controller => 'messages', :action => 'new'

@@ -31,6 +31,18 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         puts "New user registered: #{@user.inspect}"
+        
+        if Rails.env.production?
+            tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+            tracker.track(@user.id, 'User Registered')
+
+            tracker.people.set(@user.id, {
+                '$name'             => @user.name,
+                '$email'            => @user.email,
+                '$phone'            => @user.phone
+            })
+        end
+        
         sign_in @user
         format.html {
           #redirect_to @user, notice: 'User was successfully created.'

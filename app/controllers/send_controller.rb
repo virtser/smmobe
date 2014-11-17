@@ -41,6 +41,11 @@ class SendController < ApplicationController
 
         puts "Campaing sent - message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
 
+        if Rails.env.production?
+            tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+            tracker.track(current_user[:id], 'Campaign Sent')
+        end    
+
       else
         @progress = Array.new
         @progress.push("Sending was aborted because this campaign include phone number which is already exists in another running campaign. ")
@@ -124,6 +129,12 @@ class SendController < ApplicationController
 
         )
         puts "New SMS sent to: " + to_phone_number.to_s
+
+        if Rails.env.production?
+            tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+            tracker.track(current_user[:id], 'SMS Sent')
+        end    
+
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
       end
 

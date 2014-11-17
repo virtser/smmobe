@@ -6,6 +6,11 @@ module SessionsHelper
     user.update_attribute(:remember_token, User.digest(remember_token))
     self.current_user = user
     puts "User logged in: #{user.inspect}"    
+
+    if Rails.env.production?
+        tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+        tracker.track(user.id, 'User LoggedIn')
+    end    
   end
 
   def signed_in?

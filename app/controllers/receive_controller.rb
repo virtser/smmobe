@@ -21,6 +21,11 @@ class ReceiveController < ApplicationController
       status = params[:type]
       user_id = User.where(phone: to_phone_number).limit(1).pluck(:id)[0]
 
+      if Rails.env.production?
+          tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+          tracker.track(user_id, 'SMS Received')
+      end    
+
       # possible campaign IDs to assign the message to
       campaign_id = Campaign.where("isdisabled = false AND user_id = (?) AND campaign_status_id = 2", user_id)
                              .joins("JOIN customers ON campaigns.id = customers.campaign_id AND customers.phone = '" + from_phone_number + "'")
