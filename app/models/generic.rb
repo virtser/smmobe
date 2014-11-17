@@ -1,6 +1,26 @@
 # Gneneric static methos class to be re-used all over the application.
 class Generic 
 
+	def self.CampaignStatusPending
+		return 1
+	end
+	def self.CampaignStatusRunning
+		return 2
+	end
+	def self.CampaignStatusFinished
+		return 3
+	end
+
+	def self.UserTypeAdmin
+		return 1
+	end
+	def self.UserTypeFree
+		return 2
+	end
+	def self.UserTypePremium
+		return 3
+	end
+
 	def self.clean_phone(phone_number)
 		phone_number = phone_number.to_s.tr("+", "")
 		phone_number = phone_number.to_s.tr("-", "")

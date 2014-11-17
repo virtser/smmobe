@@ -9,46 +9,46 @@
 # Default campaign types
 
 if CampaignType.find_by(name: 'Marketing').nil?
-  CampaignType.create(name: 'Marketing')
+  CampaignType.create(id: 1, name: 'Marketing')
 end
 
 if CampaignType.find_by(name: 'Events').nil?
-  CampaignType.create(name: 'Events')
+  CampaignType.create(id: 2, name: 'Events')
 end
 
 if CampaignType.find_by(name: 'Surveys').nil?
-  CampaignType.create(name: 'Surveys')
+  CampaignType.create(id: 3, name: 'Surveys')
 end
 
 if CampaignType.find_by(name: 'Scheduling').nil?
-  CampaignType.create(name: 'Scheduling')
+  CampaignType.create(id: 4, name: 'Scheduling')
 end
 
 
 # Default campaign statuses
 if CampaignStatus.find_by(name: 'Pending').nil?
-  CampaignStatus.create(name: 'Pending')
+  CampaignStatus.create(id: 1, name: 'Pending')
 end
 
 if CampaignStatus.find_by(name: 'Running').nil?
-  CampaignStatus.create(name: 'Running')
+  CampaignStatus.create(id: 2, name: 'Running')
 end
 
 if CampaignStatus.find_by(name: 'Finished').nil?
-  CampaignStatus.create(name: 'Finished')
+  CampaignStatus.create(id: 3, name: 'Finished')
 end
 
 # Default user types
 if UserType.find_by(name: 'Admin').nil?
-  UserType.create(name: 'Admin')
+  UserType.create(id: 1, name: 'Admin')
 end
 
 if UserType.find_by(name: 'Free').nil?
-  UserType.create(name: 'Free')
+  UserType.create(id: 2, name: 'Free')
 end
 
 if UserType.find_by(name: 'Premium').nil?
-  UserType.create(name: 'Premium')
+  UserType.create(id: 3, name: 'Premium')
 end
 
 

@@ -27,7 +27,7 @@ class ReceiveController < ApplicationController
       end    
 
       # possible campaign IDs to assign the message to
-      campaign_id = Campaign.where("isdisabled = false AND user_id = (?) AND campaign_status_id = 2", user_id)
+      campaign_id = Campaign.where("isdisabled = false AND user_id = (?) AND campaign_status_id = ?", user_id, Generic.CampaignStatusRunning)
                              .joins("JOIN customers ON campaigns.id = customers.campaign_id AND customers.phone = '" + from_phone_number + "'")
                              .limit(1).pluck("campaigns.id")[0]
 
