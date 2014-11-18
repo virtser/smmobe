@@ -13,27 +13,31 @@ class ReceiveController < ApplicationController
     puts "New SMS received: " + params.to_s
 
     if(params[:messageId].present?)
-      message_sid = params[:messageId]
-      from_phone_number = params[:msisdn]
-      to_phone_number = params[:to]
-      body = params[:text]
-      body = params[:text]
-      status = params[:type]
-      user_id = User.where(phone: to_phone_number).limit(1).pluck(:id)[0]
+      begin
+        message_sid = params[:messageId]
+        from_phone_number = params[:msisdn]
+        to_phone_number = params[:to]
+        body = params[:text]
+        body = params[:text]
+        status = params[:type]
+        user_id = User.where(phone: to_phone_number).limit(1).pluck(:id)[0]
 
-      if Rails.env.production?
-          tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
-          tracker.track(user_id, 'SMS Received')
-      end    
+        if Rails.env.production?
+            tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
+            tracker.track(user_id, 'SMS Received')
+        end    
 
-      # possible campaign IDs to assign the message to
-      campaign_id = Campaign.where("isdisabled = false AND user_id = (?) AND campaign_status_id = ?", user_id, Generic.CampaignStatusRunning)
-                             .joins("JOIN customers ON campaigns.id = customers.campaign_id AND customers.phone = '" + from_phone_number + "'")
-                             .limit(1).pluck("campaigns.id")[0]
+        # possible campaign IDs to assign the message to
+        campaign_id = Campaign.where("isdisabled = false AND user_id = (?) AND campaign_status_id = ?", user_id, Generic.CampaignStatusRunning)
+                               .joins("JOIN customers ON campaigns.id = customers.campaign_id AND customers.phone = '" + from_phone_number + "'")
+                               .limit(1).pluck("campaigns.id")[0]
 
-      save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
+        save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
-      # TODO: reply if body contains defined variable to reply.
+        # TODO: reply if body contains defined variable to reply.
+      rescue => err
+        puts "Receive SMS failed: #{err.message} - params.to_s"
+      end
     end
 
     render :nothing => true # this will supply the needed http 200 OK

@@ -120,7 +120,6 @@ class SendController < ApplicationController
       # set up a client to talk to the Nexmo REST API
       nexmo = Nexmo::Client.new(key: PROD_API_KEY, secret: PROD_API_SECRET)
 
-
       # TODO: add status callback to get message delivery status and errors
       unless test
         messageId = nexmo.send_message(
@@ -145,6 +144,7 @@ class SendController < ApplicationController
 
     rescue => err
       progress.push(["#{err.message}: #{to_phone_number}", "alert-error"])
+      puts "SMS Sending failed: #{err.message} - #{to_phone_number}"
     end
 
     return progress
