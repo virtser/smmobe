@@ -14,6 +14,7 @@ class SendController < ApplicationController
   def index
     campaign_id = params[:campaign_id]
     test = params[:test].to_s.to_bool
+    @progress = Array.new
 
     if !campaign_id.nil?
 
@@ -22,8 +23,7 @@ class SendController < ApplicationController
 
       # don't allow sending if zero customers where added
       if @campaign_customers.length == 0 
-        @progress = Array.new
-        @progress.push("Hey, you forgot to add some customers phone numbers to send this campaign! Edit the message and some numbers.")        
+        @progress.push(["Hey, you forgot to add some customers phone numbers to send this campaign! Edit the message and add some numbers.", "alert-error"])     
         return 
       end
 
@@ -32,7 +32,7 @@ class SendController < ApplicationController
 
         @from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:phone)[0]
 
-        @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test)
+        @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test, @progress)
 
         # Update campaign status to "Running"
         unless test
@@ -47,9 +47,7 @@ class SendController < ApplicationController
         end    
 
       else
-        @progress = Array.new
-        @progress.push("Sending was aborted because this campaign include phone number which is already exists in another running campaign. ")
-        @progress.push("Please wait until the other campaing is finished.")
+        @progress.push(["Sending was aborted because this campaign include phone number which is already exists in another running campaign. Please wait until the other campaign is finished.", "alert-error"])     
       end
     end
   end
@@ -83,16 +81,12 @@ class SendController < ApplicationController
     campaign.save
   end
 
-  def send_smm(messages, campaign_customers, from_phone_number, test)
-    progress = Array.new
-
+  def send_smm(messages, campaign_customers, from_phone_number, test, progress)
     # TODO: Send all the SMMs to queue, a worker will pull from queue and process it. 
-
     messages.each do |message|
       campaign_customers.each do |customer|
         message_text = replace_params(message, customer)
-        status_msg = dispatch_smm(from_phone_number, customer.phone, message_text, test)
-        progress.push(status_msg)
+        progress = dispatch_smm(from_phone_number, customer.phone, message_text, test, progress)
       end
     end
 
@@ -120,7 +114,7 @@ class SendController < ApplicationController
   end
 
   # Dispatch SMS using 3rd party provider.
-  def dispatch_smm(from_phone_number, to_phone_number, message_text, test)
+  def dispatch_smm(from_phone_number, to_phone_number, message_text, test, progress)
 
     begin
       # set up a client to talk to the Nexmo REST API
@@ -147,11 +141,13 @@ class SendController < ApplicationController
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
       end
 
-      return "Successfully sent message To " + to_phone_number + "."
+      progress.push(["Successfully sent message to #{to_phone_number}", "alert-success"])     
 
     rescue => err
-      return err.message + " - " + to_phone_number
+      progress.push(["#{err.message}: #{to_phone_number}", "alert-error"])
     end
+
+    return progress
   end
 
   def save_sent_message_log(message_sid, from_phone, to_phone, body, status)

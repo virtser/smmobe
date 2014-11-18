@@ -19,7 +19,7 @@ class ImportController < ApplicationController
       @status = process_csv(file, params[:campaign_id], @status)
 
       if @status.length == 0
-        @status.push("Imported successfully!")
+        @status.push(["Imported successfully!", "alert-success"])
       end
 
       flash[:notice] = @status
@@ -44,10 +44,10 @@ class ImportController < ApplicationController
             begin
               Customer.create!(single_customer_data)
             rescue => err
-              status.push(err.message + " - " + single_customer_data['phone'])       
+              status.push(["#{err.message}: #{single_customer_data['phone']}", "alert-error"])   
             end
           else
-            status.push("Duplicate customer record was detected - " + single_customer_data['phone'])
+            status.push(["Duplicate customer record was detected and filtered out: #{single_customer_data['phone']}", ""])   
           end
         end
       rescue => err
