@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
   validates :phone, :numericality => {:only_integer => true}, presence: true, length: 9..20
   has_secure_password
-  validates :password, presence: true, length: 6..16
+  validates :password, presence: true, length: 6..16, on: create
+
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -24,4 +25,5 @@ class User < ActiveRecord::Base
   def create_remember_token
     self.remember_token = User.digest(User.new_remember_token)
   end
+
 end
