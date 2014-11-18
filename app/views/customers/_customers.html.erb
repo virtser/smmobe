@@ -22,8 +22,8 @@
           <td><%= customer.custom2 %></td>
           <td><%= customer.custom3 %></td>
           <% if current_page?(:controller => 'customers', :action => 'index') %>
-              <td><%= link_to image_tag("edit.png", :border=>0, :width=>16), edit_customer_path(customer) %></td>
-              <td><%= link_to image_tag("delete.png", :border=>0, :width=>16), customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "", edit_customer_path(customer), class: "icon-edit" %></td>
+              <td><%= link_to "", customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove" %></td>
           <% else %>
               <td></td>
               <td></td>

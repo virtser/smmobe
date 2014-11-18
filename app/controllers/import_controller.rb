@@ -47,7 +47,7 @@ class ImportController < ApplicationController
               status.push(err.message + " - " + single_customer_data['phone'])       
             end
           else
-            status.push("Duplicate customer record was detected and will be ignored - " + single_customer_data['phone'])
+            status.push("Duplicate customer record was detected - " + single_customer_data['phone'])
           end
         end
       rescue => err

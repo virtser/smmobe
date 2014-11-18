@@ -101,12 +101,21 @@ class SendController < ApplicationController
 
   def replace_params(message, customer)
     transformed_message = message.text
-    transformed_message = transformed_message.gsub('#first_name', customer.first_name)
-    transformed_message = transformed_message.gsub('#last_name', customer.last_name)
-    #transformed_message = transformed_message.gsub('#phone', customer.phone)
-    transformed_message = transformed_message.gsub('#custom1', customer.custom1)
-    transformed_message = transformed_message.gsub('#custom2', customer.custom2)
-    transformed_message = transformed_message.gsub('#custom3', customer.custom3)
+    unless customer.first_name.nil?
+      transformed_message = transformed_message.gsub('#first_name', customer.first_name)  
+    end 
+    unless customer.last_name.nil?
+      transformed_message = transformed_message.gsub('#last_name', customer.last_name)
+    end
+    unless customer.custom1.nil?
+      transformed_message = transformed_message.gsub('#custom1', customer.custom1)
+    end
+    unless customer.custom2.nil?
+      transformed_message = transformed_message.gsub('#custom2', customer.custom2)
+    end
+    unless customer.custom3.nil?
+      transformed_message = transformed_message.gsub('#custom3', customer.custom3)
+    end
     return transformed_message
   end
 
@@ -141,7 +150,7 @@ class SendController < ApplicationController
       return "Successfully sent message To " + to_phone_number + "."
 
     rescue => err
-      return err.message + ". Wrong phone number: " + to_phone_number
+      return err.message + " - " + to_phone_number
     end
   end
 

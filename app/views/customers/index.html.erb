@@ -20,14 +20,15 @@
 				<%= render 'tabs', :locals => {:list => "active", :manual => "inactive", :csv => "inactive"} %>
 
 				<div class="tab-block">
-                    <div class="span8" style="font-style: italic; color: red;">
+					<%= render 'import' %>
+
+                    <div class="span8">
                     	<% unless flash[:notice].nil? %>
 	                    	<% flash[:notice].each do |s| %>
-	                    		<%=s %><br/> 
+	                    		<div class="alert alert-error span6"><%=s %></div>
 	                    	<% end %>
                     	<% end %>
                     </div>
-					<%= render 'import' %>
 
 					<% if !@customers.nil? && @customers.count > 0 %>
 					    <h3>Customers</h3>

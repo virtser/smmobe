@@ -33,7 +33,7 @@
 
 	<div style="font-style: italic">
 	  <% @progress.each do |error_msg| %>
-	    <p><%= error_msg %></p>
+	    <div class="alert alert-error"><%= error_msg %></div>
 	  <% end %>
 	</div>
 
