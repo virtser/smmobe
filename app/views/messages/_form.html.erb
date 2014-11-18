@@ -23,7 +23,7 @@
 <div class="tab-block">
     <%= f.input :text, label: "Message content:",
                 placeholder: "Hello #first_name! Your product was delivered today. Did you enjoy our service? Please give us your feedback by replying 'yes' or 'no'." ,
-                as: :text, class: "message_text",
+                as: :text, class: "message_text", 
                 input_html: { "ng-model" => "messageText", "ng-init" => "messageText='" + ( @message.text.nil? ? '' : @message.text) + "'" } %>
     <%= f.input :campaign_id, :as => :hidden %>
 
@@ -40,10 +40,32 @@
     </ul>
           <small>* Customers data is inserted in the next step - Distribution.</small>
   </div>
+<br/>
+  <div class="alert" ng-show="messageText" ng-init="charsNumberLimit=70">Message characters: {{ messageText.length }}. 
+       You are going to be charged for <b>{{ (messageText.length/charsNumberLimit)+0.5 | number:0 }}</b> SMS message.
+  </div>
 </div>
 
-
 <script>
+
+function isUnicode(str) {
+  var letters = [];
+  for (var i = 0; i <= str.length; i++) {
+    letters[i] = str.substring((i - 1), i);
+    if (letters[i].charCodeAt() > 255) { return true; }
+  }
+  return false;
+}
+var dir = $('textarea');
+dir.keyup(function(e) {
+  if (isUnicode(dir.val())) {
+    $(this).css('direction', 'rtl');
+  }
+  else {
+    $(this).css('direction', 'ltr');
+  }
+}); 
+
 function insertAtCaret(areaId,text) {
     var txtarea = document.getElementById(areaId);
     var scrollPos = txtarea.scrollTop;
