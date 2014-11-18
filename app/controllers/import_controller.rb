@@ -51,7 +51,8 @@ class ImportController < ApplicationController
           end
         end
       rescue => err
-         status.push(err.message)       
+         status.push(err.message)    
+         puts "Import CSV file errors: #{err.message}"   
       end
     return status
   end
