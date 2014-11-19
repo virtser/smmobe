@@ -38,8 +38,63 @@ var selectType = function() {
 
     // get the campaing type id
     campaign_type_id = $('.selected').attr('id');
-    console.log('campaign_type_id: ' + campaign_type_id);
     $('#campaign_campaign_type_id').val(campaign_type_id);
 }
+
+function changeDirection(dir) {
+  if (isRTL(dir.val())) {
+    dir.css('direction', 'rtl');
+    console.log(dir.val());
+  }
+  else if (isRTL(dir.text())) {
+    dir.css('direction', 'rtl');
+    console.log(dir.text());
+  }
+  else {
+    dir.css('direction', 'ltr');
+  }
+}
+
+function isRTL(s){           
+    var ltrChars    = 'A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02B8\u0300-\u0590\u0800-\u1FFF'+'\u2C00-\uFB1C\uFDFE-\uFE6F\uFEFD-\uFFFF',
+        rtlChars    = '\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC',
+        rtlDirCheck = new RegExp('^[^'+ltrChars+']*['+rtlChars+']');
+
+    return rtlDirCheck.test(s);
+};
+
+function insertAtCaret(areaId,text) {
+    var txtarea = document.getElementById(areaId);
+    var scrollPos = txtarea.scrollTop;
+    var strPos = 0;
+    var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ? 
+        "ff" : (document.selection ? "ie" : false ) );
+    if (br == "ie") { 
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart ('character', -txtarea.value.length);
+        strPos = range.text.length;
+    }
+    else if (br == "ff") strPos = txtarea.selectionStart;
+
+    var front = (txtarea.value).substring(0,strPos);  
+    var back = (txtarea.value).substring(strPos,txtarea.value.length); 
+    txtarea.value=front+text+back;
+    strPos = strPos + text.length;
+    if (br == "ie") { 
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart ('character', -txtarea.value.length);
+        range.moveStart ('character', strPos);
+        range.moveEnd ('character', 0);
+        range.select();
+    }
+    else if (br == "ff") {
+        txtarea.selectionStart = strPos;
+        txtarea.selectionEnd = strPos;
+        txtarea.focus();
+    }
+    txtarea.scrollTop = scrollPos;
+}  
 
 $(document).ready(main);
