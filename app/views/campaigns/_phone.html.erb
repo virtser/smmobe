@@ -3,20 +3,15 @@
     <div class="screen">
       <!-- PUT CONTENTS HERE -->
 
-      <% if flash[:message_text].nil? %>
-          <div class="baloonTo" ng-show="messageText">
-            {{ messageText }}
-          </div>
-      <% else %>
-          <div class="baloonTo">
-            <%= flash[:message_text] %>
-          </div>
-      <% end %>
-
-      <% if current_page?(:controller => 'campaigns', :action => 'new') %>
+      <% if (current_page?(:controller => 'campaigns', :action => 'new') || 
+            controller.controller_name == 'campaigns' && controller.action_name == 'edit') %>
         <div class="greeting">
           Start building your message
         </div>  
+      <% else %>
+        <div class="baloonTo">
+          <%= flash[:message_text] %>
+        </div>      
       <% end %>
     </div>
     <div class="button">
@@ -28,7 +23,14 @@
 <script>
 
   var dirPhone = $('.baloonTo');
-  dirPhone.change(function(e) { changeDirection(dirPhone); }); 
-  $(document).ready(function(e) { changeDirection(dirPhone); }); 
+  $(document).ready(function(e) { changePhoneDirection(); });   
 
+  function changePhoneDirection() {
+    if (isRTL(dirPhone.text())) {
+      dirPhone.css('direction', 'rtl');
+    }    
+    else {
+      dirPhone.css('direction', 'ltr');
+    }
+  }
 </script>

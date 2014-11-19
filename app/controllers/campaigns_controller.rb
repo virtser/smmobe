@@ -15,6 +15,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
+    flash[:message_text] = nil
     @campaign = Campaign.new
   end
 

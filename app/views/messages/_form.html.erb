@@ -23,8 +23,7 @@
 <div class="tab-block">
     <%= f.input :text, label: "Message content:",
                 placeholder: "Hello #first_name! Your product was delivered today. Did you enjoy our service? Please give us your feedback by replying 'yes' or 'no'." ,
-                as: :text, class: "message_text", 
-                input_html: { "ng-model" => "messageText", "ng-init" => "messageText='" + ( @message.text.nil? ? '' : @message.text) + "'" } %>
+                as: :text, class: "message_text" %>
     <%= f.input :campaign_id, :as => :hidden %>
 
   <% end %>
@@ -48,8 +47,35 @@
 
 <script>
 
-  var dirText = $('textarea');
-  dirText.keyup(function(e) { changeDirection(dirText); }); 
-  $(document).ready(function(e) { changeDirection(dirText); }); 
+
+var inputTextArea = $("textarea");
+inputTextArea.keyup(function() { changeDirection(inputTextArea); }); 
+$(document).ready(function() { changeDirection(inputTextArea); }); 
+
+var inputField = $("input[type='text']");
+inputField.keyup(function() { changeDirection(inputField); }); 
+$(document).ready(function() { changeDirection(inputField); }); 
+
+var dirText = $('#message_text');
+dirText.keyup(function(e) { changeTextDirection(); }); 
+$(document).ready(function(e) { changeTextDirection(); }); 
+
+
+  function changeTextDirection() {
+    if (isRTL(dirText.val())) {
+      dirPhone.css('direction', 'rtl');
+    }
+    else {
+      dirPhone.css('direction', 'ltr');
+    }
+    
+    dirPhone.text(dirText.val());
+
+    if (dirText.val() == '')
+      dirPhone.css('display', 'none'); 
+    else
+      dirPhone.css('display', 'inline-block'); 
+
+  }
 
 </script>

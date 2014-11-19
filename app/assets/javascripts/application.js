@@ -18,6 +18,17 @@
 //= require angular
 //= require_tree .
 
+function changeDirection(dir) {
+    if (isRTL(dir.val())) {
+      console.log('rtl');
+      dir.css('direction', 'rtl');
+    }
+    else {
+      console.log('ltr');
+      dir.css('direction', 'ltr');
+    }
+}
+
 var main =  function(){	
 	// in edit mode, select the right campaign type
 	if (typeof campaign_type_id != "undefined")
@@ -39,20 +50,6 @@ var selectType = function() {
     // get the campaing type id
     campaign_type_id = $('.selected').attr('id');
     $('#campaign_campaign_type_id').val(campaign_type_id);
-}
-
-function changeDirection(dir) {
-  if (isRTL(dir.val())) {
-    dir.css('direction', 'rtl');
-    console.log(dir.val());
-  }
-  else if (isRTL(dir.text())) {
-    dir.css('direction', 'rtl');
-    console.log(dir.text());
-  }
-  else {
-    dir.css('direction', 'ltr');
-  }
 }
 
 function isRTL(s){           

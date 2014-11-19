@@ -36,3 +36,9 @@
   </small>
 
 <% end %>
+
+<script>
+  var inputField = $("input[type='text']");
+  inputField.keyup(function() { changeDirection(inputField); }); 
+  $(document).ready(function() { changeDirection(inputField); }); 
+</script>
