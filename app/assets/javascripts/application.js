@@ -20,11 +20,9 @@
 
 function changeDirection(dir) {
     if (isRTL(dir.val())) {
-      console.log('rtl');
       dir.css('direction', 'rtl');
     }
     else {
-      console.log('ltr');
       dir.css('direction', 'ltr');
     }
 }

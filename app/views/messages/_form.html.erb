@@ -40,8 +40,8 @@
           <small>* Customers data is inserted in the next step - Distribution.</small>
   </div>
 <br/>
-  <div class="alert" ng-show="messageText" ng-init="charsNumberLimit=70">Message characters: {{ messageText.length }}. 
-       You are going to be charged for <b>{{ (messageText.length/charsNumberLimit)+0.5 | number:0 }}</b> SMS message.
+  <div class="alert">Message characters: <span id="charsCounter"></span>. 
+       You are going to be charged for <b id="numOfMessages"></b> SMS message.
   </div>
 </div>
 
@@ -62,13 +62,21 @@ $(document).ready(function(e) { changeTextDirection(); });
 
 
   function changeTextDirection() {
+    var len = dirText.val().length;
+    var charsLimit = 0;
+
     if (isRTL(dirText.val())) {
       dirPhone.css('direction', 'rtl');
+      charsLimit = 70;
     }
     else {
       dirPhone.css('direction', 'ltr');
+      charsLimit = 160;
     }
     
+    $('#charsCounter').text(len);
+    $('#numOfMessages').text(Math.ceil(len/charsLimit));
+
     dirPhone.text(dirText.val());
 
     if (dirText.val() == '')
