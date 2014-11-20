@@ -55,7 +55,7 @@ class SendController < ApplicationController
   def have_same_number(campaign_id, campaign_customers)
 
     # get all running campaigns, excluding current one
-    all_running_campaigns = Campaign.where("isdisabled = false AND campaign_status_id = ? AND id != (?)", Generic.CampaignStatusRunning, campaign_id).pluck(:id)
+    all_running_campaigns = Campaign.where("user_id = ? AND isdisabled = false AND campaign_status_id = ? AND id != (?)", current_user[:id], Generic.CampaignStatusRunning, campaign_id).pluck(:id)
 
     if all_running_campaigns.length == 0
       return false

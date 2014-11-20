@@ -8,11 +8,14 @@ class ReviewsController < ApplicationController
     if @campaigns.count > 0
       @messages = Message.where(campaign_id: params[:id])
       @customers = Customer.where(campaign_id: params[:id]).order!(:first_name, :last_name)
+
+      if @messages.count > 0
+        flash[:message_text] = @messages[0].text
+      end
     end
 
     @customer = Customer.new
     @customer.campaign_id = params[:id]
-    flash[:message_text] = @messages[0].text
   end
 
   def index
