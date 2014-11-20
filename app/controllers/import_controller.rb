@@ -68,6 +68,8 @@ class ImportController < ApplicationController
       end
     end
 
+    # Adding valid phone to array to make sure no duplicate phone entries where submitted in CSV file
+    @phones.push(Customer.new(phone: phone, campaign_id: flash[:campaign_id]).phone)
     return dup
   end
 
