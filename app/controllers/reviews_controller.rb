@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
     @customer = Customer.new
     @customer.campaign_id = params[:id]
-    flash[:message_text] = flash[:message_text]
+    flash[:message_text] = @messages[0].text
   end
 
   def index

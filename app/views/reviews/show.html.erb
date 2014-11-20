@@ -37,7 +37,9 @@
       <%= render 'campaigns/table' %>
 
       <h3>Content</h3>
-      <%= render 'messages/table' %>
+      <div class="content">
+        <%= render 'messages/table' %>
+      </div>
 
       <h3>Customers</h3>
       <%= render 'customers/customers' %>
@@ -51,3 +53,18 @@
     <%= render 'campaigns/phone' %>
   </div>
 </div>
+
+<script>
+
+  var dirContent = $('.content table td');
+  $(document).ready(function(e) { changeContentDirection(); });   
+
+  function changeContentDirection() {
+    if (isRTL(dirPhone.text())) {
+      dirContent.css('text-align', 'right');
+    }    
+    else {
+      dirContent.css('text-align', 'left');
+    }
+  }
+</script>

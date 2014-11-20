@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap/bootstrap-tooltip
  */
   .nav {
       margin:0; padding:0;

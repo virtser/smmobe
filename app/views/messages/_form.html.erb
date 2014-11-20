@@ -40,13 +40,14 @@
           <small>* Customers data is inserted in the next step - Distribution.</small>
   </div>
 <br/>
-  <div class="alert">Message characters: <span id="charsCounter"></span>. 
-       You are going to be charged for <b id="numOfMessages"></b> SMS message.
+  <div class="alert">      
+      <a href="" onclick="return false;" rel="tooltip" title="Max characters in an international unicode message is 70 and 160 characters in a standard English alphabet message." class="icon-question-sign"></a>
+      Characters: <b id="charsCounter"></b>. 
+      You are going to be charged for <b id="numOfMessages"></b> SMS message. 
   </div>
 </div>
 
 <script>
-
 
 var inputTextArea = $("textarea");
 inputTextArea.keyup(function() { changeDirection(inputTextArea); }); 
