@@ -1,9 +1,9 @@
 <%= simple_form_for(@user, html: {class: 'form-inline' }) do |f|%>
     <%= f.input :name %>
-    <%= f.input :email %>
+    <%= f.input :email %>	
     <%= f.input :phone %>
 
-	<% if controller.controller_name == 'users' && controller.action_name == 'edit' %>
+	<% if controller.controller_name == 'users' && controller.action_name == 'edit' && current_user[:user_type_id] == Generic.UserTypeAdmin %>
 		<%= f.input :user_type_id %>	
 	<% else %>
 	    <%= f.input :password %>
