@@ -23,12 +23,15 @@
 $(function(){
     $("#file").change(function(){
 
-		if($('#file').val().toLowerCase().indexOf('.csv') != -1){
+		if($('#file').val().toLowerCase().indexOf('.csv') != -1 ||
+		   $('#file').val().toLowerCase().indexOf('.tsv') != -1 ||
+		   $('#file').val().toLowerCase().indexOf('.xls') != -1 ||
+		   $('#file').val().toLowerCase().indexOf('.ods') != -1){
 	      //$('#spinner').show();
 		  $("#import_file_form").submit();
 	    }
 	    else{
-	      alert('Invalid File format. Please, upload CSV file')	    
+	      alert('Invalid file format.\n We support CSV, XLS or ODS files.')	    
 	    }    	
         
     });

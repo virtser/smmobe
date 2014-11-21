@@ -33,25 +33,45 @@ class ImportController < ApplicationController
 
   def process_csv(file, campaign_id, status)
       begin
-        CSV.foreach(file.path, headers: true) do |row|
-          single_customer_data = row.to_hash
-          single_customer_data['campaign_id'] = campaign_id
-          single_customer_data['phone'] = Generic.clean_phone(single_customer_data['phone'])
-          single_customer_data['phone'] = Generic.transform_phone(single_customer_data['phone'])
-          puts single_customer_data
+          filename = file.original_filename.downcase
+
+          if filename.include? ".csv"
+            spreadsheet = Roo::CSV.new(file.path, csv_options: {encoding: Encoding::UTF_8})
+          elsif filename.include? ".xlst"
+            spreadsheet = Roo::Excelx.new(file.path, nil, :ignore)
+          elsif filename.include? ".xls"
+            spreadsheet = Roo::Excel.new(file.path, nil, :ignore)
+          elsif filename.include? ".ods" # Open Office support
+            spreadsheet = Roo::OpenOffice.new(file.path, nil, :ignore)
+          end
+
+          spreadsheet.default_sheet = spreadsheet.sheets.first             # first sheet in the spreadsheet file will be used
+          header = spreadsheet.row(1)
+
+          (2..spreadsheet.last_row).each do |i|   
+            single_customer_data = Hash[[header, spreadsheet.row(i)].transpose]
+            single_customer_data['campaign_id'] = campaign_id
+            single_customer_data['phone'] = Generic.clean_phone(single_customer_data['phone'])
+            single_customer_data['phone'] = Generic.transform_phone(single_customer_data['phone'])
+            puts single_customer_data
 
           if !duplicate(single_customer_data) # Check if number wasn't already imported
             begin
               Customer.create!(single_customer_data)
             rescue => err
-              status.push(["#{err.message}: #{single_customer_data['phone']}", "alert-error"])   
+              if err.message.include? "unknown attribute"
+                status.push(["Wrong column names detected. Make sure your file include at least 'phone' column in first row header.", "alert-error"])   
+                break
+              else
+                status.push(["#{err.message}: #{single_customer_data['phone']}", "alert-error"])   
+              end
             end
           else
             status.push(["Duplicate customer record was detected and filtered out: #{single_customer_data['phone']}", ""])   
           end
         end
       rescue => err
-         status.push(err.message)    
+         status.push(["#{err.message}", "alert-error"])   
          puts "Import CSV file errors: #{err.message}"   
       end
     return status

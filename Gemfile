@@ -44,6 +44,9 @@ gem 'mixpanel-ruby'
 
 gem 'bootstrap-tooltip-rails'
 
+# Excel and CSV files processing
+gem 'roo'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
   gem 'spring'
