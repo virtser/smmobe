@@ -37,7 +37,7 @@ class ImportController < ApplicationController
 
           if filename.include? ".csv"
             spreadsheet = Roo::CSV.new(file.path, csv_options: {encoding: Encoding::UTF_8})
-          elsif filename.include? ".xlst"
+          elsif filename.include? ".xlsx"
             spreadsheet = Roo::Excelx.new(file.path, nil, :ignore)
           elsif filename.include? ".xls"
             spreadsheet = Roo::Excel.new(file.path, nil, :ignore)
