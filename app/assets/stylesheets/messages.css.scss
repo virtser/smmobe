@@ -11,32 +11,11 @@ $baseBorderColor: #cecece;
 	}
 }
 
-.dynamic_params ul {
-	list-style-type: none; 
-	margin:5px 0 5px 0;
-	padding: 10px;
-	background-color: #f9f9f9;
-	border: 1px solid lightgray;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+.dynamic_params  {
+	padding: 0px 0px 20px 0px;
+	clear:both;
 }
 
-.dynamic_params ul li {
-	display: inline;
+.char_counter {
+	clear:both;
 }
-
-.dynamic_params ul li a 
-{
-	border: 1px solid #3a8ee6;
-	background-color: #dcedff;
-	text-decoration: none;
-	cursor: pointer;
-	padding: 2px;
-	margin-right: 2px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-
-}
-

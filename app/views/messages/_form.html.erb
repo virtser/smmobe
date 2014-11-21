@@ -28,23 +28,28 @@
 
   <% end %>
 
+
   <div class="dynamic_params">
-      <small>Use the following placeholders in message body to replace them with dynamic customer data.</small>
-    <ul>
-      <li><a title="Insert customer first name" onclick="insertAtCaret('message_text','#first_name ');return false;">#first_name</a></li>
-      <li><a title="Insert customer last name" onclick="insertAtCaret('message_text','#last_name ');return false;">#last_name</a></li>
-      <li><a title="Insert custom column 1" onclick="insertAtCaret('message_text','#custom1 ');return false;">#custom1</a></li>
-      <li><a title="Insert custom column 2" onclick="insertAtCaret('message_text','#custom2 ');return false;">#custom2</a></li>
-      <li><a title="Insert custom column 3" onclick="insertAtCaret('message_text','#custom3 ');return false;">#custom3</a></li>
-    </ul>
-          <small>* Customers data is inserted in the next step - Distribution.</small>
+    <div class="btn-group">
+        <a class="btn" title="Insert customer first name" onclick="insertAtCaret('message_text','#first_name ');return false;">First name</a>
+        <a class="btn" title="Insert customer last name" onclick="insertAtCaret('message_text','#last_name ');return false;">Last name</a>
+        <a class="btn" title="Insert custom column 1" onclick="insertAtCaret('message_text','#custom1 ');return false;">Custom1</a>
+        <a class="btn" title="Insert custom column 2" onclick="insertAtCaret('message_text','#custom2 ');return false;">Custom2</a>
+        <a class="btn" title="Insert custom column 3" onclick="insertAtCaret('message_text','#custom3 ');return false;">Custom3</a>
+    </div>
+      <a href="" onclick="return false;" rel="tooltip" title="Use the following placeholders in message body to replace them with dynamic customer data. Customers data is inserted in the next step - Distribution." class="icon-question-sign" style="float:right"></a>    
   </div>
-<br/>
-  <div class="alert">      
+
+  <div class="char_counter">
+    <div class="alert" style="float:left; width:500px;">            
+        Characters: <b id="charsCounter"></b>. 
+        You are going to be charged for <b id="numOfMessages"></b> SMS message. 
+    </div>
+    <div style="float:right">
       <a href="" onclick="return false;" rel="tooltip" title="Max characters in an international unicode message is 70 and 160 characters in a standard English alphabet message." class="icon-question-sign"></a>
-      Characters: <b id="charsCounter"></b>. 
-      You are going to be charged for <b id="numOfMessages"></b> SMS message. 
+    </div>
   </div>
+
 </div>
 
 <script>

@@ -25,7 +25,10 @@
                     <div class="span8">
                     	<% unless flash[:notice].nil? %>
 	                    	<% flash[:notice].each do |s| %>
-	                    		<div class="alert <%=s[1] %> span6"><%=s[0] %></div>
+	                    		<div class="alert <%=s[1] %> span6">
+	                    			<button type="button" class="close" data-dismiss="alert">&times;</button>
+	                    			<%=s[0] %>
+	                    		</div>
 	                    	<% end %>
                     	<% end %>
                     </div>
