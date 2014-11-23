@@ -27,11 +27,11 @@
 
 	</p>
 
-	<p><strong>Sending to number of customers:</strong> <%= @campaign_customers.count %><p>
+	<p><strong>Successfully sent message to <%= @success_count %> out of <%= @campaign_customers.count %> customers.</strong><p>
 
 	<h3>Progress status</h3>
 
-	<div style="font-style: italic">
+	<div>
 	  <% @progress.each do |error_msg| %>
 	    <div class="alert <%= error_msg[1] %>">
         <button type="button" class="close" data-dismiss="alert">&times;</button>

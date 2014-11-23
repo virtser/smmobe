@@ -16,6 +16,7 @@ class SendController < ApplicationController
     campaign_id = params[:campaign_id]
     test = params[:test].to_s.to_bool
     @progress = Array.new
+    @success_count = 0
 
     if !campaign_id.nil?
 
@@ -128,6 +129,7 @@ class SendController < ApplicationController
                                               :'client-ref' => params[:campaign_id]
 
         )
+        @success_count += 1
         puts "New SMS sent to: " + to_phone_number.to_s
         progress.push(["Successfully sent message to #{to_phone_number}", "alert-success"])     
 
