@@ -27,7 +27,7 @@ class Generic
 		phone_number = phone_number.to_s.tr("(", "")
 		phone_number = phone_number.to_s.tr(")", "")
 		phone_number = phone_number.to_s.tr(" ", "")
-		phone_number = phone_number.to_i	# removes decimal points at the end if column defined as number in Excel
+		phone_number = phone_number.to_i.to_s	# removes decimal points at the end if column defined as number in Excel
 		return phone_number
 	end	
 
