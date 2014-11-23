@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: 5..80
   validates :email, presence: true, email: true,
             uniqueness: { case_sensitive: false }
-  validates :phone, presence: true, length: 9..20, :numericality => {:only_integer => true}
+  validates :phone, presence: true, length: 9..20
 
   has_secure_password
   validates :password, presence: true, length: 6..16, on: create
