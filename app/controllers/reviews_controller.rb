@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :signed_in_user, only: [:show, :index]
 
   # GET /review/1
   # GET /review/1.json

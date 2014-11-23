@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-
+  before_action :signed_in_user, only: [:index, :create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers

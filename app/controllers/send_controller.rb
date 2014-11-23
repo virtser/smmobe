@@ -1,5 +1,6 @@
 class SendController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :signed_in_user, only: [:index, :show]
 
   # Nexmo credentials
   PROD_API_KEY = 'b5c09331'
