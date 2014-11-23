@@ -59,12 +59,12 @@ class ImportController < ApplicationController
             begin
               Customer.create!(single_customer_data)
             rescue => err
-              if err.message.include? "unknown attribute"
-                status.push(["Wrong column names detected. Make sure your file include at least 'phone' column in first row header.", "alert-error"])   
-                break
-              else
+              #if err.message.include? "unknown attribute"
+              #  status.push(["Wrong column names detected. Make sure your file include at least 'phone' column in first row header.", "alert-error"])   
+              #  break
+              #else
                 status.push(["#{err.message}: #{single_customer_data['phone']}", "alert-error"])   
-              end
+              #end
             end
           else
             status.push(["Duplicate customer record was detected and filtered out: #{single_customer_data['phone']}", ""])   
