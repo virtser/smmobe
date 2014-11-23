@@ -36,7 +36,8 @@ class SendController < ApplicationController
         @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test, @progress)
 
         # Update campaign status to "Running"
-        update_campaign_status(campaign_id, 2)
+        if @success_count > 0
+          update_campaign_status(campaign_id, 2)
 
         puts "Campaing sent - message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
 
