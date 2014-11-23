@@ -20,7 +20,7 @@ class SendController < ApplicationController
     if !campaign_id.nil?
 
       @campaign_customers = Customer.where(campaign_id: campaign_id)
-      @messages = Message.where(campaign_id: campaign_id)
+      @messages = Message.where(campaign_id: campaign_id).limit(1)
 
       # don't allow sending if zero customers where added
       if @campaign_customers.length == 0 
