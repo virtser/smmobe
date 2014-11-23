@@ -38,6 +38,7 @@ class SendController < ApplicationController
         # Update campaign status to "Running"
         if @success_count > 0
           update_campaign_status(campaign_id, 2)
+        end
 
         puts "Campaing sent - message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
 
@@ -171,4 +172,5 @@ class SendController < ApplicationController
       c = Unsubscribe.where(phone: phone,user_id: user_id)
       return c.length > 0
   end
+
 end
