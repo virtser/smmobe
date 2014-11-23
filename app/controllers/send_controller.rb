@@ -32,13 +32,10 @@ class SendController < ApplicationController
       unless have_same_number(campaign_id, @campaign_customers)
 
         @from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:phone)[0]
-
         @progress = send_smm(@messages, @campaign_customers, @from_phone_number, test, @progress)
 
         # Update campaign status to "Running"
-        unless test
-          update_campaign_status(campaign_id, 2)
-        end
+        update_campaign_status(campaign_id, 2)
 
         puts "Campaing sent - message: #{@messages.inspect} to the following customers: #{@campaign_customers.inspect}"        
 
@@ -122,7 +119,7 @@ class SendController < ApplicationController
       nexmo = Nexmo::Client.new(key: PROD_API_KEY, secret: PROD_API_SECRET)
 
       # TODO: add status callback to get message delivery status and errors
-      unless test
+      unless unsubscribed(to_phone_number, current_user[:id])
         messageId = nexmo.send_message(
                                               from: from_phone_number,
                                               to: to_phone_number,
@@ -132,6 +129,7 @@ class SendController < ApplicationController
 
         )
         puts "New SMS sent to: " + to_phone_number.to_s
+        progress.push(["Successfully sent message to #{to_phone_number}", "alert-success"])     
 
         if Rails.env.production?
             tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
@@ -139,9 +137,10 @@ class SendController < ApplicationController
         end    
 
         save_sent_message_log(messageId, from_phone_number, to_phone_number, message_text, "queued")
+      else
+        progress.push(["Not sending, customer asked to unsubscribe: #{to_phone_number}", ""])
+        puts "SMS not sent, customer unsubscribed - #{to_phone_number}"
       end
-
-      progress.push(["Successfully sent message to #{to_phone_number}", "alert-success"])     
 
     rescue => err
       progress.push(["#{err.message}: #{to_phone_number}", "alert-error"])
@@ -163,5 +162,10 @@ class SendController < ApplicationController
         user_id: current_user[:id]
      )
      @sent_message_log.save
+  end
+
+  def unsubscribed(phone, user_id)
+      c = Unsubscribe.where(phone: phone,user_id: user_id)
+      return c.length > 0
   end
 end

@@ -18,7 +18,6 @@ class ReceiveController < ApplicationController
         from_phone_number = params[:msisdn]
         to_phone_number = params[:to]
         body = params[:text]
-        body = params[:text]
         status = params[:type]
         user_id = User.where(phone: to_phone_number).limit(1).pluck(:id)[0]
 
@@ -35,6 +34,8 @@ class ReceiveController < ApplicationController
         save_received_message_log(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
         # TODO: reply if body contains defined variable to reply.
+        process_reply(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
+
       rescue => err
         puts "Receive SMS failed: #{err.message} - params.to_s"
       end
@@ -55,5 +56,21 @@ class ReceiveController < ApplicationController
         user_id: user_id
      )
      @sent_message_log.save
-   end
+  end
+
+  def process_reply(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
+      
+      if body.include? "0"  # unsubscribe
+        unsubscribe_customer(from_phone_number, user_id)        
+      end 
+
+  end
+
+  def unsubscribe_customer(phone, user_id)
+    @unsubscribe = Unsubscribe.new(phone: phone, user_id: user_id)
+    @unsubscribe.save
+
+    puts "Customer unsubscribed - #{phone}"
+  end
+
 end

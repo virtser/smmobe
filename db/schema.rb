@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210151110) do
+ActiveRecord::Schema.define(version: 20141210151111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20141210151110) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "campaign_type_id",   default: 1, null: false
-    t.integer  "campaign_status_id", default: 1, null: false
-    t.integer  "user_id",                        null: false
-    t.boolean  "isdisabled", default: false
+    t.integer  "campaign_type_id",   default: 1,     null: false
+    t.integer  "campaign_status_id", default: 1,     null: false
+    t.integer  "user_id",                            null: false
+    t.boolean  "isdisabled",         default: false
   end
 
   create_table "customers", force: true do |t|
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 20141210151110) do
   create_table "messages", force: true do |t|
     t.string   "text"
     t.integer  "campaign_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unsubscribes", force: true do |t|
+    t.string   "phone"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
