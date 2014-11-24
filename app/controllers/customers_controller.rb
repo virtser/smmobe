@@ -44,6 +44,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    @customer.phone = "+" + @customer.phone # adding "+" to make phone input control work
   end
 
   # POST /customers
@@ -71,7 +72,7 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-    @customer.phone = Generic.clean_phone(@customer.phone)
+    @customer.phone = Generic.clean_phone(customer_params[:phone])
     @customer.phone = Generic.transform_phone(@customer.phone)
 
     respond_to do |format|

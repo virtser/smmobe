@@ -7,16 +7,16 @@
 	    	<%= file_field_tag :file, class: 'btn-file' %>
 	    </div>
 	</div>
-	<div class="span6">
-		<small><a href='/assets/import_file_example.csv'>Click here</a> to download import file example.</small>
-	</div>
 
-	<div style="float:right;">
-      <a href="" onclick="return false;" rel="tooltip" title="You can import files in on of the following formats: CSV, XLS, XLSX or ODS. " class="icon-question-sign"></a>
-	</div>
     <div class="span1">
     	<a class="btn btn-import" onclick="importFile();">Import</a>
     </div>
+	<div style="float:right;">
+      <a href="" onclick="return false;" rel="tooltip" title="You can import files in on of the following formats: CSV, XLS, XLSX or ODS. " class="icon-question-sign"></a>
+	</div>
+	<div class="span6">
+		<small><a href='/assets/import_file_example.csv'>Click here</a> to download import file example.</small>
+	</div>
 
 	<% end %>
 
