@@ -1,7 +1,7 @@
 <%= simple_form_for(@user, html: {class: 'form-inline' }) do |f|%>
     <%= f.input :name %>
     <%= f.input :email %>	
-    <%= f.input :phone %>
+    <%= f.input :phone, label_html: { type: 'tel' } %>
 
 	<% if controller.controller_name == 'users' && controller.action_name == 'edit' && current_user[:user_type_id] == Generic.UserTypeAdmin %>
 		<%= f.input :user_type_id %>	
@@ -11,3 +11,15 @@
     
     <%= f.button :submit %>
 <% end %>
+
+<script>
+	var input = $("#user_phone");
+
+	input.intlTelInput({
+	  defaultCountry: "auto",
+	  //nationalMode: true,
+	  //autoFormat: false,
+	  utilsScript: "/assets/libphonenumber/utils.js",
+	});
+
+</script>

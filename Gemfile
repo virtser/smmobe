@@ -47,6 +47,10 @@ gem 'bootstrap-tooltip-rails'
 # Excel and CSV files processing
 gem 'roo'
 
+# phone verification and normalization
+gem 'phony'
+gem 'intl-tel-input-rails'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
   gem 'spring'

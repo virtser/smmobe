@@ -71,8 +71,11 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    @customer.phone = Generic.clean_phone(@customer.phone)
+    @customer.phone = Generic.transform_phone(@customer.phone)
+
     respond_to do |format|
-      if @customer.update(customer_params)
+      if @customer.save
         format.html  {
           flash[:campaign_id] = @customer.campaign_id
           flash[:message_text] = flash[:message_text]

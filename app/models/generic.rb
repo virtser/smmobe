@@ -22,12 +22,8 @@ class Generic
 	end
 
 	def self.clean_phone(phone_number)
-		phone_number = phone_number.to_s.tr("+", "")
-		phone_number = phone_number.to_s.tr("-", "")
-		phone_number = phone_number.to_s.tr("(", "")
-		phone_number = phone_number.to_s.tr(")", "")
-		phone_number = phone_number.to_s.tr(" ", "")
-		phone_number = phone_number.to_i.to_s	# removes decimal points at the end if column defined as number in Excel
+		phone_number = phone_number.gsub(/\.0$/, '') # removes decimal points (.0) at the end if column defined as number in Excel
+		phone_number = Phony.normalize(phone_number)
 		return phone_number
 	end	
 

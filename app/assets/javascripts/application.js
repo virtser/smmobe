@@ -16,6 +16,7 @@
 //= require bootstrap/bootstrap-tooltip
 //= require bootstrap
 //= require turbolinks
+//= require intlTelInput
 //= require_tree .
 
 function changeDirection(dir) {
