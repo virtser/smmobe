@@ -66,6 +66,7 @@ end
 # Required for Heroku
 group :production do
   gem 'rails_12factor', '0.0.2'
+  gem "non-stupid-digest-assets" # https://github.com/alexspeller/non-stupid-digest-assets
 end
 
 # Use ActiveModel has_secure_password
