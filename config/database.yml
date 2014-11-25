@@ -78,9 +78,10 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
 production:
   <<: *default
-  # database: SMMobe_production
-  # username: SMMobe
-  # password: <%= ENV['SMMOBE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
