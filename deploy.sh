@@ -28,13 +28,13 @@ if [ $1 ]; then
 	else
 		if [ $ENV == 'stage' ]; then
 			echo "Deploying to Heroku"
-			git push staging $STAGE_BRANCH -f
+			git push staging $STAGE_BRANCH
 
 			echo "Running DB migration"
 			heroku run rake db:migrate --app smmobe-staging
 		else
 			echo "Deploying to Heroku"
-			git push heroku $PROD_BRANCH -f
+			git push heroku $PROD_BRANCH
 			
 			echo "Running DB migration"
 			heroku run rake db:migrate --app smmobe
