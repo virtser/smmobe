@@ -10,7 +10,7 @@ class ReceiveController < ApplicationController
   # GET /receive
   def index
     # write received request to log
-    puts "New SMS received: " + params.to_s
+    puts "New receive request: " + params.to_s
 
     if(params[:messageId].present?)
       begin
@@ -25,6 +25,8 @@ class ReceiveController < ApplicationController
             tracker = Mixpanel::Tracker.new(Generic.get_mixpanel_key)
             tracker.track(user_id, 'SMS Received')
         end    
+        
+        puts "New SMS received: " + params.to_s
 
         # possible campaign IDs to assign the message to
         campaign_id = Campaign.where("isdisabled = false AND user_id = (?) AND campaign_status_id = ?", user_id, Generic.CampaignStatusRunning)
@@ -37,7 +39,7 @@ class ReceiveController < ApplicationController
         process_reply(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
 
       rescue => err
-        puts "Receive SMS failed: #{err.message} - params.to_s"
+        puts "Receive SMS failed: #{err.message} - #{params.to_s}"
       end
     end
 
