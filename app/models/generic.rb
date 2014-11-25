@@ -23,18 +23,23 @@ class Generic
 
 	def self.clean_phone(phone_number)
 		phone_number = phone_number.to_s.gsub(/\.0$/, '') # removes decimal points (.0) at the end if column defined as number in Excel
-		phone_number = Phony.normalize(phone_number)
+		phone_number = transform_phone('972', phone_number)
+		phone_number = normalize_phone(phone_number)
 		return phone_number
 	end	
 
-	def self.transform_phone(phone_number)
+	def self.normalize_phone(phone_number)
+		return Phony.normalize(phone_number)
+	end
+
+	def self.transform_phone(country_code, phone_number)
 		# Add Israeli country code if none was entered
 		if phone_number.length == 9 || phone_number.length == 10
 			if phone_number[0] == '0'
 				phone_number[0] = ''
 			end		
 
-			phone_number = "972" + phone_number
+			phone_number = country_code + phone_number
 		end 
 		return phone_number
 	end

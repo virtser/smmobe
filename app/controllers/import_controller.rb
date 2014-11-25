@@ -53,7 +53,6 @@ class ImportController < ApplicationController
             single_customer_data = Hash[[header, spreadsheet.row(i)].transpose]
             single_customer_data['campaign_id'] = campaign_id
             single_customer_data['phone'] = Generic.clean_phone(single_customer_data['phone'])
-            single_customer_data['phone'] = Generic.transform_phone(single_customer_data['phone'])
             puts single_customer_data
 
           if !duplicate(single_customer_data) # Check if number wasn't already imported

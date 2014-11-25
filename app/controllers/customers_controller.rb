@@ -52,7 +52,6 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customer.phone = Generic.clean_phone(@customer.phone)
-    @customer.phone = Generic.transform_phone(@customer.phone)
     
     respond_to do |format|
       if @customer.save
@@ -73,7 +72,6 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1.json
   def update
     @customer.phone = Generic.clean_phone(customer_params[:phone])
-    @customer.phone = Generic.transform_phone(@customer.phone)
 
     respond_to do |format|
       if @customer.save
