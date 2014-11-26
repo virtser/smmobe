@@ -2,7 +2,11 @@ class StaticPagesController < ApplicationController
   before_action :clear_message
 
   def home
-    redirect_to :controller => 'campaigns', :action => 'new'
+    if current_user.nil?
+      redirect_to '/signin'
+    else
+      redirect_to :controller => 'campaigns', :action => 'new'
+    end
   end
 
   def help
