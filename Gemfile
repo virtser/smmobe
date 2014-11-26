@@ -51,6 +51,9 @@ gem 'roo'
 gem 'phony'
 gem 'intl-tel-input-rails'
 
+# https://github.com/alexspeller/non-stupid-digest-assets
+gem "non-stupid-digest-assets" 
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
   gem 'spring'
@@ -66,7 +69,6 @@ end
 # Required for Heroku
 group :staging, :production do
   gem 'rails_12factor', '0.0.2'
-  gem "non-stupid-digest-assets" # https://github.com/alexspeller/non-stupid-digest-assets
 end
 
 # Use ActiveModel has_secure_password
