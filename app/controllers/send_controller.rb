@@ -25,8 +25,8 @@ class SendController < ApplicationController
 
       # don't allow sending if zero customers where added
       if @campaign_customers.length == 0 
-        @progress.push(["Hey, you forgot to add some customers phone numbers to send this message cmpaign! 
-                        Please edit the message cmpaign and import some customer phone numbers to it.", "alert-error"])     
+        @progress.push(["Hey, you forgot to add some customer phone numbers to send this campaign! 
+                        Please edit the campaign and import some customer phone numbers to it.", "alert-error"])     
         return 
       end
 
@@ -51,8 +51,8 @@ class SendController < ApplicationController
         @sucess_message = "Successfully sent message to #{@success_count} out of  #{@campaign_customers.count} customers."
 
       else
-        @progress.push(["Sending was aborted due to the fact that this message cmpaign includes customer phone number which was already used in another running message cmpaign. 
-                         Please wait until the other message cmpaign status is finished. It usually takes up to #{Generic.get_campaign_run_interval} days.", 
+        @progress.push(["Sending was aborted due to the fact that this cmpaign includes customer phone number which was already used in another running cmpaign. 
+                         Please wait until the other cmpaign status is finished. It usually takes up to #{Generic.get_campaign_run_interval} days.", 
                          "alert-error"])     
         return
       end
