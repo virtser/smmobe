@@ -18,27 +18,17 @@
   <div class="row cusomers tab-block-full">
     <div class="span8">
 
-    <h2>Sending</h2>
+      <h3>Sending progress</h3>
+      <% unless @success_message.nil? %> <p><strong><%= @success_message %></strong><p><% end %>
 
-	<p><strong>SMS text:</strong>
-	  <% @messages.each do |message| %>
-	      <%= message.text %>
-	  <% end %>
-
-	</p>
-
-	<p><strong>Successfully sent message to <%= @success_count %> out of <%= @campaign_customers.count %> customers.</strong><p>
-
-	<h3>Progress status</h3>
-
-	<div>
-	  <% @progress.each do |error_msg| %>
-	    <div class="alert <%= error_msg[1] %>">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= error_msg[0] %>
-      </div>
-	  <% end %>
-	</div>
+    	<div class="span7">
+    	  <% @progress.each do |error_msg| %>
+    	    <div class="alert <%= error_msg[1] %>">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= error_msg[0] %>
+          </div>
+    	  <% end %>
+    	</div>
 
     </div>
   </div>

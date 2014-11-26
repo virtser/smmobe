@@ -32,6 +32,12 @@
 
 <div class="tab-block-full">
   <div class="cusomers">
+  <p>
+    It usually takes up to <%=Generic.get_campaign_run_interval %> days to collent replies from customers until the message cmpaign is finished.
+  </p>
+  <p>Please review that message cmpaign details are correct before starting the distribution:</p>
+    
+
   <% if @campaigns.count > 0 %>
       <h3>Type</h3>
       <%= render 'campaigns/table' %>

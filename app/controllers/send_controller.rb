@@ -25,11 +25,12 @@ class SendController < ApplicationController
 
       # don't allow sending if zero customers where added
       if @campaign_customers.length == 0 
-        @progress.push(["Hey, you forgot to add some customers phone numbers to send this campaign! Edit the message and add some numbers.", "alert-error"])     
+        @progress.push(["Hey, you forgot to add some customers phone numbers to send this message cmpaign! 
+                        Please edit the message cmpaign and import some customer phone numbers to it.", "alert-error"])     
         return 
       end
 
-      # Don't allow sending campaign if another one is running with the same phone number, unless current user is Admin
+      # Don't allow sending campaign if another one is running with the same phone number
       unless have_same_number(campaign_id, @campaign_customers)
 
         @from_phone_number = User.where(id: current_user[:id]).limit(1).pluck(:phone)[0]
@@ -47,8 +48,13 @@ class SendController < ApplicationController
             tracker.track(current_user[:id], 'Campaign Sent')
         end    
 
+        @sucess_message = "Successfully sent message to #{@success_count} out of  #{@campaign_customers.count} customers."
+
       else
-        @progress.push(["Sending was aborted because this campaign include phone number which is already exists in another running campaign. Please wait until the other campaign is finished.", "alert-error"])     
+        @progress.push(["Sending was aborted due to the fact that this message cmpaign includes customer phone number which was already used in another running message cmpaign. 
+                         Please wait until the other message cmpaign status is finished. It usually takes up to #{Generic.get_campaign_run_interval} days.", 
+                         "alert-error"])     
+        return
       end
     end
   end
