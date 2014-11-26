@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :clear_message
 
   def home
+    redirect_to :controller => 'campaigns', :action => 'new'
   end
 
   def help
