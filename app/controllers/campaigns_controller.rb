@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    flash[:message_text] = nil
+    cookies[:message_text] = nil
     @campaigns = Campaign.where(user_id: current_user[:id], isdisabled: false).order!('campaign_status_id', created_at: :desc)
   end
 
@@ -17,7 +17,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    flash[:message_text] = nil
+    cookies[:message_text] = nil
     @campaign = Campaign.new
   end
 
@@ -41,8 +41,7 @@ class CampaignsController < ApplicationController
         end    
 
         format.html {
-          flash[:campaign_id] = @campaign.id
-          redirect_to :controller => 'messages', :action => 'new'
+          redirect_to new_campaign_message_path(@campaign)
         }
         format.json { render :show, status: :created, location: @campaign }
       else
@@ -60,14 +59,13 @@ class CampaignsController < ApplicationController
         puts "Campaign updateded: #{@campaign.inspect}"        
 
         format.html {
-          flash[:campaign_id] = @campaign.id
-          @message_id = Message.find_by_campaign_id(@campaign.id)
-          
+          @message = Message.find_by_campaign_id(@campaign.id)
+
           # in case that customer didn't complete campaign creation flow and have no message
-          if @message_id.nil? 
-            redirect_to :controller => 'messages', :action => 'new'
+          if @message.nil? 
+            redirect_to new_campaign_message_path(@campaign)
           else
-            redirect_to :controller => 'messages', :action => 'edit', :id => @message_id
+            redirect_to edit_campaign_message_path(@campaign, @message)
           end
         }
         format.json { render :show, status: :ok, location: @campaign }

@@ -23,14 +23,11 @@ Rails.application.routes.draw do
   match '/receive',    to: 'receive#index',     via: 'get'
   match '/receive:id', to: 'receive#show',      via: 'get'
 
-  resources :campaigns
-
-  resources :messages
-
-  resources :customers
-
-  resources :import, only: [:index, :create]
-  match '/import/:id',    to: 'import#index',        via: 'get'
+  resources :campaigns do
+    resources :messages
+    resources :customers 
+  end
+  
   match '/import',    to: 'import#create',       via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.

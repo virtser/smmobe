@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       @customers = Customer.where(campaign_id: params[:id]).order!(:first_name, :last_name)
 
       if @messages.count > 0
-        flash[:message_text] = @messages[0].text
+        cookies[:message_text] = @messages[0].text
       end
     end
 

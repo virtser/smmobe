@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :edit, :create, :update, :destroy]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:new, :edit, :create, :update]
 
   # GET /messages
   # GET /messages.json
@@ -16,11 +17,7 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-
-    # In case that passed campaign_id param from campaigns controller in flash var
-    if !flash[:campaign_id].nil?
-      @message.campaign_id = flash[:campaign_id]
-    end
+    @message.campaign_id = params[:campaign_id]
   end
 
   # GET /messages/1/edit
@@ -37,17 +34,13 @@ class MessagesController < ApplicationController
         puts "New message created: #{@message.inspect}"        
 
         format.html {
-          flash[:campaign_id] = @message.campaign_id
-          flash[:message_text] = @message.text
-          redirect_to :controller => 'customers', :action => 'index'
+          cookies[:message_text] = @message.text
+          redirect_to campaign_customers_path
         }
         format.json { render :show, status: :created, location: @message }
       else
         format.html {
           render :new
-          #redirect_to new_message_path(@message, campaign_id: params[:campaign_id])
-          #redirect_to() :controller => 'messages', :action => 'new', :campaign_id => @campaign.id
-          #redirect_to action: "new", text: @message.text, campaign_id: params[:message][:campaign_id], error: @message.errors[:text][0].to_s
         }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
@@ -62,13 +55,8 @@ class MessagesController < ApplicationController
         puts "Message updated: #{@message.inspect}"        
 
         format.html {
-          #redirect_to @message, notice: 'Message was successfully updated.'
-          #flash[:campaign_id] = @customer.campaign_id
-          #@customer.campaign_id = flash[:campaign_id]
-          #customer = Message.find_by_campaign_id(@campaign.id)
-          flash[:campaign_id] = @message.campaign_id
-          flash[:message_text] = @message.text
-          redirect_to :controller => 'customers', :action => 'index'
+          cookies[:message_text] = @message.text
+          redirect_to campaign_customers_path
         }
         format.json { render :show, status: :ok, location: @message }
       else
@@ -92,6 +80,11 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+    end
+
+    def set_campaign
+      @campaign = Campaign.find(params[:campaign_id])
+      @campaign.user_id = current_user[:id]        
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

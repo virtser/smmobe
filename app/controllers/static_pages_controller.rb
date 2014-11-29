@@ -21,6 +21,6 @@ class StaticPagesController < ApplicationController
   private
     # Clear sms message baloon on phone screen left from previous campaign setup
     def clear_message
-      flash[:message_text] = nil
+      cookies[:message_text] = nil
     end
 end
