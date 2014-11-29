@@ -14,6 +14,8 @@ class CustomersController < ApplicationController
     else
       @customers = Customer.where(campaign_id: 0)
     end
+
+    @message = Message.find_by_campaign_id(params[:campaign_id])
   end
 
   # GET /customers/1

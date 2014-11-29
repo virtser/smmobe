@@ -6,7 +6,10 @@
 
 	<div class="steps">
 	    <div class="container">
-	      	<div class="row numbers">   
+	      	<div class="row numbers">  
+		        <div class="span2 center button">
+		          <%= link_to 'BACK', edit_campaign_message_path(@campaign, @message), class: 'btn btn-next' %>
+		        </div>	      	 
 	        	<%= render 'campaigns/steps', :locals => {:step1 => "active",
 	                              :step2 => "active",
 	                              :step3 => "active"} %>

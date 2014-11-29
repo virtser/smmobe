@@ -16,6 +16,9 @@
  *= require intlTelInput
  */
 
+  .step1, .step2, .step3 {
+    padding: 0px 15px;
+  }
 
   .nav {
       margin:0; padding:0;
