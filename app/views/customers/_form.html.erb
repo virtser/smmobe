@@ -1,4 +1,4 @@
-<%= simple_form_for(@customer, html: {class: 'form-inline' }) do |f|%>
+<%= simple_form_for([@campaign, @customer], html: {class: 'form-inline' }) do |f|%>
 
   <% if controller.controller_name == 'customers' && 
     (controller.action_name == 'index' || controller.action_name == 'create') %>

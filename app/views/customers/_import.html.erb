@@ -2,7 +2,7 @@
 	<%= form_tag import_path, :id => 'import_file_form' , multipart: true do %>
 <div class="row">
 	<div>
-	    <%= hidden_field_tag('campaign_id', flash[:campaign_id]) %>
+	    <%= hidden_field_tag('campaign_id', params[:campaign_id]) %>
 	    <div class="hiddenfile">
 	    	<%= file_field_tag :file, class: 'btn-file' %>
 	    </div>

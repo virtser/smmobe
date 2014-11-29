@@ -1,18 +1,16 @@
 class CustomersController < ApplicationController
   before_action :signed_in_user, only: [:index, :create]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:index, :edit]
 
   # GET /customers
   # GET /customers.json
   def index
     @customer = Customer.new
 
-    flash[:campaign_id] = flash[:campaign_id]
-    flash[:message_text] = flash[:message_text]
-
-    if !flash[:campaign_id].nil?
-      @customer.campaign_id = flash[:campaign_id]
-      @customers = Customer.where(campaign_id: flash[:campaign_id]).order!(:first_name, :last_name)
+    if !params[:campaign_id].nil?
+      @customer.campaign_id = params[:campaign_id]
+      @customers = Customer.where(campaign_id: params[:campaign_id]).order!(:first_name, :last_name)
     else
       @customers = Customer.where(campaign_id: 0)
     end
@@ -28,10 +26,8 @@ class CustomersController < ApplicationController
     @customer = Customer.new
 
     # In case that passed campaign_id param from messages controller in flash var
-    if !flash[:campaign_id].nil?
-      @customer.campaign_id = flash[:campaign_id]
-      flash[:campaign_id] = flash[:campaign_id]
-      flash[:message_text] = flash[:message_text]
+    if !params[:campaign_id].nil?
+      @customer.campaign_id = params[:campaign_id]
     end
 
     # find all customers associated with this campaign id
@@ -56,9 +52,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         format.html  {
-          flash[:campaign_id] = @customer.campaign_id
-          flash[:message_text] = flash[:message_text]
-          redirect_to :controller => 'customers', :action => 'index'
+          redirect_to campaign_customers_path
         }
         format.json { render :show, status: :created, location: @customer }
       else
@@ -71,14 +65,13 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    @customer.update_attributes(customer_params)
     @customer.phone = Generic.clean_phone(customer_params[:phone])
 
     respond_to do |format|
       if @customer.save
         format.html  {
-          flash[:campaign_id] = @customer.campaign_id
-          flash[:message_text] = flash[:message_text]
-          redirect_to :controller => 'customers', :action => 'index'
+          redirect_to campaign_customers_path
           #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
         }
         format.json { render :show, status: :ok, location: @customer }
@@ -95,9 +88,7 @@ class CustomersController < ApplicationController
     @customer.destroy
     respond_to do |format|
       format.html  {
-        flash[:campaign_id] = @customer.campaign_id
-        flash[:message_text] = flash[:message_text]
-        redirect_to :controller => 'customers', :action => 'index'
+        redirect_to campaign_customers_path
         #redirect_to :controller => 'reviews', :action => 'show', :id => @customer.campaign_id
       }
       format.json { head :no_content }
@@ -108,6 +99,11 @@ class CustomersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_customer
     @customer = Customer.find(params[:id])
+  end
+
+  def set_campaign
+    @campaign = Campaign.find(params[:campaign_id])
+    @campaign.user_id = current_user[:id]        
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

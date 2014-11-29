@@ -21,13 +21,8 @@
           <td><%= customer.custom1 %></td>
           <td><%= customer.custom2 %></td>
           <td><%= customer.custom3 %></td>
-          <% if current_page?(:controller => 'customers', :action => 'index') %>
-              <td><%= link_to "", edit_customer_path(customer), class: "icon-edit" %></td>
-              <td><%= link_to "", customer, method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove" %></td>
-          <% else %>
-              <td></td>
-              <td></td>
-          <% end %>
+          <td><%= link_to "", edit_campaign_customer_path(customer.campaign_id, customer), class: "icon-edit" %></td>
+          <td><%= link_to "", campaign_customer_path(customer.campaign_id, customer), method: :delete, data: { confirm: 'Are you sure?' }, class: "icon-remove" %></td>
         </tr>
     <% end %>
     </tbody>

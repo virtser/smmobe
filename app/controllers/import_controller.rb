@@ -4,17 +4,9 @@ class ImportController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_phones, only: [:create]
 
-  # GET /import/1
-  def index
-    if !flash[:campaign_id].nil?
-      flash[:campaign_id] = flash[:campaign_id]
-      flash[:message_text] = flash[:message_text]
-    end
-  end
-
   # POST
   def create
-    if !flash[:campaign_id].nil?
+    if !params[:campaign_id].nil?
       file = params[:file]
       @status = Array.new
       @status = process_csv(file, params[:campaign_id], @status)
@@ -24,10 +16,7 @@ class ImportController < ApplicationController
       end
 
       flash[:notice] = @status
-
-      flash[:campaign_id] = params[:campaign_id]
-      flash[:message_text] = flash[:message_text]
-      redirect_to :controller => 'customers', :action => 'index'
+      redirect_to campaign_customers_path(params[:campaign_id])
 
     end
   end
@@ -89,14 +78,14 @@ class ImportController < ApplicationController
     end
 
     # Adding valid phone to array to make sure no duplicate phone entries where submitted in CSV file
-    @phones.push(Customer.new(phone: phone, campaign_id: flash[:campaign_id]).phone)
+    @phones.push(Customer.new(phone: phone, campaign_id: params[:campaign_id]).phone)
     return dup
   end
 
   private
     # initiate @phones globally on import to check for duplicates
     def set_phones
-      @phones = Customer.where(campaign_id: flash[:campaign_id]).pluck(:phone)
+      @phones = Customer.where(campaign_id: params[:campaign_id]).pluck(:phone)
     end
 
 end
