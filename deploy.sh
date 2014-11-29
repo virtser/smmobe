@@ -1,6 +1,6 @@
 #!/bin/sh
 
-STAGE_BRANCH="development:master"
+STAGE_BRANCH="develop:master"
 PROD_BRANCH="master"
 
 if [ $1 ]; then
