@@ -17,7 +17,7 @@
         <!-- <td><%= campaign.description %></td> -->
         <td><%= campaign.campaign_type.name %></td>
         <td><%= campaign.campaign_status.name %></td>
-        <td><%= campaign.created_at %></td>
+        <td><%= campaign.created_at.strftime("%d-%m-%Y %H:%M") %></td>
         <td style=" text-align: right;">
 
         <% if campaign.campaign_status.name == "Pending" &&
