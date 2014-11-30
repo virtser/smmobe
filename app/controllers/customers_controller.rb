@@ -6,6 +6,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    flash[:status] = nil
     @customer = Customer.new
 
     if !params[:campaign_id].nil?
