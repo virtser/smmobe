@@ -15,7 +15,7 @@ class ImportController < ApplicationController
         @status.push(["Imported successfully!", "alert-success"])
       end
 
-      flash[:notice] = @status
+      flash[:status] = @status
       redirect_to campaign_customers_path(params[:campaign_id])
 
     end

@@ -26,8 +26,8 @@
 					<%= render 'import' %>
 
                     <div class="span8">
-                    	<% unless flash[:notice].nil? %>
-	                    	<% flash[:notice].each do |s| %>
+                    	<% unless flash[:status].nil? %>
+	                    	<% flash[:status].each do |s| %>
 	                    		<div class="alert <%=s[1] %> span6">
 	                    			<button type="button" class="close" data-dismiss="alert">&times;</button>
 	                    			<%=s[0] %>
