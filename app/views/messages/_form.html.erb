@@ -25,13 +25,10 @@
 </ul>  
 
 <div class="tab-block">
-    <%= f.input :text, label: "Message content:",
-                placeholder: "Hello #first_name! Your product was delivered today. Did you enjoy our service? Please give us your feedback by replying 'yes' or 'no'." ,
-                as: :text, class: "message_text" %>
-    <%= f.input :campaign_id, :as => :hidden %>
-
-  <% end %>
-
+  <%= f.input :text, label: "Message content:",
+              placeholder: "Hello #first_name! Your product was delivered today. Did you enjoy our service? Please give us your feedback by replying 'yes' or 'no'." ,
+              as: :text, class: "message_text" %>
+  <%= f.input :campaign_id, :as => :hidden %>
 
   <div class="dynamic_params">
     <div class="btn-group">
@@ -55,15 +52,17 @@
     </div>
   </div>
 
-<div class="receive_reply">
+  <div class="receive_reply">
 
-  <h4>Auto SMS Response (up to 5)</h4>
+    <h4>Auto SMS Response (up to 5)</h4>
 
-  <p>You can define responses that you want to collect from your customers and automatic replies that you want to send on specific response.</p>
+    <p>You can define responses that you want to collect from your customers and automatic replies that you want to send on specific response.</p>
 
-  
 
-</div>
+  </div>
+
+
+  <% end %>
 
 </div>
 
