@@ -65,7 +65,7 @@ class ReceiveController < ApplicationController
 
   def process_reply(message_sid, from_phone_number, to_phone_number, body, status, campaign_id, user_id)
       
-      if body.include? "0"  # unsubscribe
+      if body.include? "unsubscribe"  # unsubscribe
         unsubscribe_customer(from_phone_number, user_id)        
       end 
 
