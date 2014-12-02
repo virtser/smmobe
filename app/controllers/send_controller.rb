@@ -102,21 +102,37 @@ class SendController < ApplicationController
 
   def replace_params(message, customer)
     transformed_message = message.text
+
     unless customer.first_name.nil?
       transformed_message = transformed_message.gsub('#first_name', customer.first_name)  
+    else
+      transformed_message = transformed_message.gsub('#first_name', '')        
     end 
+
     unless customer.last_name.nil?
       transformed_message = transformed_message.gsub('#last_name', customer.last_name)
+    else
+      transformed_message = transformed_message.gsub('#last_name', '')        
     end
+
     unless customer.custom1.nil?
       transformed_message = transformed_message.gsub('#custom1', customer.custom1)
+    else
+      transformed_message = transformed_message.gsub('#custom1', '')        
     end
+
     unless customer.custom2.nil?
       transformed_message = transformed_message.gsub('#custom2', customer.custom2)
+    else
+      transformed_message = transformed_message.gsub('#custom2', '')        
     end
+
     unless customer.custom3.nil?
       transformed_message = transformed_message.gsub('#custom3', customer.custom3)
+    else
+      transformed_message = transformed_message.gsub('#custom3', '')        
     end
+
     return transformed_message
   end
 
