@@ -1,7 +1,7 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <!-- <th>SID</th> -->
+    <th>#</th> 
     <th>Date</th>
     <th>From</th>
     <th>Body</th>
@@ -10,10 +10,10 @@
   </thead>
 
   <tbody>
-  <% @message_logs.each do |message_log| %>
+  <% @message_logs.each.with_index do |message_log, index| %>
       <tr>
-        <!-- <td><strong><%= message_log.sid %></strong></td> -->
-        <td><%= message_log.date %></td>
+        <td><strong><%= index+1 %></strong></td>
+        <td><%= I18n.l message_log.date, :format => :short %></td>
         <td><%= message_log.from_phone %></td>
         <td><%= message_log.body %></td>
         <td><%= message_log.status %></td>

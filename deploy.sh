@@ -2,6 +2,7 @@
 
 APPNAME="smmobe"
 BRANCH="master"
+REMOTE="heroku"
 
 if [ $1 ]; then
 	ENV=$1
@@ -14,6 +15,7 @@ if [ $1 ]; then
 	if [ $ENV == 'stage' ]; then
 		APPNAME="smmobe-staging"
 		BRANCH="develop:master"
+		REMOTE="staging"
 	fi
 
 	if [ $2 ]; then
@@ -33,7 +35,7 @@ if [ $1 ]; then
 	fi
 
 	echo "--- Deploying to Heroku ---"
-	git push -v staging $BRANCH
+	git push -v $REMOTE $BRANCH
 
 	if [ $? == 1 ]; then
 		echo " Exiting as deployment failed. "
