@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     cookies[:message_text] = nil
-    @campaigns = Campaign.where(isdisabled: false).order!('campaign_status_id', created_at: :desc)
+    @campaigns = Campaign.where(user_id: current_user[:id], isdisabled: false).order!('campaign_status_id', created_at: :desc)
   end
 
   # GET /campaigns/1
