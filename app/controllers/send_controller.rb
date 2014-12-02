@@ -52,7 +52,7 @@ class SendController < ApplicationController
 
       else
         @progress.push(["Sending was aborted due to the fact that this cmpaign includes customer phone number which was already used in another running cmpaign. 
-                         Please wait until the other cmpaign status is finished. It usually takes up to #{Generic.get_campaign_run_interval} days.", 
+                         Please wait until the other cmpaign status is ended. It usually takes up to #{Generic.get_campaign_run_interval} days.", 
                          "alert-error"])     
         return
       end

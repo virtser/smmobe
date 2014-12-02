@@ -34,8 +34,8 @@ if CampaignStatus.find_by(name: 'Running').nil?
   CampaignStatus.create(id: 2, name: 'Running')
 end
 
-if CampaignStatus.find_by(name: 'Finished').nil?
-  CampaignStatus.create(id: 3, name: 'Finished')
+if CampaignStatus.find_by(name: 'Ended').nil?
+  CampaignStatus.create(id: 3, name: 'Ended')
 end
 
 # Default user types

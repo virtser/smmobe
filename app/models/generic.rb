@@ -7,7 +7,7 @@ class Generic
 	def self.CampaignStatusRunning
 		return 2
 	end
-	def self.CampaignStatusFinished
+	def self.CampaignStatusEnded
 		return 3
 	end
 

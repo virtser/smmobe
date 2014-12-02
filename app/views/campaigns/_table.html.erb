@@ -6,6 +6,8 @@
     <th>Type</th>
     <th>Status</th>
     <th>Created</th>
+    <th>Ends <a href="" onclick="return false;" rel="tooltip" title="Campaigns ends after <%=Generic.get_campaign_run_interval*24 %> hours since this is the time it takes to get most responses" class="icon-question-sign"></a>
+</th>
     <th></th>
   </tr>
   </thead>
@@ -17,7 +19,8 @@
         <!-- <td><%= campaign.description %></td> -->
         <td><%= campaign.campaign_type.name %></td>
         <td><%= campaign.campaign_status.name %></td>
-        <td><%= campaign.created_at %></td>
+        <td><%= I18n.l campaign.created_at, :format => :short %></td>
+        <td><%= I18n.l campaign.created_at+3.days, :format => :short %></td>
         <td style=" text-align: right;">
 
         <% if campaign.campaign_status.name == "Pending" &&

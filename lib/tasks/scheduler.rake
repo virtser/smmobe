@@ -7,7 +7,7 @@ task :mark_finished_campaigns => :environment do
 
   	if running_campaings.length > 0
   		running_campaings.each do |campaign|
-  			campaign.campaign_status_id = Generic.CampaignStatusFinished
+  			campaign.campaign_status_id = Generic.CampaignStatusEnded
 			campaign.save
 			puts "Marked as finished campaign #" + campaign.id.to_s
 		end

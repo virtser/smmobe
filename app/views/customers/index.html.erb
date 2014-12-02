@@ -7,15 +7,15 @@
 	<div class="steps">
 	    <div class="container">
 	      	<div class="row numbers">  
-		        <div class="span2 center button">
-		          <%= link_to 'BACK', edit_campaign_message_path(@campaign, @message), class: 'btn btn-next' %>
-		        </div>	      	 
 	        	<%= render 'campaigns/steps', :locals => {:step1 => "active",
 	                              :step2 => "active",
 	                              :step3 => "active"} %>
 		        
-		         <div class="span2 center button">
+		         <div class="span1 center button">
 			   	    <input class="btn btn-next" name="commit" type="submit" value="NEXT" onclick="location.href='/reviews/<%= params[:campaign_id] %>'"/>
+	              <div class="space"></div>
+		          <%= link_to 'BACK', edit_campaign_message_path(@campaign, @message), class: 'btn btn-back' %>
+
 			   	</div>
 			</div>
 

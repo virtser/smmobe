@@ -17,7 +17,7 @@
  */
 
   .step1, .step2, .step3 {
-    padding: 0px 15px;
+    /*padding: 0px 15px;*/
   }
 
   .nav {
@@ -113,5 +113,38 @@
 }
 /* line 521, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
 .btn-next:active, .btn-next.active {
+  background-color: #408140 \9;
+}
+
+.space {
+  padding-top:3px;
+}
+.btn-back {
+  color: white;
+  font-size: 14px;
+  padding: 4px 10px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #bfbfbf;
+  background-image: -moz-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bfbfbf), to(#bfbfbf));
+  background-image: -webkit-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: -o-linear-gradient(top, #bfbfbf, #bfbfbf);
+  background-image: linear-gradient(to bottom, #bfbfbf, #bfbfbf);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF17b4b6', endColorstr='#FF17b4b6', GradientType=0);
+  border-color: #bfbfbf #bfbfbf #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #bfbfbf;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+/* line 513, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-back:hover, .btn-back:focus, .btn-back:active, .btn-back.active, .btn-back.disabled, .btn-back[disabled] {
+  color: white;
+  background-color: #bfbfbf;
+  *background-color: #499249;
+}
+/* line 521, /Users/david/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-2.3.2.0/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.btn-back:active, .btn-back.active {
   background-color: #408140 \9;
 }
