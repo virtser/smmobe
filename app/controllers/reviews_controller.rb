@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   # GET /review/1
   # GET /review/1.json
   def show
-    @campaigns = Campaign.where(user_id: current_user[:id], id: params[:id])
+    @campaigns = Campaign.where(id: params[:id])
 
     if @campaigns.count > 0
       @messages = Message.where(campaign_id: params[:id]).limit(1)

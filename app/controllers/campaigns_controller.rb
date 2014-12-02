@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     cookies[:message_text] = nil
-    @campaigns = Campaign.where(user_id: current_user[:id], isdisabled: false).order!('campaign_status_id', created_at: :desc)
+    @campaigns = Campaign.where(isdisabled: false).order!('campaign_status_id', created_at: :desc)
   end
 
   # GET /campaigns/1
@@ -102,11 +102,18 @@ class CampaignsController < ApplicationController
     end
   end
 
+  # DELETE /campaigns/finish/1
+  def finish
+    puts "HOPA!!!!!!!"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_campaign
-      @campaign = Campaign.find(params[:id])
-      @campaign.user_id = current_user[:id]
+      unless current_user.nil?
+        @campaign = Campaign.find(params[:id])
+        @campaign.user_id = current_user[:id]
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

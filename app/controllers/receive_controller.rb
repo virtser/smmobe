@@ -1,10 +1,13 @@
 class ReceiveController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :signed_in_user, only: [:show]
 
 
   # GET /receive/1
   def show
-     @message_logs = MessageReceive.all.where(user_id: current_user[:id], campaign_id: params[:id]).order!(created_at: :desc)
+    unless current_user.nil?
+      @message_logs = MessageReceive.all.where(campaign_id: params[:id]).order!(created_at: :desc)
+    end
   end
 
   # GET /receive

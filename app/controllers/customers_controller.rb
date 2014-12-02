@@ -101,12 +101,16 @@ class CustomersController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_customer
-    @customer = Customer.find(params[:id])
+    unless current_user.nil?
+      @customer = Customer.find(params[:id])
+    end
   end
 
   def set_campaign
-    @campaign = Campaign.find(params[:campaign_id])
-    @campaign.user_id = current_user[:id]        
+    unless current_user.nil?
+      @campaign = Campaign.find(params[:campaign_id])
+      @campaign.user_id = current_user[:id]        
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
