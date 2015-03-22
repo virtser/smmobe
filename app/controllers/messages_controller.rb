@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :edit, :create, :update, :destroy]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_message_reply, only: [:show, :edit, :update, :destroy]
   before_action :set_campaign, only: [:new, :edit, :create, :update]
 
   # GET /messages
@@ -18,6 +19,8 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @message.campaign_id = params[:campaign_id]
+
+    @message_reply = MessageReceiveReply.new
   end
 
   # GET /messages/1/edit
@@ -28,6 +31,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    @message_reply = MessageReceiveReply.new(message_params)
 
     respond_to do |format|
       if @message.save
@@ -80,6 +84,10 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+    end
+
+    def set_message_reply
+      @message_reply = MessageReceiveReply.where(campaign_id: params[:campaign_id])
     end
 
     def set_campaign
