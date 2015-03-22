@@ -3,8 +3,8 @@ class SendController < ApplicationController
   before_action :signed_in_user, only: [:index, :show]
 
   # Nexmo credentials
-  PROD_API_KEY = 'b5c09331'
-  PROD_API_SECRET = '4cd27bd4'
+  PROD_API_KEY = ENV['NEXMO_API_KEY']
+  PROD_API_SECRET = ENV['NEXMO_API_SECRET']
 
   # GET /send/1
   def show
