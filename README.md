@@ -11,3 +11,14 @@ Examples of use cases are:
 * Scheduling 
 * Clarifications.
 
+
+# General info
+
+Technology being used:
+
+- Ruby on Rails as server side, APIs and ORM.
+- PostgreSQL as database.
+- Twitter bootstrap for client components.
+- Nexmo as SMS gateway provider.
+- Heroku as cloud application platform.
+- New Relic for monitoring.
